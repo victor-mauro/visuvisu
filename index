@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>VISU VISU - Modélisation 3D & Rendu photoréaliste</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Création d'images d'architecture et de design, Visu Visu vous accompagne dans la représentation de vos projets, de la modélisation 3D à la réalisation de rendus texturés.">
+  
+  <style>
+    /* Reset & Base */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+      overflow: hidden;
+    }
+
+    body {
+      font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+      font-size: 16px;
+      line-height: 24px;
+      color: #333;
+      background-color: #f1f1f1;
+    }
+
+    /* Layout Principal - 100% écran fixe */
+    .container {
+      position: fixed;
+      top: 65px;
+      bottom: 60px;
+      left: 0;
+      right: 0;
+      display: flex;
+      border-top: 1px solid #000;
+      border-bottom: 1px solid #000;
+      background-color: #f1f1f1;
+    }
+
+    /* Header fixe */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 65px;
+      background-color: #fff;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .title {
+      font-size: 38px;
+      line-height: 44px;
+      font-weight: bold;
+      text-transform: uppercase;
+      padding: 10px 14px;
+      margin: 0;
+      border-bottom: 1px solid #000;
+    }
+
+    .intro {
+      display: none;
+      padding: 14px;
+      font-size: 16px;
+      line-height: 24px;
+      border-bottom: 1px solid #000;
+    }
+
+    /* Colonne gauche - 20% */
+    .left-column {
+      flex: 0 0 20%;
+      border-right: 1px solid #000;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      background-color: #f1f1f1;
+    }
+
+    .info-block {
+      padding: 14px;
+      border-top: 1px solid #000;
+    }
+
+    /* Colonne centrale - 50% */
+    .center-column {
+      flex: 0 0 50%;
+      border-right: 1px solid #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      overflow: hidden;
+      position: relative;
+      background-color: #f1f1f1;
+    }
+
+    .image-container {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .main-image {
+      max-width: 100%;
+      max-height: 100%;
+      height: auto;
+      display: block;
+      transition: all 0.3s ease;
+    }
+
+    .main-image.zoomed {
+      max-width: 200%;
+      max-height: 200%;
+      cursor: zoom-out;
+    }
+
+    .main-image.zoomable {
+      cursor: zoom-in;
+    }
+
+    .main-image.toggle {
+      cursor: pointer;
+    }
+
+    .placeholder {
+      color: #999;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    /* Colonne droite - 30% */
+    .right-column {
+      flex: 0 0 30%;
+      overflow-y: auto;
+      overflow-x: hidden;
+      background-color: #f1f1f1;
+    }
+
+    .project-item {
+      padding: 14px;
+      border-top: 1px solid #000;
+      cursor: pointer;
+      font-size: 16px;
+      line-height: 22px;
+      font-style: italic;
+      color: #333;
+      transition: font-weight 0.2s;
+      background-color: #f1f1f1;
+    }
+
+    .project-item:first-child {
+      border-top: none;
+    }
+
+    .project-item:hover,
+    .project-item.active {
+      font-weight: 700;
+    }
+
+    /* Footer fixe */
+    .footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background-color: #f1f1f1;
+      border-top: 1px solid #000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 14px;
+      z-index: 1000;
+    }
+
+    .footer a {
+      color: #333;
+      text-decoration: none;
+      font-size: 16px;
+      line-height: 22px;
+      transition: font-weight 0.2s;
+    }
+
+    .footer a:hover {
+      font-weight: 700;
+    }
+
+    .footer .name {
+      cursor: default;
+    }
+
+    /* Responsive - Tablette */
+    @media screen and (max-width: 991px) {
+      .container {
+        top: 165px;
+        flex-direction: column;
+        border-top: none;
+      }
+
+      .header {
+        height: auto;
+        flex-direction: column-reverse;
+        border-bottom: 1px solid #000;
+      }
+
+      .title {
+        border-bottom: none;
+      }
+
+      .intro {
+        display: block;
+      }
+
+      .left-column {
+        display: none;
+      }
+
+      .center-column {
+        flex: none;
+        height: 60vh;
+        max-height: 60vh;
+        border-right: none;
+        border-top: 1px solid #000;
+        border-bottom: 1px solid #000;
+        position: relative;
+      }
+
+      .right-column {
+        flex: 1;
+        padding-top: 0;
+        border-top: none;
+      }
+
+      .footer {
+        position: static;
+        border-top: 1px solid #000;
+        border-bottom: none;
+        order: -1;
+      }
+    }
+
+    /* Responsive - Mobile vertical */
+    @media screen and (max-width: 479px) {
+      body {
+        border-left: 1px solid #000;
+        border-right: 1px solid #000;
+        margin: 0 11px;
+      }
+
+      .container {
+        top: 55px;
+        border: none;
+      }
+
+      .header {
+        height: 55px;
+        margin: 0 11px;
+        border-bottom: 1px solid #000;
+      }
+
+      .title {
+        font-size: 27px;
+        line-height: 35px;
+        height: 55px;
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        border-bottom: none;
+      }
+
+      .intro {
+        font-size: 14px;
+        line-height: 20px;
+        padding: 10px;
+        border-bottom: none;
+      }
+
+      .center-column {
+        height: 50vh;
+        max-height: 50vh;
+        margin: 0 11px;
+        padding: 0;
+        border: none;
+        border-bottom: 1px solid #000;
+      }
+
+      .right-column {
+        padding-top: 0;
+        margin: 0 11px;
+      }
+
+      .project-item {
+        font-size: 14px;
+        line-height: 20px;
+        padding: 10px;
+      }
+
+      .footer {
+        flex-direction: column;
+        align-items: flex-start;
+        height: auto;
+        padding: 10px;
+        margin: 0 11px;
+        border-top: 1px solid #000;
+        border-bottom: none;
+      }
+
+      .footer a {
+        font-size: 14px;
+        line-height: 20px;
+      }
+
+      /* En mobile, afficher l'image en background pour mieux gérer l'espace */
+      .image-container {
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+
+      .main-image {
+        opacity: 0;
+        max-width: 100%;
+        max-height: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="header">
+    <div class="intro" id="intro">
+      Création d'images d'architecture et de design, Visu Visu vous accompagne dans la représentation de vos projets, de la modélisation 3D à la réalisation de rendus texturés.
+    </div>
+    <h1 class="title">VISU VISU</h1>
+  </div>
+
+  <!-- Container principal -->
+  <div class="container">
+    
+    <!-- Colonne gauche (desktop only) -->
+    <div class="left-column">
+      <div class="info-block">
+        <p>Création d'images d'architecture et de design, Visu Visu vous accompagne dans la représentation de vos projets, de la modélisation 3D à la réalisation de rendus texturés.</p>
+      </div>
+    </div>
+
+    <!-- Colonne centrale - Image -->
+    <div class="center-column">
+      <div class="image-container" id="imageContainer">
+        <div class="placeholder">
+          Sélectionnez un projet
+        </div>
+      </div>
+    </div>
+
+    <!-- Colonne droite - Liste des projets -->
+    <div class="right-column" id="projectsList">
+      <!-- Chargé dynamiquement depuis projects.json -->
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <span class="name">Victor Mauro</span>
+    <a href="tel:+33650508155">+33 6 50 50 81 55</a>
+    <a href="mailto:contact@victormauro.fr">contact@victormauro.fr</a>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    // Données intégrées (pour test sans projects.json)
+    const PROJECTS_DATA = {
+      "info": {
+        "title": "VISU VISU",
+        "description": "Création d'images d'architecture et de design, Visu Visu vous accompagne dans la représentation de vos projets, de la modélisation 3D à la réalisation de rendus texturés.",
+        "contact": {
+          "name": "Victor Mauro",
+          "phone": "+33 6 50 50 81 55",
+          "email": "contact@victormauro.fr"
+        }
+      },
+      "projects": [
+        {
+          "id": "aimko_store_2023",
+          "title": "Aimko.P, concept store",
+          "year": "2023",
+          "image_low": "https://res.cloudinary.com/aioli/image/upload/v1759321681/aioli.collective/bralua5w9doivlyxkojo.jpg",
+          "image_high": "https://res.cloudinary.com/aioli/image/upload/v1759321681/aioli.collective/bralua5w9doivlyxkojo.jpg",
+          "interaction": "zoom"
+        },
+        {
+          "id": "chelles_2022",
+          "title": "Emmanuelle Lainé, Gare de Chelles",
+          "year": "2022",
+          "image_low": "https://res.cloudinary.com/aioli/image/upload/v1760353253/aioli.collective/gtgf2qkzhzj4k2hwb5bs.jpg",
+          "image_high": "https://res.cloudinary.com/aioli/image/upload/v1760353253/aioli.collective/gtgf2qkzhzj4k2hwb5bs.jpg",
+          "interaction": "zoom"
+        }
+      ]
+    };
+
+    // État de l'application
+    let projects = [];
+    let currentProject = null;
+    let isZoomed = false;
+    let toggleStates = {};
+
+    // Charger les données
+    async function loadProjects() {
+      try {
+        // Essayer de charger depuis projects.json
+        const response = await fetch('./projects.json');
+        if (response.ok) {
+          const data = await response.json();
+          projects = data.projects;
+        } else {
+          // Sinon utiliser les données intégrées
+          projects = PROJECTS_DATA.projects;
+        }
+      } catch (error) {
+        // En cas d'erreur, utiliser les données intégrées
+        console.log('Utilisation des données de test intégrées');
+        projects = PROJECTS_DATA.projects;
+      }
+      
+      renderProjectsList();
+      
+      // Sélectionner le premier projet par défaut
+      if (projects.length > 0) {
+        selectProject(projects[0].id);
+      }
+    }
+
+    // Afficher la liste des projets
+    function renderProjectsList() {
+      const container = document.getElementById('projectsList');
+      container.innerHTML = projects.map(project => `
+        <div class="project-item" onclick="selectProject('${project.id}')" id="item-${project.id}">
+          ${project.title}, ${project.year}
+        </div>
+      `).join('');
+    }
+
+    // Sélectionner un projet
+    function selectProject(projectId) {
+      const project = projects.find(p => p.id === projectId);
+      if (!project) return;
+
+      currentProject = project;
+      isZoomed = false;
+
+      // Mettre à jour le style actif
+      document.querySelectorAll('.project-item').forEach(item => {
+        item.classList.remove('active');
+      });
+      document.getElementById(`item-${projectId}`)?.classList.add('active');
+
+      // Afficher l'image
+      displayImage(project);
+    }
+
+    // Afficher l'image selon le type d'interaction
+    function displayImage(project) {
+      const container = document.getElementById('imageContainer');
+      let imageUrl = '';
+      let className = '';
+      let onclick = '';
+
+      switch (project.interaction) {
+        case 'zoom':
+          imageUrl = project.image_low;
+          className = 'zoomable';
+          onclick = 'handleImageClick()';
+          break;
+
+        case 'toggle':
+          imageUrl = toggleStates[project.id] ? 
+            (project.image_night || project.image_after) : 
+            (project.image_day || project.image_before);
+          className = 'toggle';
+          onclick = 'handleImageClick()';
+          break;
+
+        case 'video':
+          imageUrl = project.image_low;
+          break;
+
+        default: // static
+          imageUrl = project.image_low;
+          break;
+      }
+
+      // Responsive : en mobile, utiliser background-image
+      if (window.innerWidth <= 479) {
+        container.style.backgroundImage = `url(${imageUrl})`;
+        container.innerHTML = `<img src="${imageUrl}" class="main-image ${className}" alt="${project.title}">`;
+      } else {
+        container.style.backgroundImage = 'none';
+        container.innerHTML = `<img src="${imageUrl}" class="main-image ${className}" onclick="${onclick}" alt="${project.title}">`;
+      }
+    }
+
+    // Gérer le clic sur l'image
+    function handleImageClick() {
+      if (!currentProject) return;
+
+      if (currentProject.interaction === 'zoom') {
+        isZoomed = !isZoomed;
+        const img = document.querySelector('.main-image');
+        
+        if (isZoomed) {
+          img.src = currentProject.image_high;
+          img.classList.add('zoomed');
+          img.classList.remove('zoomable');
+        } else {
+          img.src = currentProject.image_low;
+          img.classList.remove('zoomed');
+          img.classList.add('zoomable');
+        }
+      } else if (currentProject.interaction === 'toggle') {
+        toggleStates[currentProject.id] = !toggleStates[currentProject.id];
+        displayImage(currentProject);
+      }
+    }
+
+    // Gérer le redimensionnement
+    window.addEventListener('resize', () => {
+      if (currentProject) {
+        displayImage(currentProject);
+      }
+    });
+
+    // Charger au démarrage
+    loadProjects();
+  </script>
+
+</body>
+</html>
