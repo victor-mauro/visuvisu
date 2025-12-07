@@ -156,7 +156,7 @@
     .main-image {
       width: 100%;
       height: 100%;
-      object-fit: contain;
+      object-fit: cover;
       cursor: zoom-in;
       transition: none;
       position: relative;
@@ -165,7 +165,7 @@
     .main-image.zoomed {
       width: 200%;
       height: 200%;
-      object-fit: contain;
+      object-fit: cover;
       cursor: none;
       position: absolute;
     }
@@ -416,6 +416,14 @@
             image_low: "https://res.cloudinary.com/aioli/image/upload/v1760353253/aioli.collective/gtgf2qkzhzj4k2hwb5bs.jpg",
             image_high: "https://res.cloudinary.com/aioli/image/upload/v1760353253/aioli.collective/gtgf2qkzhzj4k2hwb5bs.jpg",
             interaction: "zoom"
+          },
+          {
+            id: "mejanes_2025",
+            title: "Emmanuelle Lainé, Méjanes",
+            year: "2025",
+            image_default: "https://res.cloudinary.com/aioli/image/upload/v1763899225/aioli.collective/ircwf5wmehkbhvveosc6.jpg",
+            image_hover: "https://res.cloudinary.com/aioli/image/upload/v1764244852/aioli.collective/aiw1u7wv5p6mq0axmxji.jpg",
+            interaction: "toggle"
           }
         ]
       }
@@ -510,28 +518,41 @@
       const isMobile = window.innerWidth <= 479;
       
       if (isMobile) {
-        // Mode mobile : background-image, pas de zoom
-        wrapper.style.backgroundImage = `url(${currentProject.image_low})`;
-        wrapper.innerHTML = `<img src="${currentProject.image_low}" 
+        // Mode mobile : background-image, pas d'interaction
+        const imageUrl = currentProject.image_low || currentProject.image_default;
+        wrapper.style.backgroundImage = `url(${imageUrl})`;
+        wrapper.innerHTML = `<img src="${imageUrl}" 
                                   class="main-image" 
                                   alt="${currentProject.title}"
                                   style="opacity: 0;">`;
       } else {
-        // Mode desktop/tablette : image avec zoom
+        // Mode desktop/tablette : image avec interaction
         wrapper.style.backgroundImage = 'none';
-        const canZoom = currentProject.interaction === 'zoom';
-        wrapper.innerHTML = `<img src="${currentProject.image_low}" 
-                                  id="mainImage"
-                                  class="main-image" 
-                                  alt="${currentProject.title}">`;
         
-        if (canZoom) {
+        if (currentProject.interaction === 'zoom') {
+          wrapper.innerHTML = `<img src="${currentProject.image_low}" 
+                                    id="mainImage"
+                                    class="main-image" 
+                                    alt="${currentProject.title}">`;
           initZoomBehavior();
+        } else if (currentProject.interaction === 'toggle') {
+          wrapper.innerHTML = `<img src="${currentProject.image_default}" 
+                                    id="mainImage"
+                                    class="main-image" 
+                                    alt="${currentProject.title}">`;
+          initToggleBehavior();
+        } else {
+          // Pas d'interaction
+          const imageUrl = currentProject.image_low || currentProject.image_default;
+          wrapper.innerHTML = `<img src="${imageUrl}" 
+                                    id="mainImage"
+                                    class="main-image" 
+                                    alt="${currentProject.title}">`;
         }
       }
     }
 
-    // ==================== ZOOM ====================
+    // ==================== ZOOM (interaction: "zoom") ====================
     function initZoomBehavior() {
       const wrapper = document.getElementById('imageWrapper');
       const img = document.getElementById('mainImage');
@@ -606,8 +627,36 @@
       img.style.top = moveY + 'px';
     }
 
+    // ==================== TOGGLE (interaction: "toggle") ====================
+    function initToggleBehavior() {
+      const wrapper = document.getElementById('imageWrapper');
+      const img = document.getElementById('mainImage');
+      
+      wrapper.addEventListener('mouseenter', showHoverImage);
+      wrapper.addEventListener('mouseleave', showDefaultImage);
+    }
+
+    function showHoverImage() {
+      if (!currentProject || currentProject.interaction !== 'toggle') return;
+      if (window.innerWidth <= 479) return;
+      
+      const img = document.getElementById('mainImage');
+      if (!img) return;
+      
+      img.src = currentProject.image_hover;
+    }
+
+    function showDefaultImage() {
+      if (!currentProject || currentProject.interaction !== 'toggle') return;
+      
+      const img = document.getElementById('mainImage');
+      if (!img) return;
+      
+      img.src = currentProject.image_default;
+    }
+
     function toggleZoom() {
-      // Fonction conservée pour compatibilité mais n'est plus utilisée
+      // Fonction conservée pour compatibilité
       toggleZoomManual();
     }
 
