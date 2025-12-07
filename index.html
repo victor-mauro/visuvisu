@@ -4,30 +4,107 @@
   <meta charset="utf-8">
   <title>VISU VISU - Modélisation 3D & Rendu photoréaliste</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Création d'images d'architecture et de design, Visu Visu vous accompagne dans la représentation de vos projets, de la modélisation 3D à la réalisation de rendus texturés.">
+  <meta name="description" content="Création d'images d'architecture et de design. Studio basé à Marseille.">
   
   <style>
-    /* Reset & Base */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
+    /* ==================== RESET ==================== */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
     html, body {
       height: 100%;
       overflow: hidden;
-    }
-
-    body {
       font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
       font-size: 16px;
       line-height: 24px;
       color: #333;
-      background-color: #f1f1f1;
+      background: #fff;
     }
 
-    /* Layout Principal - 100% écran fixe */
+    img { max-width: 100%; display: block; }
+
+    /* ==================== MARGES LATÉRALES ==================== */
+    .marge-gauche,
+    .marge-droite {
+      display: none;
+      position: fixed;
+      width: 11px;
+      height: 100vh;
+      top: 0;
+      z-index: 1000;
+      background: #fff;
+    }
+
+    .marge-gauche {
+      left: 0;
+      border-right: 1px solid #000;
+    }
+
+    .marge-droite {
+      right: 0;
+      border-left: 1px solid #000;
+    }
+
+    /* ==================== HEADER ==================== */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 65px;
+      background: #fff;
+      z-index: 100;
+      border-bottom: 1px solid #000;
+    }
+
+    .logo {
+      padding: 10px 14px;
+      font-size: 38px;
+      line-height: 44px;
+      font-weight: bold;
+      text-transform: uppercase;
+      cursor: default;
+    }
+
+    .menu-content {
+      display: none;
+      background: #fff;
+      position: absolute;
+      top: 65px;
+      left: 0;
+      right: 0;
+      z-index: 200;
+      border-bottom: 1px solid #000;
+    }
+
+    .menu-content.open {
+      display: block;
+    }
+
+    .intro {
+      padding: 14px;
+      font-size: 16px;
+      line-height: 24px;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      padding: 14px;
+      border-top: 1px solid #000;
+    }
+
+    .contact-info a {
+      color: #333;
+      text-decoration: none;
+      transition: font-weight 0.2s;
+    }
+
+    .contact-info a:hover {
+      font-weight: 700;
+    }
+
+    /* ==================== LAYOUT PRINCIPAL ==================== */
     .container {
       position: fixed;
       top: 65px;
@@ -35,61 +112,26 @@
       left: 0;
       right: 0;
       display: flex;
-      border-top: 1px solid #000;
-      border-bottom: 1px solid #000;
-      background-color: #f1f1f1;
     }
 
-    /* Header fixe */
-    .header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 65px;
-      background-color: #fff;
-      z-index: 1000;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .title {
-      font-size: 38px;
-      line-height: 44px;
-      font-weight: bold;
-      text-transform: uppercase;
-      padding: 10px 14px;
-      margin: 0;
-      border-bottom: 1px solid #000;
-    }
-
-    .intro {
-      display: none;
-      padding: 14px;
-      font-size: 16px;
-      line-height: 24px;
-      border-bottom: 1px solid #000;
-    }
-
-    /* Colonne gauche - 20% */
-    .left-column {
+    /* ==================== COLONNE GAUCHE (20%) ==================== */
+    .sidebar-left {
       flex: 0 0 20%;
       border-right: 1px solid #000;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      overflow: hidden;
-      background-color: #f1f1f1;
+      background: #fff;
     }
 
-    .info-block {
+    .sidebar-left .intro {
       padding: 14px;
-      border-top: 1px solid #000;
+      font-size: 16px;
+      line-height: 24px;
+      flex: 1;
     }
 
-    /* Colonne centrale - 50% */
-    .center-column {
+    /* ==================== COLONNE CENTRALE (50%) ==================== */
+    .main-content {
       flex: 0 0 50%;
       border-right: 1px solid #000;
       display: flex;
@@ -98,15 +140,16 @@
       padding: 40px;
       overflow: hidden;
       position: relative;
-      background-color: #f1f1f1;
+      background: #fff;
     }
 
-    .image-container {
+    .image-wrapper {
       width: 100%;
       height: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
+      position: relative;
       overflow: hidden;
     }
 
@@ -114,48 +157,39 @@
       max-width: 100%;
       max-height: 100%;
       height: auto;
-      display: block;
-      transition: all 0.3s ease;
+      cursor: zoom-in;
+      transition: none;
+      position: relative;
     }
 
     .main-image.zoomed {
       max-width: 200%;
       max-height: 200%;
-      cursor: zoom-out;
-    }
-
-    .main-image.zoomable {
-      cursor: zoom-in;
-    }
-
-    .main-image.toggle {
-      cursor: pointer;
+      cursor: move;
+      position: absolute;
     }
 
     .placeholder {
       color: #999;
       font-size: 18px;
-      text-align: center;
     }
 
-    /* Colonne droite - 30% */
-    .right-column {
+    /* ==================== COLONNE DROITE (30%) ==================== */
+    .sidebar-right {
       flex: 0 0 30%;
       overflow-y: auto;
       overflow-x: hidden;
-      background-color: #f1f1f1;
+      background: #fff;
     }
 
     .project-item {
       padding: 14px;
       border-top: 1px solid #000;
-      cursor: pointer;
       font-size: 16px;
       line-height: 22px;
       font-style: italic;
-      color: #333;
+      cursor: pointer;
       transition: font-weight 0.2s;
-      background-color: #f1f1f1;
     }
 
     .project-item:first-child {
@@ -167,27 +201,26 @@
       font-weight: 700;
     }
 
-    /* Footer fixe */
+    /* ==================== FOOTER ==================== */
     .footer {
       position: fixed;
       bottom: 0;
       left: 0;
       right: 0;
       height: 60px;
-      background-color: #f1f1f1;
+      background: #fff;
       border-top: 1px solid #000;
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 0 14px;
-      z-index: 1000;
+      gap: 20px;
+      z-index: 100;
     }
 
     .footer a {
       color: #333;
       text-decoration: none;
-      font-size: 16px;
-      line-height: 22px;
       transition: font-weight 0.2s;
     }
 
@@ -199,104 +232,92 @@
       cursor: default;
     }
 
-    /* Responsive - Tablette */
-    @media screen and (max-width: 991px) {
-      .container {
-        top: 165px;
-        flex-direction: column;
-        border-top: none;
-      }
-
+    /* ==================== RESPONSIVE TABLETTE ==================== */
+    @media (max-width: 991px) {
       .header {
-        height: auto;
-        flex-direction: column-reverse;
-        border-bottom: 1px solid #000;
+        cursor: pointer;
       }
 
-      .title {
-        border-bottom: none;
+      .logo:hover {
+        font-weight: 700;
       }
 
-      .intro {
-        display: block;
+      .container {
+        top: 65px;
+        bottom: 0;
+        flex-direction: column;
       }
 
-      .left-column {
+      .sidebar-left {
         display: none;
       }
 
-      .center-column {
+      .main-content {
         flex: none;
         height: 60vh;
-        max-height: 60vh;
         border-right: none;
-        border-top: 1px solid #000;
         border-bottom: 1px solid #000;
-        position: relative;
       }
 
-      .right-column {
+      .sidebar-right {
         flex: 1;
-        padding-top: 0;
-        border-top: none;
       }
 
       .footer {
-        position: static;
-        border-top: 1px solid #000;
-        border-bottom: none;
-        order: -1;
+        display: none;
       }
     }
 
-    /* Responsive - Mobile vertical */
-    @media screen and (max-width: 479px) {
+    /* ==================== RESPONSIVE MOBILE ==================== */
+    @media (max-width: 479px) {
+      .marge-gauche,
+      .marge-droite {
+        display: block;
+      }
+
       body {
-        border-left: 1px solid #000;
-        border-right: 1px solid #000;
         margin: 0 11px;
       }
 
       .container {
         top: 55px;
-        border: none;
+        left: 11px;
+        right: 11px;
       }
 
       .header {
         height: 55px;
-        margin: 0 11px;
-        border-bottom: 1px solid #000;
+        left: 11px;
+        right: 11px;
       }
 
-      .title {
+      .logo {
         font-size: 27px;
         line-height: 35px;
-        height: 55px;
-        display: flex;
-        align-items: center;
         padding: 10px;
-        border-bottom: none;
+      }
+
+      .menu-content {
+        top: 55px;
+        left: 11px;
+        right: 11px;
       }
 
       .intro {
         font-size: 14px;
         line-height: 20px;
         padding: 10px;
-        border-bottom: none;
       }
 
-      .center-column {
+      .contact-info {
+        flex-direction: column;
+        gap: 5px;
+        padding: 10px;
+      }
+
+      .main-content {
         height: 50vh;
-        max-height: 50vh;
-        margin: 0 11px;
-        padding: 0;
-        border: none;
-        border-bottom: 1px solid #000;
-      }
-
-      .right-column {
-        padding-top: 0;
-        margin: 0 11px;
+        padding: 20px;
       }
 
       .project-item {
@@ -305,245 +326,304 @@
         padding: 10px;
       }
 
-      .footer {
-        flex-direction: column;
-        align-items: flex-start;
-        height: auto;
-        padding: 10px;
-        margin: 0 11px;
-        border-top: 1px solid #000;
-        border-bottom: none;
-      }
-
-      .footer a {
-        font-size: 14px;
-        line-height: 20px;
-      }
-
-      /* En mobile, afficher l'image en background pour mieux gérer l'espace */
-      .image-container {
+      /* Image en background sur mobile */
+      .image-wrapper {
         background-size: cover;
         background-position: center;
-        background-repeat: no-repeat;
       }
 
       .main-image {
         opacity: 0;
-        max-width: 100%;
-        max-height: 100%;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Header -->
-  <div class="header">
-    <div class="intro" id="intro">
+  <!-- MARGES LATÉRALES (mobile uniquement) -->
+  <div class="marge-gauche"></div>
+  <div class="marge-droite"></div>
+
+  <!-- HEADER -->
+  <div class="header" id="header">
+    <h1 class="logo" id="logoToggle">VISU VISU</h1>
+  </div>
+
+  <!-- MENU DÉROULANT (responsive uniquement) -->
+  <div class="menu-content" id="menuContent">
+    <div class="intro">
       Création d'images d'architecture et de design, Visu Visu vous accompagne dans la représentation de vos projets, de la modélisation 3D à la réalisation de rendus texturés.
     </div>
-    <h1 class="title">VISU VISU</h1>
+    <div class="contact-info">
+      <span>Victor Mauro</span>
+      <a href="tel:+33650508155">+33 6 50 50 81 55</a>
+      <a href="mailto:contact@victormauro.fr">contact@victormauro.fr</a>
+    </div>
   </div>
 
-  <!-- Container principal -->
+  <!-- CONTAINER PRINCIPAL -->
   <div class="container">
     
-    <!-- Colonne gauche (desktop only) -->
-    <div class="left-column">
-      <div class="info-block">
-        <p>Création d'images d'architecture et de design, Visu Visu vous accompagne dans la représentation de vos projets, de la modélisation 3D à la réalisation de rendus texturés.</p>
+    <!-- COLONNE GAUCHE -->
+    <div class="sidebar-left">
+      <div class="intro">
+        Création d'images d'architecture et de design, Visu Visu vous accompagne dans la représentation de vos projets, de la modélisation 3D à la réalisation de rendus texturés.
       </div>
     </div>
 
-    <!-- Colonne centrale - Image -->
-    <div class="center-column">
-      <div class="image-container" id="imageContainer">
-        <div class="placeholder">
-          Sélectionnez un projet
-        </div>
+    <!-- COLONNE CENTRALE - IMAGE -->
+    <div class="main-content">
+      <div class="image-wrapper" id="imageWrapper">
+        <div class="placeholder">Sélectionnez un projet</div>
       </div>
     </div>
 
-    <!-- Colonne droite - Liste des projets -->
-    <div class="right-column" id="projectsList">
-      <!-- Chargé dynamiquement depuis projects.json -->
+    <!-- COLONNE DROITE - PROJETS -->
+    <div class="sidebar-right" id="projectsList">
+      <!-- Généré dynamiquement -->
     </div>
 
   </div>
 
-  <!-- Footer -->
+  <!-- FOOTER (desktop uniquement) -->
   <div class="footer">
     <span class="name">Victor Mauro</span>
     <a href="tel:+33650508155">+33 6 50 50 81 55</a>
     <a href="mailto:contact@victormauro.fr">contact@victormauro.fr</a>
   </div>
 
-  <!-- JavaScript -->
+  <!-- JAVASCRIPT -->
   <script>
-    // Données intégrées (pour test sans projects.json)
-    const PROJECTS_DATA = {
-      "info": {
-        "title": "VISU VISU",
-        "description": "Création d'images d'architecture et de design, Visu Visu vous accompagne dans la représentation de vos projets, de la modélisation 3D à la réalisation de rendus texturés.",
-        "contact": {
-          "name": "Victor Mauro",
-          "phone": "+33 6 50 50 81 55",
-          "email": "contact@victormauro.fr"
-        }
-      },
-      "projects": [
-        {
-          "id": "aimko_store_2023",
-          "title": "Aimko.P, concept store",
-          "year": "2023",
-          "image_low": "https://res.cloudinary.com/aioli/image/upload/v1759321681/aioli.collective/bralua5w9doivlyxkojo.jpg",
-          "image_high": "https://res.cloudinary.com/aioli/image/upload/v1759321681/aioli.collective/bralua5w9doivlyxkojo.jpg",
-          "interaction": "zoom"
-        },
-        {
-          "id": "chelles_2022",
-          "title": "Emmanuelle Lainé, Gare de Chelles",
-          "year": "2022",
-          "image_low": "https://res.cloudinary.com/aioli/image/upload/v1760353253/aioli.collective/gtgf2qkzhzj4k2hwb5bs.jpg",
-          "image_high": "https://res.cloudinary.com/aioli/image/upload/v1760353253/aioli.collective/gtgf2qkzhzj4k2hwb5bs.jpg",
-          "interaction": "zoom"
-        }
-      ]
+    // ==================== CONFIGURATION ====================
+    const CONFIG = {
+      jsonUrl: './projects.json',
+      fallbackData: {
+        projects: [
+          {
+            id: "aimko_store_2023",
+            title: "Aimko.P, concept store",
+            year: "2023",
+            image_low: "https://res.cloudinary.com/aioli/image/upload/v1759321681/aioli.collective/bralua5w9doivlyxkojo.jpg",
+            image_high: "https://res.cloudinary.com/aioli/image/upload/v1759321681/aioli.collective/bralua5w9doivlyxkojo.jpg",
+            interaction: "zoom"
+          },
+          {
+            id: "chelles_2022",
+            title: "Emmanuelle Lainé, Gare de Chelles",
+            year: "2022",
+            image_low: "https://res.cloudinary.com/aioli/image/upload/v1760353253/aioli.collective/gtgf2qkzhzj4k2hwb5bs.jpg",
+            image_high: "https://res.cloudinary.com/aioli/image/upload/v1760353253/aioli.collective/gtgf2qkzhzj4k2hwb5bs.jpg",
+            interaction: "zoom"
+          }
+        ]
+      }
     };
 
-    // État de l'application
+    // ==================== ÉTAT ====================
     let projects = [];
     let currentProject = null;
     let isZoomed = false;
-    let toggleStates = {};
+    let isDragging = false;
+    let startX = 0;
+    let startY = 0;
+    let scrollLeft = 0;
+    let scrollTop = 0;
 
-    // Charger les données
-    async function loadProjects() {
+    // ==================== MENU MOBILE ====================
+    function initMenu() {
+      const logoToggle = document.getElementById('logoToggle');
+      const menuContent = document.getElementById('menuContent');
+      
+      logoToggle.addEventListener('click', () => {
+        if (window.innerWidth <= 991) {
+          menuContent.classList.toggle('open');
+        }
+      });
+
+      // Fermer le menu si on clique sur un lien
+      menuContent.addEventListener('click', (e) => {
+        if (e.target.tagName === 'A') {
+          menuContent.classList.remove('open');
+        }
+      });
+    }
+
+    // ==================== CHARGEMENT DONNÉES ====================
+    async function loadData() {
       try {
-        // Essayer de charger depuis projects.json
-        const response = await fetch('./projects.json');
+        const response = await fetch(CONFIG.jsonUrl);
         if (response.ok) {
           const data = await response.json();
           projects = data.projects;
         } else {
-          // Sinon utiliser les données intégrées
-          projects = PROJECTS_DATA.projects;
+          projects = CONFIG.fallbackData.projects;
         }
       } catch (error) {
-        // En cas d'erreur, utiliser les données intégrées
-        console.log('Utilisation des données de test intégrées');
-        projects = PROJECTS_DATA.projects;
+        console.log('📦 Données de test chargées');
+        projects = CONFIG.fallbackData.projects;
       }
       
+      render();
+    }
+
+    // ==================== RENDU ====================
+    function render() {
       renderProjectsList();
-      
-      // Sélectionner le premier projet par défaut
       if (projects.length > 0) {
         selectProject(projects[0].id);
       }
     }
 
-    // Afficher la liste des projets
     function renderProjectsList() {
-      const container = document.getElementById('projectsList');
-      container.innerHTML = projects.map(project => `
-        <div class="project-item" onclick="selectProject('${project.id}')" id="item-${project.id}">
-          ${project.title}, ${project.year}
+      const html = projects.map(p => `
+        <div class="project-item" 
+             id="project-${p.id}"
+             onclick="selectProject('${p.id}')">
+          ${p.title}, ${p.year}
         </div>
       `).join('');
+      
+      document.getElementById('projectsList').innerHTML = html;
     }
 
-    // Sélectionner un projet
-    function selectProject(projectId) {
-      const project = projects.find(p => p.id === projectId);
-      if (!project) return;
-
-      currentProject = project;
-      isZoomed = false;
-
-      // Mettre à jour le style actif
-      document.querySelectorAll('.project-item').forEach(item => {
-        item.classList.remove('active');
-      });
-      document.getElementById(`item-${projectId}`)?.classList.add('active');
-
-      // Afficher l'image
-      displayImage(project);
-    }
-
-    // Afficher l'image selon le type d'interaction
-    function displayImage(project) {
-      const container = document.getElementById('imageContainer');
-      let imageUrl = '';
-      let className = '';
-      let onclick = '';
-
-      switch (project.interaction) {
-        case 'zoom':
-          imageUrl = project.image_low;
-          className = 'zoomable';
-          onclick = 'handleImageClick()';
-          break;
-
-        case 'toggle':
-          imageUrl = toggleStates[project.id] ? 
-            (project.image_night || project.image_after) : 
-            (project.image_day || project.image_before);
-          className = 'toggle';
-          onclick = 'handleImageClick()';
-          break;
-
-        case 'video':
-          imageUrl = project.image_low;
-          break;
-
-        default: // static
-          imageUrl = project.image_low;
-          break;
-      }
-
-      // Responsive : en mobile, utiliser background-image
-      if (window.innerWidth <= 479) {
-        container.style.backgroundImage = `url(${imageUrl})`;
-        container.innerHTML = `<img src="${imageUrl}" class="main-image ${className}" alt="${project.title}">`;
-      } else {
-        container.style.backgroundImage = 'none';
-        container.innerHTML = `<img src="${imageUrl}" class="main-image ${className}" onclick="${onclick}" alt="${project.title}">`;
-      }
-    }
-
-    // Gérer le clic sur l'image
-    function handleImageClick() {
+    // ==================== SÉLECTION PROJET ====================
+    function selectProject(id) {
+      currentProject = projects.find(p => p.id === id);
       if (!currentProject) return;
+      
+      isZoomed = false;
+      
+      // Mettre à jour les états actifs
+      document.querySelectorAll('.project-item').forEach(el => {
+        el.classList.toggle('active', el.id === `project-${id}`);
+      });
+      
+      // Afficher l'image
+      displayImage();
+    }
 
-      if (currentProject.interaction === 'zoom') {
-        isZoomed = !isZoomed;
-        const img = document.querySelector('.main-image');
-        
-        if (isZoomed) {
-          img.src = currentProject.image_high;
-          img.classList.add('zoomed');
-          img.classList.remove('zoomable');
-        } else {
-          img.src = currentProject.image_low;
-          img.classList.remove('zoomed');
-          img.classList.add('zoomable');
-        }
-      } else if (currentProject.interaction === 'toggle') {
-        toggleStates[currentProject.id] = !toggleStates[currentProject.id];
-        displayImage(currentProject);
+    // ==================== AFFICHAGE IMAGE ====================
+    function displayImage() {
+      const wrapper = document.getElementById('imageWrapper');
+      const isMobile = window.innerWidth <= 479;
+      
+      if (isMobile) {
+        // Mode mobile : background-image
+        wrapper.style.backgroundImage = `url(${currentProject.image_low})`;
+        wrapper.innerHTML = `<img src="${currentProject.image_low}" 
+                                  class="main-image" 
+                                  alt="${currentProject.title}">`;
+      } else {
+        // Mode desktop : image normale
+        wrapper.style.backgroundImage = 'none';
+        const canZoom = currentProject.interaction === 'zoom';
+        wrapper.innerHTML = `<img src="${currentProject.image_low}" 
+                                  id="mainImage"
+                                  class="main-image" 
+                                  onclick="${canZoom ? 'toggleZoom()' : ''}"
+                                  alt="${currentProject.title}">`;
       }
     }
 
-    // Gérer le redimensionnement
+    // ==================== ZOOM ====================
+    function toggleZoom() {
+      if (!currentProject || currentProject.interaction !== 'zoom') return;
+      
+      isZoomed = !isZoomed;
+      const img = document.getElementById('mainImage');
+      
+      if (isZoomed) {
+        img.src = currentProject.image_high;
+        img.classList.add('zoomed');
+        initDrag(img);
+      } else {
+        img.src = currentProject.image_low;
+        img.classList.remove('zoomed');
+        img.style.left = '0';
+        img.style.top = '0';
+        removeDrag(img);
+      }
+    }
+
+    // ==================== DRAG & PAN DANS L'IMAGE ZOOMÉE ====================
+    function initDrag(img) {
+      const wrapper = img.parentElement;
+      
+      img.addEventListener('mousedown', startDrag);
+      wrapper.addEventListener('mousemove', drag);
+      wrapper.addEventListener('mouseup', endDrag);
+      wrapper.addEventListener('mouseleave', endDrag);
+    }
+
+    function removeDrag(img) {
+      const wrapper = img.parentElement;
+      
+      img.removeEventListener('mousedown', startDrag);
+      wrapper.removeEventListener('mousemove', drag);
+      wrapper.removeEventListener('mouseup', endDrag);
+      wrapper.removeEventListener('mouseleave', endDrag);
+    }
+
+    function startDrag(e) {
+      if (!isZoomed) return;
+      
+      isDragging = true;
+      const img = e.target;
+      
+      startX = e.clientX;
+      startY = e.clientY;
+      
+      // Position actuelle de l'image
+      const currentLeft = parseInt(img.style.left || 0);
+      const currentTop = parseInt(img.style.top || 0);
+      
+      img.dataset.startLeft = currentLeft;
+      img.dataset.startTop = currentTop;
+      
+      e.preventDefault();
+    }
+
+    function drag(e) {
+      if (!isDragging || !isZoomed) return;
+      
+      const img = document.getElementById('mainImage');
+      const wrapper = img.parentElement;
+      
+      const deltaX = e.clientX - startX;
+      const deltaY = e.clientY - startY;
+      
+      const newLeft = parseInt(img.dataset.startLeft) + deltaX;
+      const newTop = parseInt(img.dataset.startTop) + deltaY;
+      
+      // Limites pour éviter que l'image sorte complètement
+      const maxLeft = wrapper.offsetWidth / 2;
+      const maxTop = wrapper.offsetHeight / 2;
+      const minLeft = -img.offsetWidth + wrapper.offsetWidth / 2;
+      const minTop = -img.offsetHeight + wrapper.offsetHeight / 2;
+      
+      img.style.left = Math.max(minLeft, Math.min(maxLeft, newLeft)) + 'px';
+      img.style.top = Math.max(minTop, Math.min(maxTop, newTop)) + 'px';
+      
+      e.preventDefault();
+    }
+
+    function endDrag() {
+      isDragging = false;
+    }
+
+    // ==================== RESPONSIVE ====================
     window.addEventListener('resize', () => {
-      if (currentProject) {
-        displayImage(currentProject);
+      if (currentProject) displayImage();
+      
+      // Fermer le menu en mode desktop
+      if (window.innerWidth > 991) {
+        document.getElementById('menuContent').classList.remove('open');
       }
     });
 
-    // Charger au démarrage
-    loadProjects();
+    // ==================== INIT ====================
+    initMenu();
+    loadData();
   </script>
 
 </body>
