@@ -10,12 +10,12 @@
   },
   "projects": [
     {
-      "id": "mejanes_2025",
-      "title": "Emmanuelle Lainé, Méjanes",
-      "year": "2025",
-      "image_default": "https://res.cloudinary.com/aioli/image/upload/v1763899225/aioli.collective/ircwf5wmehkbhvveosc6.jpg",
-      "image_hover": "https://res.cloudinary.com/aioli/image/upload/v1764244852/aioli.collective/aiw1u7wv5p6mq0axmxji.jpg",
-      "interaction": "toggle"
+      "id": "chelles_2022",
+      "title": "Emmanuelle Lainé, Gare de Chelles",
+      "year": "2022",
+      "image_low": "https://res.cloudinary.com/aioli/image/upload/v1760353253/aioli.collective/gtgf2qkzhzj4k2hwb5bs.jpg",
+      "image_high": "https://res.cloudinary.com/aioli/image/upload/v1760353253/aioli.collective/gtgf2qkzhzj4k2hwb5bs.jpg",
+      "interaction": "zoom"
     },
     {
       "id": "aimko_gs_2024",
@@ -45,12 +45,12 @@
       "group": "aimko"
     },
     {
-      "id": "chelles_2022",
-      "title": "Emmanuelle Lainé, Gare de Chelles",
-      "year": "2022",
-      "image_low": "https://res.cloudinary.com/aioli/image/upload/v1760353253/aioli.collective/gtgf2qkzhzj4k2hwb5bs.jpg",
-      "image_high": "https://res.cloudinary.com/aioli/image/upload/v1760353253/aioli.collective/gtgf2qkzhzj4k2hwb5bs.jpg",
-      "interaction": "zoom"
+      "id": "mejanes_2025",
+      "title": "Emmanuelle Lainé, Méjanes",
+      "year": "2025",
+      "image_default": "https://res.cloudinary.com/aioli/image/upload/v1763899225/aioli.collective/ircwf5wmehkbhvveosc6.jpg",
+      "image_hover": "https://res.cloudinary.com/aioli/image/upload/v1764244852/aioli.collective/aiw1u7wv5p6mq0axmxji.jpg",
+      "interaction": "toggle"
     }
   ]
 }
