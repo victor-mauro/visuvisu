@@ -1,4 +1,13 @@
-<!DOCTYPE html>
+/* Suppression de tous les background redondants - héritage du body */
+    .sidebar-left,
+    .main-content,
+    .sidebar-right,
+    .footer,
+    .marge-gauche,
+    .marge-droite,
+    .menu-content {
+      background: #f1f1f1;
+    }<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="utf-8">
@@ -31,7 +40,7 @@
       height: 100vh;
       top: 0;
       z-index: 1000;
-      background: #fff;
+      background: #f1f1f1;
     }
 
     .marge-gauche {
@@ -51,7 +60,7 @@
       left: 0;
       right: 0;
       height: 65px;
-      background: #fff;
+      background: #f1f1f1;
       z-index: 100;
       border-bottom: 1px solid #000;
     }
@@ -67,7 +76,7 @@
 
     .menu-content {
       display: none;
-      background: #fff;
+      background: #f1f1f1;
       position: absolute;
       top: 65px;
       left: 0;
@@ -120,7 +129,7 @@
       border-right: 1px solid #000;
       display: flex;
       flex-direction: column;
-      background: #fff;
+      background: #f1f1f1;
     }
 
     .sidebar-left .intro {
@@ -137,10 +146,10 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 0;
+      padding: 40px;
       overflow: hidden;
       position: relative;
-      background: #fff;
+      background: #f1f1f1;
     }
 
     .image-wrapper {
@@ -154,20 +163,30 @@
     }
 
     .main-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      cursor: zoom-in;
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      cursor: default;
       transition: none;
       position: relative;
     }
 
+    .main-image.zoomable {
+      cursor: zoom-in;
+    }
+
     .main-image.zoomed {
-      width: 200%;
-      height: 200%;
-      object-fit: cover;
-      cursor: none;
       position: absolute;
+      width: 100%;
+      height: 100%;
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: cover;
+      cursor: zoom-out;
+      top: 0;
+      left: 0;
     }
 
     .placeholder {
@@ -180,7 +199,7 @@
       flex: 0 0 30%;
       overflow-y: auto;
       overflow-x: hidden;
-      background: #fff;
+      background: #f1f1f1;
     }
 
     .project-item {
@@ -209,7 +228,7 @@
       left: 0;
       right: 0;
       height: 60px;
-      background: #fff;
+      background: #f1f1f1;
       border-top: 1px solid #000;
       display: flex;
       align-items: center;
@@ -258,7 +277,7 @@
         height: 60vh;
         border-right: none;
         border-bottom: 1px solid #000;
-        padding: 0;
+        padding: 20px;
       }
 
       .sidebar-right {
@@ -317,9 +336,15 @@
         padding: 10px;
       }
 
+      .contact-info a,
+      .contact-info span {
+        font-size: 14px;
+        line-height: 20px;
+      }
+
       .main-content {
         height: 50vh;
-        padding: 0;
+        padding: 20px;
       }
 
       .project-item {
@@ -485,7 +510,10 @@
     }
 
     function renderProjectsList() {
-      const html = projects.map(p => `
+      // Inverser l'ordre : le plus récent en haut
+      const sortedProjects = [...projects].reverse();
+      
+      const html = sortedProjects.map(p => `
         <div class="project-item" 
              id="project-${p.id}"
              onclick="selectProject('${p.id}')">
@@ -532,7 +560,7 @@
         if (currentProject.interaction === 'zoom') {
           wrapper.innerHTML = `<img src="${currentProject.image_low}" 
                                     id="mainImage"
-                                    class="main-image" 
+                                    class="main-image zoomable" 
                                     alt="${currentProject.title}">`;
           initZoomBehavior();
         } else if (currentProject.interaction === 'toggle') {
@@ -555,25 +583,24 @@
     // ==================== ZOOM (interaction: "zoom") ====================
     function initZoomBehavior() {
       const wrapper = document.getElementById('imageWrapper');
-      const img = document.getElementById('mainImage');
       
-      // Zoom au hover/clic et navigation au mouvement de souris
+      // Zoom au hover ET au clic (clic utile pour tablette)
       wrapper.addEventListener('mouseenter', activateZoom);
       wrapper.addEventListener('mouseleave', deactivateZoom);
-      wrapper.addEventListener('click', toggleZoomManual);
-      wrapper.addEventListener('mousemove', moveZoom);
+      wrapper.addEventListener('click', toggleZoom);
     }
 
     function activateZoom() {
       if (!currentProject || currentProject.interaction !== 'zoom') return;
-      if (window.innerWidth <= 479) return; // Pas de zoom sur mobile
+      if (window.innerWidth <= 479) return;
+      if (isZoomed) return;
       
       const img = document.getElementById('mainImage');
-      if (!img || isZoomed) return;
+      if (!img) return;
       
       isZoomed = true;
-      img.src = currentProject.image_high;
       img.classList.add('zoomed');
+      img.src = currentProject.image_high;
     }
 
     function deactivateZoom() {
@@ -583,13 +610,11 @@
       if (!img) return;
       
       isZoomed = false;
-      img.src = currentProject.image_low;
       img.classList.remove('zoomed');
-      img.style.left = '0';
-      img.style.top = '0';
+      img.src = currentProject.image_low;
     }
 
-    function toggleZoomManual() {
+    function toggleZoom() {
       if (!currentProject || currentProject.interaction !== 'zoom') return;
       if (window.innerWidth <= 479) return;
       
@@ -600,37 +625,9 @@
       }
     }
 
-    function moveZoom(e) {
-      if (!isZoomed) return;
-      
-      const img = document.getElementById('mainImage');
-      const wrapper = document.getElementById('imageWrapper');
-      if (!img || !wrapper) return;
-      
-      // Calculer la position relative de la souris dans le wrapper
-      const rect = wrapper.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      
-      // Convertir en pourcentage
-      const xPercent = x / rect.width;
-      const yPercent = y / rect.height;
-      
-      // Calculer le déplacement de l'image
-      const maxMoveX = (img.offsetWidth - rect.width) / 2;
-      const maxMoveY = (img.offsetHeight - rect.height) / 2;
-      
-      const moveX = -maxMoveX * (xPercent * 2 - 1);
-      const moveY = -maxMoveY * (yPercent * 2 - 1);
-      
-      img.style.left = moveX + 'px';
-      img.style.top = moveY + 'px';
-    }
-
     // ==================== TOGGLE (interaction: "toggle") ====================
     function initToggleBehavior() {
       const wrapper = document.getElementById('imageWrapper');
-      const img = document.getElementById('mainImage');
       
       wrapper.addEventListener('mouseenter', showHoverImage);
       wrapper.addEventListener('mouseleave', showDefaultImage);
@@ -653,11 +650,6 @@
       if (!img) return;
       
       img.src = currentProject.image_default;
-    }
-
-    function toggleZoom() {
-      // Fonction conservée pour compatibilité
-      toggleZoomManual();
     }
 
     // ==================== RESPONSIVE ====================
