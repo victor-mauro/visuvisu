@@ -10,12 +10,39 @@
   },
   "projects": [
     {
+      "id": "mejanes_2025",
+      "title": "Emmanuelle Lainé, Méjanes",
+      "year": "2025",
+      "image_default": "https://res.cloudinary.com/aioli/image/upload/v1763899225/aioli.collective/ircwf5wmehkbhvveosc6.jpg",
+      "image_hover": "https://res.cloudinary.com/aioli/image/upload/v1764244852/aioli.collective/aiw1u7wv5p6mq0axmxji.jpg",
+      "interaction": "toggle"
+    },
+    {
+      "id": "aimko_gs_2024",
+      "title": "Aimko.P, grand salon",
+      "year": "2024",
+      "image_low": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765189789/Aimko_Grand_Salon_web_cdety3.jpg",
+      "image_high": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765189789/Aimko_Grand_Salon_web_cdety3.jpg",
+      "interaction": "zoom",
+      "group": "aimko"
+    },
+    {
+      "id": "aimko_ps_2023",
+      "title": "Aimko.P, petit salon",
+      "year": "2023",
+      "image_default": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765189525/Aimko_jour_web_z891qi.jpg",
+      "image_hover": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765189524/Aimko_nuit_web_ovscz5.jpg",
+      "interaction": "toggle",
+      "group": "aimko"
+    },
+    {
       "id": "aimko_store_2023",
       "title": "Aimko.P, concept store",
       "year": "2023",
       "image_low": "https://res.cloudinary.com/aioli/image/upload/v1759321681/aioli.collective/bralua5w9doivlyxkojo.jpg",
       "image_high": "https://res.cloudinary.com/aioli/image/upload/v1759321681/aioli.collective/bralua5w9doivlyxkojo.jpg",
-      "interaction": "zoom"
+      "interaction": "zoom",
+      "group": "aimko"
     },
     {
       "id": "chelles_2022",
@@ -24,66 +51,37 @@
       "image_low": "https://res.cloudinary.com/aioli/image/upload/v1760353253/aioli.collective/gtgf2qkzhzj4k2hwb5bs.jpg",
       "image_high": "https://res.cloudinary.com/aioli/image/upload/v1760353253/aioli.collective/gtgf2qkzhzj4k2hwb5bs.jpg",
       "interaction": "zoom"
-    },
-    {
-      "id": "mejanes_2025",
-      "title": "Emmanuelle Lainé, Méjanes",
-      "year": "2025",
-      "image_default": "https://res.cloudinary.com/aioli/image/upload/v1763899225/aioli.collective/ircwf5wmehkbhvveosc6.jpg",
-      "image_hover": "https://res.cloudinary.com/aioli/image/upload/v1764244852/aioli.collective/aiw1u7wv5p6mq0axmxji.jpg",
-      "interaction": "toggle"
     }
   ]
 }
 
-// ==================== DOCUMENTATION ====================
+// ==================== DOCUMENTATION GROUPES ====================
 // 
-// TYPES D'INTERACTIONS DISPONIBLES :
+// SYSTÈME DE GROUPES :
+// Pour regrouper plusieurs projets sans bordure de séparation, 
+// ajoutez le même "group" à chaque projet.
 // 
-// 1. "zoom" - Zoom × 200% au hover avec navigation
-//    Champs requis :
-//    - image_low: URL image basse résolution (affichée par défaut)
-//    - image_high: URL image haute résolution (affichée au zoom)
-//    Comportement :
-//    - Hover → zoom automatique × 200%
-//    - Mouvement souris → navigation dans l'image
-//    - Sortie zone → dézoom
-//    - Mobile → pas de zoom, image fixe
-// 
-// 2. "toggle" - Changement d'image au hover (avant/après, jour/nuit, etc.)
-//    Champs requis :
-//    - image_default: URL image par défaut
-//    - image_hover: URL image au hover
-//    Comportement :
-//    - Hover → affiche image_hover
-//    - Sortie zone → affiche image_default
-//    - Pas de zoom
-//    - Mobile → image_default fixe
-// 
-// 3. "none" ou pas de champ interaction - Image fixe
-//    Champs requis :
-//    - image_low: URL de l'image
-//    Comportement :
-//    - Image fixe, pas d'interaction
-// 
-// ==================== EXEMPLE WORKFLOW N8N ====================
-// 
-// Pour ajouter un projet "zoom" depuis Notion :
+// Exemple :
 // {
-//   "id": "projet_unique_id",
-//   "title": "Nom du projet",
-//   "year": "2024",
-//   "image_low": "https://cloudinary.com/.../low_res.jpg",
-//   "image_high": "https://cloudinary.com/.../high_res.jpg",
-//   "interaction": "zoom"
+//   "group": "aimko"  // Tous les projets Aimko.P seront groupés
 // }
 // 
-// Pour ajouter un projet "toggle" depuis Notion :
-// {
-//   "id": "projet_unique_id",
-//   "title": "Nom du projet",
-//   "year": "2024",
-//   "image_default": "https://cloudinary.com/.../default.jpg",
-//   "image_hover": "https://cloudinary.com/.../hover.jpg",
-//   "interaction": "toggle"
-// }
+// Si "group" est absent ou différent → bordure normale
+// Si "group" est identique au projet précédent → pas de bordure
+// 
+// ==================== WORKFLOW N8N ====================
+// 
+// Dans Notion, ajoutez une colonne "Groupe" (optionnelle) :
+// - Si vide → projet indépendant avec bordure
+// - Si rempli (ex: "aimko") → groupé avec les autres projets du même groupe
+// 
+// N8N devra simplement copier la valeur de cette colonne dans le JSON.
+// 
+// Ordre d'affichage (du plus récent au plus ancien) :
+// 1. Emmanuelle Lainé, Méjanes, 2025
+// ────────────────────────────────────── ← bordure
+// 2. Aimko.P, grand salon, 2024         ]
+// 3. Aimko.P, petit salon, 2023          ] groupe "aimko" (pas de bordures entre)
+// 4. Aimko.P, concept store, 2023        ]
+// ────────────────────────────────────── ← bordure
+// 5. Emmanuelle Lainé, Gare de Chelles, 2022
