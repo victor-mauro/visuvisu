@@ -146,10 +146,14 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 40px;
+      padding: 20px;
       overflow: hidden;
       position: relative;
       background: #f1f1f1;
+    }
+
+    .main-content.zoomed {
+      padding: 0;
     }
 
     .image-wrapper {
@@ -160,6 +164,10 @@
       justify-content: center;
       position: relative;
       overflow: hidden;
+    }
+
+    .image-wrapper.has-border {
+      border-bottom: none;
     }
 
     .main-image {
@@ -277,7 +285,11 @@
         height: 60vh;
         border-right: none;
         border-bottom: 1px solid #000;
-        padding: 20px;
+        padding: 10px;
+      }
+
+      .main-content.zoomed {
+        padding: 0;
       }
 
       .sidebar-right {
@@ -344,7 +356,11 @@
 
       .main-content {
         height: 50vh;
-        padding: 20px;
+        padding: 10px;
+      }
+
+      .main-content.zoomed {
+        padding: 0;
       }
 
       .project-item {
@@ -458,11 +474,6 @@
     let projects = [];
     let currentProject = null;
     let isZoomed = false;
-    let isDragging = false;
-    let startX = 0;
-    let startY = 0;
-    let scrollLeft = 0;
-    let scrollTop = 0;
 
     // ==================== MENU MOBILE ====================
     function initMenu() {
@@ -583,14 +594,14 @@
     // ==================== ZOOM (interaction: "zoom") ====================
     function initZoomBehavior() {
       const wrapper = document.getElementById('imageWrapper');
+      const container = document.querySelector('.main-content');
       
-      // Zoom au hover ET au clic (clic utile pour tablette)
-      wrapper.addEventListener('mouseenter', activateZoom);
-      wrapper.addEventListener('mouseleave', deactivateZoom);
-      wrapper.addEventListener('click', toggleZoom);
+      // Zoom uniquement au hover
+      wrapper.addEventListener('mouseenter', () => activateZoom(container));
+      wrapper.addEventListener('mouseleave', () => deactivateZoom(container));
     }
 
-    function activateZoom() {
+    function activateZoom(container) {
       if (!currentProject || currentProject.interaction !== 'zoom') return;
       if (window.innerWidth <= 479) return;
       if (isZoomed) return;
@@ -599,30 +610,21 @@
       if (!img) return;
       
       isZoomed = true;
+      container.classList.add('zoomed');
       img.classList.add('zoomed');
       img.src = currentProject.image_high;
     }
 
-    function deactivateZoom() {
+    function deactivateZoom(container) {
       if (!isZoomed) return;
       
       const img = document.getElementById('mainImage');
       if (!img) return;
       
       isZoomed = false;
+      container.classList.remove('zoomed');
       img.classList.remove('zoomed');
       img.src = currentProject.image_low;
-    }
-
-    function toggleZoom() {
-      if (!currentProject || currentProject.interaction !== 'zoom') return;
-      if (window.innerWidth <= 479) return;
-      
-      if (isZoomed) {
-        deactivateZoom();
-      } else {
-        activateZoom();
-      }
     }
 
     // ==================== TOGGLE (interaction: "toggle") ====================
