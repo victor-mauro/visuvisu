@@ -10,26 +10,23 @@
   },
   "projects": [
     {
-      "id": "chelles_2022",
-      "title": "Emmanuelle Lainé, Gare de Chelles",
-      "year": "2022",
-      "image_low": "https://res.cloudinary.com/aioli/image/upload/v1760353253/aioli.collective/gtgf2qkzhzj4k2hwb5bs.jpg",
-      "image_high": "https://res.cloudinary.com/aioli/image/upload/v1760353253/aioli.collective/gtgf2qkzhzj4k2hwb5bs.jpg",
-      "interaction": "zoom"
+      "id": "mejanes_2025",
+      "title": "Emmanuelle Lainé, Méjanes, 2025",
+      "image_default": "https://res.cloudinary.com/aioli/image/upload/v1763899225/aioli.collective/ircwf5wmehkbhvveosc6.jpg",
+      "image_hover": "https://res.cloudinary.com/aioli/image/upload/v1764244852/aioli.collective/aiw1u7wv5p6mq0axmxji.jpg",
+      "interaction": "toggle"
     },
     {
       "id": "aimko_gs_2024",
-      "title": "Aimko.P, grand salon",
-      "year": "2024",
-      "image_low": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765189789/Aimko_Grand_Salon_web_cdety3.jpg",
-      "image_high": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765189789/Aimko_Grand_Salon_web_cdety3.jpg",
+      "title": "Aimko.P, grand salon, 2024",
+      "image": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765189789/Aimko_Grand_Salon_web_cdety3.jpg",
+      "image_zoomed": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765189789/Aimko_Grand_Salon_web_cdety3.jpg",
       "interaction": "zoom",
       "group": "aimko"
     },
     {
       "id": "aimko_ps_2023",
-      "title": "Aimko.P, petit salon",
-      "year": "2023",
+      "title": "Aimko.P, petit salon, 2023",
       "image_default": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765189525/Aimko_jour_web_z891qi.jpg",
       "image_hover": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765189524/Aimko_nuit_web_ovscz5.jpg",
       "interaction": "toggle",
@@ -37,51 +34,92 @@
     },
     {
       "id": "aimko_store_2023",
-      "title": "Aimko.P, concept store",
-      "year": "2023",
-      "image_low": "https://res.cloudinary.com/aioli/image/upload/v1759321681/aioli.collective/bralua5w9doivlyxkojo.jpg",
-      "image_high": "https://res.cloudinary.com/aioli/image/upload/v1759321681/aioli.collective/bralua5w9doivlyxkojo.jpg",
+      "title": "Aimko.P, concept store, 2023",
+      "image": "https://res.cloudinary.com/aioli/image/upload/v1759321681/aioli.collective/bralua5w9doivlyxkojo.jpg",
+      "image_zoomed": "https://res.cloudinary.com/aioli/image/upload/v1759321681/aioli.collective/bralua5w9doivlyxkojo.jpg",
       "interaction": "zoom",
       "group": "aimko"
     },
     {
-      "id": "mejanes_2025",
-      "title": "Emmanuelle Lainé, Méjanes",
-      "year": "2025",
-      "image_default": "https://res.cloudinary.com/aioli/image/upload/v1763899225/aioli.collective/ircwf5wmehkbhvveosc6.jpg",
-      "image_hover": "https://res.cloudinary.com/aioli/image/upload/v1764244852/aioli.collective/aiw1u7wv5p6mq0axmxji.jpg",
-      "interaction": "toggle"
+      "id": "chelles_2022",
+      "title": "Emmanuelle Lainé, Gare de Chelles, 2022",
+      "image": "https://res.cloudinary.com/aioli/image/upload/v1760353253/aioli.collective/gtgf2qkzhzj4k2hwb5bs.jpg",
+      "image_zoomed": "https://res.cloudinary.com/aioli/image/upload/v1760353253/aioli.collective/gtgf2qkzhzj4k2hwb5bs.jpg",
+      "interaction": "zoom"
     }
   ]
 }
 
-// ==================== DOCUMENTATION GROUPES ====================
+// ==================== DOCUMENTATION SIMPLIFIÉE ====================
 // 
-// SYSTÈME DE GROUPES :
-// Pour regrouper plusieurs projets sans bordure de séparation, 
-// ajoutez le même "group" à chaque projet.
+// STRUCTURE SIMPLI FIÉE :
+// - Plus de champ "year" séparé → tout dans "title"
+// - Champs renommés pour plus de clarté
 // 
-// Exemple :
-// {
-//   "group": "aimko"  // Tous les projets Aimko.P seront groupés
-// }
+// TYPES D'INTERACTIONS :
 // 
-// Si "group" est absent ou différent → bordure normale
-// Si "group" est identique au projet précédent → pas de bordure
+// 1. "zoom" - Agrandit l'image/vidéo pour remplir l'espace
+//    Champs requis :
+//    - image: URL image normale OU video: URL vidéo
+//    - image_zoomed: URL image zoomée (optionnel, sinon utilise "image")
+//    Comportement :
+//    - Hover → zoom plein écran (object-fit: cover)
+//    - Sortie → retour normal (object-fit: contain)
+//    - Curseur : normal (pas d'icône zoom)
+//    - Vidéos : autoplay, loop, muted, playsinline
+// 
+// 2. "toggle" - Change d'image/vidéo au hover
+//    Champs requis :
+//    - image_default: URL image par défaut OU video_default: URL vidéo
+//    - image_hover: URL image au hover OU video_hover: URL vidéo hover
+//    Comportement :
+//    - Hover → affiche image_hover ou video_hover
+//    - Sortie → affiche image_default ou video_default
+//    - Vidéos : autoplay, loop, muted, playsinline
+// 
+// 3. "none" ou pas de champ interaction - Média fixe
+//    Champs requis :
+//    - image: URL image OU video: URL vidéo
+//    Comportement :
+//    - Affichage fixe, pas d'interaction
+//    - Vidéos : autoplay, loop, muted, playsinline
+// 
+// GROUPES :
+// - Champ "group" optionnel pour regrouper des projets
+// - Projets avec le même "group" consécutifs = pas de bordure entre eux
+// - Espacement réduit entre projets groupés
+// 
+// VIDÉOS :
+// - Supportées pour tous les types d'interactions
+// - Lecture automatique, en boucle, sans son
+// - Utilisez "video" au lieu de "image" dans le JSON
+// - Exemple : "video": "https://cloudinary.com/.../video.mp4"
+// 
+// ==================== ORDRE D'AFFICHAGE ====================
+// 
+// L'ordre dans le JSON = l'ordre d'affichage (pas de reverse)
+// Dans cet exemple :
+// 1. Emmanuelle Lainé, Méjanes, 2025
+// ──────────────────────────────────
+// 2. Aimko.P, grand salon, 2024       ]
+// 3. Aimko.P, petit salon, 2023        ] groupe "aimko"
+// 4. Aimko.P, concept store, 2023      ]
+// ──────────────────────────────────
+// 5. Emmanuelle Lainé, Gare de Chelles, 2022
 // 
 // ==================== WORKFLOW N8N ====================
 // 
-// Dans Notion, ajoutez une colonne "Groupe" (optionnelle) :
-// - Si vide → projet indépendant avec bordure
-// - Si rempli (ex: "aimko") → groupé avec les autres projets du même groupe
+// Dans Notion :
+// - Colonne "Titre" : Nom complet avec année (ex: "Projet X, 2024")
+// - Colonne "Type" : "zoom", "toggle", ou vide
+// - Colonne "Groupe" : Nom du groupe (optionnel, ex: "aimko")
+// - Colonnes images/vidéos selon le type
 // 
-// N8N devra simplement copier la valeur de cette colonne dans le JSON.
-// 
-// Ordre d'affichage (du plus récent au plus ancien) :
-// 1. Emmanuelle Lainé, Méjanes, 2025
-// ────────────────────────────────────── ← bordure
-// 2. Aimko.P, grand salon, 2024         ]
-// 3. Aimko.P, petit salon, 2023          ] groupe "aimko" (pas de bordures entre)
-// 4. Aimko.P, concept store, 2023        ]
-// ────────────────────────────────────── ← bordure
-// 5. Emmanuelle Lainé, Gare de Chelles, 2022
+// N8N génère :
+// {
+//   "id": "unique_id",
+//   "title": "Titre complet avec année",
+//   "image": "URL_cloudinary" ou "video": "URL_cloudinary",
+//   "interaction": "zoom" ou "toggle",
+//   "group": "nom_groupe" (optionnel)
+// }
