@@ -178,7 +178,7 @@
     }
 
     .main-image.zoomable {
-      cursor: zoom-in;
+      cursor: default;
     }
 
     .main-image.zoomed {
@@ -188,9 +188,19 @@
       max-width: 100%;
       max-height: 100%;
       object-fit: cover;
-      cursor: zoom-out;
+      cursor: default;
       top: 0;
       left: 0;
+    }
+
+    video.main-image {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    video.main-image.zoomed {
+      object-fit: cover;
     }
 
     .placeholder {
@@ -207,7 +217,7 @@
     }
 
     .project-item {
-      padding: 14px;
+      padding: 14px 14px;
       border-top: 1px solid #000;
       font-size: 16px;
       line-height: 22px;
@@ -220,9 +230,24 @@
       border-top: none;
     }
 
-    .project-item.no-border {
+    /* Premier élément d'un groupe (après une bordure) */
+    .project-item.group-first {
+      padding-top: 14px;
+      padding-bottom: 1px;
+    }
+
+    /* Éléments du milieu d'un groupe */
+    .project-item.group-middle {
       border-top: none;
-      padding-top: 7px;
+      padding-top: 1px;
+      padding-bottom: 1px;
+    }
+
+    /* Dernier élément d'un groupe (avant une bordure) */
+    .project-item.group-last {
+      border-top: none;
+      padding-top: 1px;
+      padding-bottom: 14px;
     }
 
     .project-item:hover,
@@ -441,36 +466,40 @@
         projects: [
           {
             id: "mejanes_2025",
-            title: "Emmanuelle Lainé, Méjanes",
-            year: "2025",
+            title: "Emmanuelle Lainé, Méjanes, 2025",
             image_default: "https://res.cloudinary.com/aioli/image/upload/v1763899225/aioli.collective/ircwf5wmehkbhvveosc6.jpg",
             image_hover: "https://res.cloudinary.com/aioli/image/upload/v1764244852/aioli.collective/aiw1u7wv5p6mq0axmxji.jpg",
             interaction: "toggle"
           },
           {
             id: "aimko_gs_2024",
-            title: "Aimko.P, grand salon",
-            year: "2024",
-            image_low: "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765189789/Aimko_Grand_Salon_web_cdety3.jpg",
-            image_high: "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765189789/Aimko_Grand_Salon_web_cdety3.jpg",
+            title: "Aimko.P, grand salon, 2024",
+            image: "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765189789/Aimko_Grand_Salon_web_cdety3.jpg",
+            image_zoomed: "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765189789/Aimko_Grand_Salon_web_cdety3.jpg",
             interaction: "zoom",
             group: "aimko"
           },
           {
             id: "aimko_ps_2023",
-            title: "Aimko.P, petit salon",
-            year: "2023",
+            title: "Aimko.P, petit salon, 2023",
             image_default: "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765189525/Aimko_jour_web_z891qi.jpg",
             image_hover: "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765189524/Aimko_nuit_web_ovscz5.jpg",
             interaction: "toggle",
             group: "aimko"
           },
           {
+            id: "aimko_store_2023",
+            title: "Aimko.P, concept store, 2023",
+            image: "https://res.cloudinary.com/aioli/image/upload/v1759321681/aioli.collective/bralua5w9doivlyxkojo.jpg",
+            image_zoomed: "https://res.cloudinary.com/aioli/image/upload/v1759321681/aioli.collective/bralua5w9doivlyxkojo.jpg",
+            interaction: "zoom",
+            group: "aimko"
+          },
+          {
             id: "chelles_2022",
-            title: "Emmanuelle Lainé, Gare de Chelles",
-            year: "2022",
-            image_low: "https://res.cloudinary.com/aioli/image/upload/v1760353253/aioli.collective/gtgf2qkzhzj4k2hwb5bs.jpg",
-            image_high: "https://res.cloudinary.com/aioli/image/upload/v1760353253/aioli.collective/gtgf2qkzhzj4k2hwb5bs.jpg",
+            title: "Emmanuelle Lainé, Gare de Chelles, 2022",
+            image: "https://res.cloudinary.com/aioli/image/upload/v1760353253/aioli.collective/gtgf2qkzhzj4k2hwb5bs.jpg",
+            image_zoomed: "https://res.cloudinary.com/aioli/image/upload/v1760353253/aioli.collective/gtgf2qkzhzj4k2hwb5bs.jpg",
             interaction: "zoom"
           }
         ]
@@ -528,20 +557,34 @@
     }
 
     function renderProjectsList() {
-      // Inverser l'ordre : le plus récent en haut
-      const sortedProjects = [...projects].reverse();
-      
-      const html = sortedProjects.map((p, index) => {
-        // Vérifier si le projet précédent a le même groupe
-        const prevProject = index > 0 ? sortedProjects[index - 1] : null;
-        const sameGroup = prevProject && p.group && p.group === prevProject.group;
-        const noBorderClass = sameGroup ? 'no-border' : '';
+      // Pas de reverse : afficher dans l'ordre du JSON
+      const html = projects.map((p, index) => {
+        const prevProject = index > 0 ? projects[index - 1] : null;
+        const nextProject = index < projects.length - 1 ? projects[index + 1] : null;
+        
+        const hasSameGroupPrev = prevProject && p.group && p.group === prevProject.group;
+        const hasSameGroupNext = nextProject && p.group && p.group === nextProject.group;
+        
+        let groupClass = '';
+        
+        if (p.group) {
+          if (!hasSameGroupPrev && hasSameGroupNext) {
+            // Premier du groupe
+            groupClass = 'group-first';
+          } else if (hasSameGroupPrev && hasSameGroupNext) {
+            // Milieu du groupe
+            groupClass = 'group-middle';
+          } else if (hasSameGroupPrev && !hasSameGroupNext) {
+            // Dernier du groupe
+            groupClass = 'group-last';
+          }
+        }
         
         return `
-          <div class="project-item ${noBorderClass}" 
+          <div class="project-item ${groupClass}" 
                id="project-${p.id}"
                onclick="selectProject('${p.id}')">
-            ${p.title}, ${p.year}
+            ${p.title}
           </div>
         `;
       }).join('');
@@ -572,35 +615,67 @@
       
       if (isMobile) {
         // Mode mobile : background-image, pas d'interaction
-        const imageUrl = currentProject.image_low || currentProject.image_default;
-        wrapper.style.backgroundImage = `url(${imageUrl})`;
-        wrapper.innerHTML = `<img src="${imageUrl}" 
-                                  class="main-image" 
-                                  alt="${currentProject.title}"
-                                  style="opacity: 0;">`;
+        const imageUrl = currentProject.image_default || currentProject.image || currentProject.video;
+        if (currentProject.video) {
+          wrapper.style.backgroundImage = 'none';
+          wrapper.innerHTML = `<video src="${currentProject.video}" 
+                                      class="main-image" 
+                                      autoplay loop muted playsinline
+                                      alt="${currentProject.title}"></video>`;
+        } else {
+          wrapper.style.backgroundImage = `url(${imageUrl})`;
+          wrapper.innerHTML = `<img src="${imageUrl}" 
+                                    class="main-image" 
+                                    alt="${currentProject.title}"
+                                    style="opacity: 0;">`;
+        }
       } else {
-        // Mode desktop/tablette : image avec interaction
+        // Mode desktop/tablette : image/video avec interaction
         wrapper.style.backgroundImage = 'none';
         
         if (currentProject.interaction === 'zoom') {
-          wrapper.innerHTML = `<img src="${currentProject.image_low}" 
-                                    id="mainImage"
-                                    class="main-image zoomable" 
-                                    alt="${currentProject.title}">`;
+          if (currentProject.video) {
+            wrapper.innerHTML = `<video src="${currentProject.video}" 
+                                        id="mainImage"
+                                        class="main-image zoomable" 
+                                        autoplay loop muted playsinline
+                                        alt="${currentProject.title}"></video>`;
+          } else {
+            wrapper.innerHTML = `<img src="${currentProject.image}" 
+                                      id="mainImage"
+                                      class="main-image zoomable" 
+                                      alt="${currentProject.title}">`;
+          }
           initZoomBehavior();
         } else if (currentProject.interaction === 'toggle') {
-          wrapper.innerHTML = `<img src="${currentProject.image_default}" 
-                                    id="mainImage"
-                                    class="main-image" 
-                                    alt="${currentProject.title}">`;
+          if (currentProject.video_default) {
+            wrapper.innerHTML = `<video src="${currentProject.video_default}" 
+                                        id="mainImage"
+                                        class="main-image" 
+                                        autoplay loop muted playsinline
+                                        alt="${currentProject.title}"></video>`;
+          } else {
+            wrapper.innerHTML = `<img src="${currentProject.image_default}" 
+                                      id="mainImage"
+                                      class="main-image" 
+                                      alt="${currentProject.title}">`;
+          }
           initToggleBehavior();
         } else {
           // Pas d'interaction
-          const imageUrl = currentProject.image_low || currentProject.image_default;
-          wrapper.innerHTML = `<img src="${imageUrl}" 
-                                    id="mainImage"
-                                    class="main-image" 
-                                    alt="${currentProject.title}">`;
+          const mediaUrl = currentProject.video || currentProject.image || currentProject.image_default;
+          if (currentProject.video) {
+            wrapper.innerHTML = `<video src="${mediaUrl}" 
+                                        id="mainImage"
+                                        class="main-image" 
+                                        autoplay loop muted playsinline
+                                        alt="${currentProject.title}"></video>`;
+          } else {
+            wrapper.innerHTML = `<img src="${mediaUrl}" 
+                                      id="mainImage"
+                                      class="main-image" 
+                                      alt="${currentProject.title}">`;
+          }
         }
       }
     }
@@ -620,52 +695,68 @@
       if (window.innerWidth <= 479) return;
       if (isZoomed) return;
       
-      const img = document.getElementById('mainImage');
-      if (!img) return;
+      const media = document.getElementById('mainImage');
+      if (!media) return;
       
       isZoomed = true;
       container.classList.add('zoomed');
-      img.classList.add('zoomed');
-      img.src = currentProject.image_high;
+      media.classList.add('zoomed');
+      
+      // Si c'est une image avec image_zoomed, la charger
+      if (media.tagName === 'IMG' && currentProject.image_zoomed) {
+        media.src = currentProject.image_zoomed;
+      }
     }
 
     function deactivateZoom(container) {
       if (!isZoomed) return;
       
-      const img = document.getElementById('mainImage');
-      if (!img) return;
+      const media = document.getElementById('mainImage');
+      if (!media) return;
       
       isZoomed = false;
       container.classList.remove('zoomed');
-      img.classList.remove('zoomed');
-      img.src = currentProject.image_low;
+      media.classList.remove('zoomed');
+      
+      // Si c'est une image, revenir à l'image normale
+      if (media.tagName === 'IMG' && currentProject.image) {
+        media.src = currentProject.image;
+      }
     }
 
     // ==================== TOGGLE (interaction: "toggle") ====================
     function initToggleBehavior() {
       const wrapper = document.getElementById('imageWrapper');
       
-      wrapper.addEventListener('mouseenter', showHoverImage);
-      wrapper.addEventListener('mouseleave', showDefaultImage);
+      wrapper.addEventListener('mouseenter', showHoverMedia);
+      wrapper.addEventListener('mouseleave', showDefaultMedia);
     }
 
-    function showHoverImage() {
+    function showHoverMedia() {
       if (!currentProject || currentProject.interaction !== 'toggle') return;
       if (window.innerWidth <= 479) return;
       
-      const img = document.getElementById('mainImage');
-      if (!img) return;
+      const media = document.getElementById('mainImage');
+      if (!media) return;
       
-      img.src = currentProject.image_hover;
+      if (media.tagName === 'VIDEO' && currentProject.video_hover) {
+        media.src = currentProject.video_hover;
+      } else if (media.tagName === 'IMG' && currentProject.image_hover) {
+        media.src = currentProject.image_hover;
+      }
     }
 
-    function showDefaultImage() {
+    function showDefaultMedia() {
       if (!currentProject || currentProject.interaction !== 'toggle') return;
       
-      const img = document.getElementById('mainImage');
-      if (!img) return;
+      const media = document.getElementById('mainImage');
+      if (!media) return;
       
-      img.src = currentProject.image_default;
+      if (media.tagName === 'VIDEO' && currentProject.video_default) {
+        media.src = currentProject.video_default;
+      } else if (media.tagName === 'IMG' && currentProject.image_default) {
+        media.src = currentProject.image_default;
+      }
     }
 
     // ==================== RESPONSIVE ====================
