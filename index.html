@@ -74,6 +74,17 @@
       cursor: default;
     }
 
+    /* En responsive, le logo devient cliquable */
+    @media (max-width: 991px) {
+      .logo {
+        cursor: pointer;
+      }
+
+      .logo:hover {
+        font-weight: 700;
+      }
+    }
+
     .menu-content {
       display: none;
       background: #f1f1f1;
@@ -286,6 +297,17 @@
       cursor: default;
     }
 
+    /* En responsive, le nom devient cliquable */
+    @media (max-width: 991px) {
+      .footer .name {
+        cursor: pointer;
+      }
+
+      .footer .name:hover {
+        font-weight: 700;
+      }
+    }
+
     /* ==================== RESPONSIVE TABLETTE ==================== */
     @media (max-width: 991px) {
       .header {
@@ -461,7 +483,7 @@
   <script>
     // ==================== CONFIGURATION ====================
     const CONFIG = {
-      jsonUrl: 'https://visuvisu.fr/projects.json',
+      jsonUrl: './projects.json',
       fallbackData: {
         projects: [
           {
