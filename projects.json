@@ -22,104 +22,172 @@
       "image": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765189789/Aimko_Grand_Salon_web_cdety3.jpg",
       "image_zoomed": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765189789/Aimko_Grand_Salon_web_cdety3.jpg",
       "interaction": "zoom",
-      "group": "aimko"
+      "group": "aimko_salon"
     },
     {
       "id": "aimko_ps_2023",
       "title": "Aimko.P, petit salon, 2023",
-      "image_default": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765189525/Aimko_jour_web_z891qi.jpg",
-      "image_hover": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765189524/Aimko_nuit_web_ovscz5.jpg",
+      "image_default": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765189524/Aimko_nuit_web_ovscz5.jpg",
+      "image_hover": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765189525/Aimko_jour_web_z891qi.jpg",
       "interaction": "toggle",
-      "group": "aimko"
+      "group": "aimko_salon"
     },
     {
       "id": "aimko_store_2023",
       "title": "Aimko.P, concept store, 2023",
-      "image": "https://res.cloudinary.com/aioli/image/upload/v1759321681/aioli.collective/bralua5w9doivlyxkojo.jpg",
-      "image_zoomed": "https://res.cloudinary.com/aioli/image/upload/v1759321681/aioli.collective/bralua5w9doivlyxkojo.jpg",
-      "interaction": "zoom",
-      "group": "aimko"
+      "image": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765217367/Aimko_Concept_store_web_udrw1n.jpg",
+      "image_zoomed": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765217367/Aimko_Concept_store_web_udrw1n.jpg",
+      "interaction": "zoom"
+    },
+    {
+      "id": "bmt_2023",
+      "title": "Atelier Aïno, BMT, avec Lambert David, 2023",
+      "image": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765361084/BMT_Jardin_web_boyvl4.jpg",
+      "image_zoomed": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765361084/BMT_Jardin_web_boyvl4.jpg",
+      "interaction": "zoom"
+    },
+    {
+      "id": "ctgp_55mpc_2023",
+      "title": "CT&GP, 55MPC, 2023",
+      "image": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765187906/SDB_web_qmnpa9.jpg",
+      "image_zoomed": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765187906/SDB_web_qmnpa9.jpg",
+      "interaction": "zoom"
+    },
+    {
+      "id": "sharjah_2022",
+      "title": "Atelier Philippe Parreno, Sharjah, 2022",
+      "image": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765188174/Sarjah_web_ts0x6h.jpg",
+      "image_zoomed": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765188174/Sarjah_web_ts0x6h.jpg",
+      "interaction": "zoom"
+    },
+    {
+      "id": "enso_2022",
+      "title": "CT&GP, Enso, 2022",
+      "video": "https://res.cloudinary.com/dn7fcolgl/video/upload/v1765360933/Enso_anim_krzbw8.mp4",
+      "interaction": "zoom"
+    },
+    {
+      "id": "radar_2022",
+      "title": "Radar, Pulse, 64Hz, 2022",
+      "image": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765188287/Radar_web_phtobg.jpg",
+      "image_zoomed": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765188287/Radar_web_phtobg.jpg",
+      "interaction": "zoom"
     },
     {
       "id": "chelles_2022",
       "title": "Emmanuelle Lainé, Gare de Chelles, 2022",
-      "image": "https://res.cloudinary.com/aioli/image/upload/v1760353253/aioli.collective/gtgf2qkzhzj4k2hwb5bs.jpg",
-      "image_zoomed": "https://res.cloudinary.com/aioli/image/upload/v1760353253/aioli.collective/gtgf2qkzhzj4k2hwb5bs.jpg",
+      "image_default": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765187536/Tandems_papy_web_qx7e1u.jpg",
+      "image_hover": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765187773/Tandems_web_q7qmm2.jpg",
+      "interaction": "toggle"
+    },
+    {
+      "id": "verandah_2022",
+      "title": "CT&GP, Vérandah, 2022",
+      "image": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765187536/Verandah_hight_web_bvk2ld.jpg",
+      "image_zoomed": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765187536/Verandah_hight_web_bvk2ld.jpg",
+      "interaction": "zoom"
+    },
+    {
+      "id": "alpha_communica_2022",
+      "title": "Alpha Immo, Communica, 2022",
+      "image_default": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765189619/Communica_04_web_xbdwtz.jpg",
+      "image_hover": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765189620/Communica_03_web_viyqpj.jpg",
+      "interaction": "toggle",
+      "group": "alpha_immo"
+    },
+    {
+      "id": "alpha_hall_2022",
+      "title": "Alpha Immo, Communica, hall d'accueil, 2022",
+      "image_default": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765216893/Communica_hall_Apres_web_qzkodg.jpg",
+      "image_hover": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765216894/Communica_hall_Avant_web_dcbxwx.jpg",
+      "interaction": "toggle",
+      "group": "alpha_immo"
+    },
+    {
+      "id": "mauro_rigaud_2022",
+      "title": "Mauro, Rigaud, salle de bain, 2022",
+      "image_default": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765217852/SDB_Rigaud_Apres_web_q1wh9p.jpg",
+      "image_hover": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765217853/SDB_Rigaud_avant_web_sj2zky.jpg",
+      "interaction": "toggle"
+    },
+    {
+      "id": "mauro_turcon_toggle_2021",
+      "title": "Mauro, Turcon, 2021",
+      "image_default": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765187534/Turcon_Apres_web_mkd1o2.jpg",
+      "image_hover": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765187535/Turcon_Avant_web_hio3xy.jpg",
+      "interaction": "toggle",
+      "group": "turcon"
+    },
+    {
+      "id": "mauro_turcon_zoom_2021",
+      "title": "Mauro, Turcon, 2021",
+      "image": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765187535/Turcon_web_s2c9rl.jpg",
+      "image_zoomed": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765187535/Turcon_web_s2c9rl.jpg",
+      "interaction": "zoom",
+      "group": "turcon"
+    },
+    {
+      "id": "pello_9rr_salle_2021",
+      "title": "Pello, 9RR, salle à manger, 2021",
+      "image_default": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765189702/9RR_RDC_Apres_web_ct74bm.jpg",
+      "image_hover": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765189704/9RR_RDC_Avant_web_cqdixl.jpg",
+      "interaction": "toggle",
+      "group": "9RR"
+    },
+    {
+      "id": "pello_9rr_chambre_2021",
+      "title": "Pello, 9RR, chambre nuptiale, 2021",
+      "image": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765189893/9RR_R1_web_glyj32.jpg",
+      "image_zoomed": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765189893/9RR_R1_web_glyj32.jpg",
+      "interaction": "zoom",
+      "group": "9RR"
+    },
+    {
+      "id": "pello_9rr_dependance_2021",
+      "title": "Pello, 9RR, dépendance, 2021",
+      "image_default": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765189844/9RR_EXT_Apres_web_ausbkm.jpg",
+      "image_hover": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765189842/9RR_EXT_Avant_web_spzivm.jpg",
+      "interaction": "toggle",
+      "group": "9RR"
+    },
+    {
+      "id": "mauro_sabater_toggle_2020",
+      "title": "Mauro, Sabater, pergola, 2020",
+      "image_default": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765216815/MAURO_Sabater_Apres_web_ejohhu.jpg",
+      "image_hover": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765216817/MAURO_Sabater_Avant_web_lm3y8h.jpg",
+      "interaction": "toggle",
+      "group": "sabater"
+    },
+    {
+      "id": "mauro_sabater_zoom_2020",
+      "title": "Mauro, Sabater, pergola, 2020",
+      "image": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765189054/MAURO_Pergola_web_xlytls.jpg",
+      "image_zoomed": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765189054/MAURO_Pergola_web_xlytls.jpg",
+      "interaction": "zoom",
+      "group": "sabater"
+    },
+    {
+      "id": "abri_toggle_2020",
+      "title": "David Leininger, Abri, 2020",
+      "image_default": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765189710/Abri_Apres_web_t0vomw.jpg",
+      "image_hover": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765189709/Abri_Avant_web_gye7eb.jpg",
+      "interaction": "toggle",
+      "group": "abri"
+    },
+    {
+      "id": "abri_zoom_2020",
+      "title": "David Leininger, Abri, 2020",
+      "image": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765188872/Abri_Front_web_gdhrcx.jpg",
+      "image_zoomed": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765188872/Abri_Front_web_gdhrcx.jpg",
+      "interaction": "zoom",
+      "group": "abri"
+    },
+    {
+      "id": "nowatt_2020",
+      "title": "Nowatt Lighting, Onyx, version bois, 2020",
+      "image": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765187533/visuvisu_onyxbois_web_xkdtjq.jpg",
+      "image_zoomed": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765187533/visuvisu_onyxbois_web_xkdtjq.jpg",
       "interaction": "zoom"
     }
   ]
 }
-
-// ==================== DOCUMENTATION SIMPLIFIÉE ====================
-// 
-// STRUCTURE SIMPLI FIÉE :
-// - Plus de champ "year" séparé → tout dans "title"
-// - Champs renommés pour plus de clarté
-// 
-// TYPES D'INTERACTIONS :
-// 
-// 1. "zoom" - Agrandit l'image/vidéo pour remplir l'espace
-//    Champs requis :
-//    - image: URL image normale OU video: URL vidéo
-//    - image_zoomed: URL image zoomée (optionnel, sinon utilise "image")
-//    Comportement :
-//    - Hover → zoom plein écran (object-fit: cover)
-//    - Sortie → retour normal (object-fit: contain)
-//    - Curseur : normal (pas d'icône zoom)
-//    - Vidéos : autoplay, loop, muted, playsinline
-// 
-// 2. "toggle" - Change d'image/vidéo au hover
-//    Champs requis :
-//    - image_default: URL image par défaut OU video_default: URL vidéo
-//    - image_hover: URL image au hover OU video_hover: URL vidéo hover
-//    Comportement :
-//    - Hover → affiche image_hover ou video_hover
-//    - Sortie → affiche image_default ou video_default
-//    - Vidéos : autoplay, loop, muted, playsinline
-// 
-// 3. "none" ou pas de champ interaction - Média fixe
-//    Champs requis :
-//    - image: URL image OU video: URL vidéo
-//    Comportement :
-//    - Affichage fixe, pas d'interaction
-//    - Vidéos : autoplay, loop, muted, playsinline
-// 
-// GROUPES :
-// - Champ "group" optionnel pour regrouper des projets
-// - Projets avec le même "group" consécutifs = pas de bordure entre eux
-// - Espacement réduit entre projets groupés
-// 
-// VIDÉOS :
-// - Supportées pour tous les types d'interactions
-// - Lecture automatique, en boucle, sans son
-// - Utilisez "video" au lieu de "image" dans le JSON
-// - Exemple : "video": "https://cloudinary.com/.../video.mp4"
-// 
-// ==================== ORDRE D'AFFICHAGE ====================
-// 
-// L'ordre dans le JSON = l'ordre d'affichage (pas de reverse)
-// Dans cet exemple :
-// 1. Emmanuelle Lainé, Méjanes, 2025
-// ──────────────────────────────────
-// 2. Aimko.P, grand salon, 2024       ]
-// 3. Aimko.P, petit salon, 2023        ] groupe "aimko"
-// 4. Aimko.P, concept store, 2023      ]
-// ──────────────────────────────────
-// 5. Emmanuelle Lainé, Gare de Chelles, 2022
-// 
-// ==================== WORKFLOW N8N ====================
-// 
-// Dans Notion :
-// - Colonne "Titre" : Nom complet avec année (ex: "Projet X, 2024")
-// - Colonne "Type" : "zoom", "toggle", ou vide
-// - Colonne "Groupe" : Nom du groupe (optionnel, ex: "aimko")
-// - Colonnes images/vidéos selon le type
-// 
-// N8N génère :
-// {
-//   "id": "unique_id",
-//   "title": "Titre complet avec année",
-//   "image": "URL_cloudinary" ou "video": "URL_cloudinary",
-//   "interaction": "zoom" ou "toggle",
-//   "group": "nom_groupe" (optionnel)
-// }
