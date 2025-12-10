@@ -5,16 +5,34 @@
     "contact": {
       "name": "Victor Mauro",
       "phone": "+33 6 50 50 81 55",
-      "email": "contact@victormauro.fr"
+      "email": "contact@victormauro.fr",
+      "website": "https://www.victormauro.fr/"
     }
   },
   "projects": [
     {
       "id": "mejanes_2025",
       "title": "Emmanuelle Lainé, Méjanes, 2025",
-      "image_default": "https://res.cloudinary.com/aioli/image/upload/v1763899225/aioli.collective/ircwf5wmehkbhvveosc6.jpg",
-      "image_hover": "https://res.cloudinary.com/aioli/image/upload/v1764244852/aioli.collective/aiw1u7wv5p6mq0axmxji.jpg",
-      "interaction": "toggle"
+      "image_default": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765394759/Mejanes_zoom_web_hgpa0h.jpg",
+      "image_hover": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765394759/Mejanes_detail_web_wg5oux.jpg",
+      "interaction": "toggle",
+      "group": "mejanes"
+    },
+    {
+      "id": "protoclub_emt02_2025",
+      "title": "Protoclub, EMT_02, 2025",
+      "image": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765396588/EMT_02_perso_web_jk8yd3.jpg",
+      "image_zoomed": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765396588/EMT_02_perso_web_jk8yd3.jpg",
+      "interaction": "zoom",
+      "group": "EMT"
+    },
+    {
+      "id": "protoclub_emt01_2025",
+      "title": "Protoclub, EMT_01, 2025",
+      "image_default": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765396533/EMT_01_web_end1ts.jpg",
+      "image_hover": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765396533/EMT_02_web_gi4mvf.jpg",
+      "interaction": "toggle",
+      "group": "EMT"
     },
     {
       "id": "aimko_gs_2024",
@@ -63,7 +81,8 @@
     {
       "id": "enso_2022",
       "title": "CT&GP, Enso, 2022",
-      "video": "https://res.cloudinary.com/dn7fcolgl/video/upload/v1765360933/Enso_anim_krzbw8.mp4",
+      "image": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765188362/Enso_web_usmxc5.jpg",
+      "video_zoomed": "https://res.cloudinary.com/dn7fcolgl/video/upload/v1765360933/Enso_anim_krzbw8.mp4",
       "interaction": "zoom"
     },
     {
