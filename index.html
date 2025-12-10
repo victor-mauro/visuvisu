@@ -1,13 +1,4 @@
-/* Suppression de tous les background redondants - héritage du body */
-    .sidebar-left,
-    .main-content,
-    .sidebar-right,
-    .footer,
-    .marge-gauche,
-    .marge-droite,
-    .menu-content {
-      background: #f1f1f1;
-    }<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="utf-8">
@@ -293,21 +284,6 @@
       font-weight: 700;
     }
 
-    .footer .name {
-      cursor: default;
-    }
-
-    /* En responsive, le nom devient cliquable */
-    @media (max-width: 991px) {
-      .footer .name {
-        cursor: pointer;
-      }
-
-      .footer .name:hover {
-        font-weight: 700;
-      }
-    }
-
     /* ==================== RESPONSIVE TABLETTE ==================== */
     @media (max-width: 991px) {
       .header {
@@ -442,7 +418,7 @@
       Création d'images d'architecture et de design, Visu Visu vous accompagne dans la représentation de vos projets, de la modélisation 3D à la réalisation de rendus texturés.
     </div>
     <div class="contact-info">
-      <span>Victor Mauro</span>
+      <a href="https://www.victormauro.fr/" target="_blank" rel="noopener noreferrer">Victor Mauro</a>
       <a href="tel:+33650508155">+33 6 50 50 81 55</a>
       <a href="mailto:contact@victormauro.fr">contact@victormauro.fr</a>
     </div>
@@ -474,7 +450,7 @@
 
   <!-- FOOTER (desktop uniquement) -->
   <div class="footer">
-    <span class="name">Victor Mauro</span>
+    <a href="https://www.victormauro.fr/" target="_blank" rel="noopener noreferrer">Victor Mauro</a>
     <a href="tel:+33650508155">+33 6 50 50 81 55</a>
     <a href="mailto:contact@victormauro.fr">contact@victormauro.fr</a>
   </div>
@@ -484,6 +460,7 @@
     // ==================== CONFIGURATION ====================
     const CONFIG = {
       jsonUrl: './projects.json',
+      jsonUrlFallback: 'https://visuvisu.fr/projects.json',
       fallbackData: {
         projects: [
           {
@@ -492,37 +469,6 @@
             image_default: "https://res.cloudinary.com/aioli/image/upload/v1763899225/aioli.collective/ircwf5wmehkbhvveosc6.jpg",
             image_hover: "https://res.cloudinary.com/aioli/image/upload/v1764244852/aioli.collective/aiw1u7wv5p6mq0axmxji.jpg",
             interaction: "toggle"
-          },
-          {
-            id: "aimko_gs_2024",
-            title: "Aimko.P, grand salon, 2024",
-            image: "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765189789/Aimko_Grand_Salon_web_cdety3.jpg",
-            image_zoomed: "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765189789/Aimko_Grand_Salon_web_cdety3.jpg",
-            interaction: "zoom",
-            group: "aimko"
-          },
-          {
-            id: "aimko_ps_2023",
-            title: "Aimko.P, petit salon, 2023",
-            image_default: "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765189525/Aimko_jour_web_z891qi.jpg",
-            image_hover: "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765189524/Aimko_nuit_web_ovscz5.jpg",
-            interaction: "toggle",
-            group: "aimko"
-          },
-          {
-            id: "aimko_store_2023",
-            title: "Aimko.P, concept store, 2023",
-            image: "https://res.cloudinary.com/aioli/image/upload/v1759321681/aioli.collective/bralua5w9doivlyxkojo.jpg",
-            image_zoomed: "https://res.cloudinary.com/aioli/image/upload/v1759321681/aioli.collective/bralua5w9doivlyxkojo.jpg",
-            interaction: "zoom",
-            group: "aimko"
-          },
-          {
-            id: "chelles_2022",
-            title: "Emmanuelle Lainé, Gare de Chelles, 2022",
-            image: "https://res.cloudinary.com/aioli/image/upload/v1760353253/aioli.collective/gtgf2qkzhzj4k2hwb5bs.jpg",
-            image_zoomed: "https://res.cloudinary.com/aioli/image/upload/v1760353253/aioli.collective/gtgf2qkzhzj4k2hwb5bs.jpg",
-            interaction: "zoom"
           }
         ]
       }
@@ -544,7 +490,6 @@
         }
       });
 
-      // Fermer le menu si on clique sur un lien
       menuContent.addEventListener('click', (e) => {
         if (e.target.tagName === 'A') {
           menuContent.classList.remove('open');
@@ -555,12 +500,19 @@
     // ==================== CHARGEMENT DONNÉES ====================
     async function loadData() {
       try {
-        const response = await fetch(CONFIG.jsonUrl);
+        let response = await fetch(CONFIG.jsonUrl);
+        
+        if (!response.ok) {
+          console.log('📡 Tentative avec URL fallback...');
+          response = await fetch(CONFIG.jsonUrlFallback);
+        }
+        
         if (response.ok) {
           const data = await response.json();
           projects = data.projects;
+          console.log('✅ Projets chargés depuis JSON');
         } else {
-          projects = CONFIG.fallbackData.projects;
+          throw new Error('Échec de chargement du JSON');
         }
       } catch (error) {
         console.log('📦 Données de test chargées');
@@ -574,12 +526,12 @@
     function render() {
       renderProjectsList();
       if (projects.length > 0) {
-        selectProject(projects[0].id);
+        const randomIndex = Math.floor(Math.random() * projects.length);
+        selectProject(projects[randomIndex].id);
       }
     }
 
     function renderProjectsList() {
-      // Pas de reverse : afficher dans l'ordre du JSON
       const html = projects.map((p, index) => {
         const prevProject = index > 0 ? projects[index - 1] : null;
         const nextProject = index < projects.length - 1 ? projects[index + 1] : null;
@@ -591,13 +543,10 @@
         
         if (p.group) {
           if (!hasSameGroupPrev && hasSameGroupNext) {
-            // Premier du groupe
             groupClass = 'group-first';
           } else if (hasSameGroupPrev && hasSameGroupNext) {
-            // Milieu du groupe
             groupClass = 'group-middle';
           } else if (hasSameGroupPrev && !hasSameGroupNext) {
-            // Dernier du groupe
             groupClass = 'group-last';
           }
         }
@@ -621,12 +570,10 @@
       
       isZoomed = false;
       
-      // Mettre à jour les états actifs
       document.querySelectorAll('.project-item').forEach(el => {
         el.classList.toggle('active', el.id === `project-${id}`);
       });
       
-      // Afficher l'image
       displayImage();
     }
 
@@ -652,23 +599,28 @@
                                     style="opacity: 0;">`;
         }
       } else {
-        // Mode desktop/tablette : image/video avec interaction
+        // Mode desktop/tablette
         wrapper.style.backgroundImage = 'none';
         
         if (currentProject.interaction === 'zoom') {
-          if (currentProject.video) {
+          // ZOOM : Supporte Image→Image, Vidéo→Vidéo, Image→Vidéo, Vidéo→Image
+          const hasDefaultVideo = !!currentProject.video;
+          const hasDefaultImage = !!currentProject.image;
+          
+          if (hasDefaultVideo) {
             wrapper.innerHTML = `<video src="${currentProject.video}" 
                                         id="mainImage"
                                         class="main-image zoomable" 
                                         autoplay loop muted playsinline
                                         alt="${currentProject.title}"></video>`;
-          } else {
+          } else if (hasDefaultImage) {
             wrapper.innerHTML = `<img src="${currentProject.image}" 
                                       id="mainImage"
                                       class="main-image zoomable" 
                                       alt="${currentProject.title}">`;
           }
           initZoomBehavior();
+          
         } else if (currentProject.interaction === 'toggle') {
           if (currentProject.video_default) {
             wrapper.innerHTML = `<video src="${currentProject.video_default}" 
@@ -683,6 +635,7 @@
                                       alt="${currentProject.title}">`;
           }
           initToggleBehavior();
+          
         } else {
           // Pas d'interaction
           const mediaUrl = currentProject.video || currentProject.image || currentProject.image_default;
@@ -702,12 +655,11 @@
       }
     }
 
-    // ==================== ZOOM (interaction: "zoom") ====================
+    // ==================== ZOOM : Supporte toutes les combinaisons ====================
     function initZoomBehavior() {
       const wrapper = document.getElementById('imageWrapper');
       const container = document.querySelector('.main-content');
       
-      // Zoom uniquement au hover
       wrapper.addEventListener('mouseenter', () => activateZoom(container));
       wrapper.addEventListener('mouseleave', () => deactivateZoom(container));
     }
@@ -717,36 +669,66 @@
       if (window.innerWidth <= 479) return;
       if (isZoomed) return;
       
-      const media = document.getElementById('mainImage');
-      if (!media) return;
+      const wrapper = document.getElementById('imageWrapper');
+      const oldMedia = document.getElementById('mainImage');
+      if (!oldMedia) return;
       
       isZoomed = true;
       container.classList.add('zoomed');
-      media.classList.add('zoomed');
       
-      // Si c'est une image avec image_zoomed, la charger
-      if (media.tagName === 'IMG' && currentProject.image_zoomed) {
-        media.src = currentProject.image_zoomed;
+      // Déterminer quel média afficher au zoom
+      const hasZoomedVideo = !!currentProject.video_zoomed;
+      const hasZoomedImage = !!currentProject.image_zoomed;
+      
+      if (hasZoomedVideo) {
+        // Remplacer par une vidéo (Image→Vidéo ou Vidéo→Vidéo)
+        wrapper.innerHTML = `<video src="${currentProject.video_zoomed}" 
+                                    id="mainImage"
+                                    class="main-image zoomed" 
+                                    autoplay loop muted playsinline
+                                    alt="${currentProject.title}"></video>`;
+      } else if (hasZoomedImage) {
+        // Remplacer par une image (Image→Image ou Vidéo→Image)
+        wrapper.innerHTML = `<img src="${currentProject.image_zoomed}" 
+                                  id="mainImage"
+                                  class="main-image zoomed" 
+                                  alt="${currentProject.title}">`;
+      } else {
+        // Pas de média zoomé spécifique, garder le même en mode zoomed
+        oldMedia.classList.add('zoomed');
       }
     }
 
     function deactivateZoom(container) {
       if (!isZoomed) return;
       
-      const media = document.getElementById('mainImage');
-      if (!media) return;
+      const wrapper = document.getElementById('imageWrapper');
       
       isZoomed = false;
       container.classList.remove('zoomed');
-      media.classList.remove('zoomed');
       
-      // Si c'est une image, revenir à l'image normale
-      if (media.tagName === 'IMG' && currentProject.image) {
-        media.src = currentProject.image;
+      // Retour au média par défaut
+      const hasDefaultVideo = !!currentProject.video;
+      const hasDefaultImage = !!currentProject.image;
+      
+      if (hasDefaultVideo) {
+        wrapper.innerHTML = `<video src="${currentProject.video}" 
+                                    id="mainImage"
+                                    class="main-image zoomable" 
+                                    autoplay loop muted playsinline
+                                    alt="${currentProject.title}"></video>`;
+      } else if (hasDefaultImage) {
+        wrapper.innerHTML = `<img src="${currentProject.image}" 
+                                  id="mainImage"
+                                  class="main-image zoomable" 
+                                  alt="${currentProject.title}">`;
       }
+      
+      // Réinitialiser les listeners
+      initZoomBehavior();
     }
 
-    // ==================== TOGGLE (interaction: "toggle") ====================
+    // ==================== TOGGLE ====================
     function initToggleBehavior() {
       const wrapper = document.getElementById('imageWrapper');
       
@@ -785,7 +767,6 @@
     window.addEventListener('resize', () => {
       if (currentProject) displayImage();
       
-      // Fermer le menu en mode desktop
       if (window.innerWidth > 991) {
         document.getElementById('menuContent').classList.remove('open');
       }
