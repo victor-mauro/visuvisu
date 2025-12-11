@@ -125,8 +125,8 @@
     {
       "id": "mauro_rigaud_2022",
       "title": "Mauro, Rigaud, salle de bain, 2022",
-      "image_default": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765217852/SDB_Rigaud_Apres_web_q1wh9p.jpg",
-      "image_hover": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765217853/SDB_Rigaud_avant_web_sj2zky.jpg",
+      "image_default": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765488828/SDB_Rigaud_Apres_png2_web_rxpfju.png",
+      "image_hover": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765488828/SDB_Rigaud_Avant_png2_web_hamrts.png",
       "interaction": "toggle"
     },
     {
@@ -204,8 +204,8 @@
     {
       "id": "nowatt_2020",
       "title": "Nowatt Lighting, Onyx, version bois, 2020",
-      "image": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765187533/visuvisu_onyxbois_web_xkdtjq.jpg",
-      "image_zoomed": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765187533/visuvisu_onyxbois_web_xkdtjq.jpg",
+      "image": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765488963/visuvisu_onyxbois_png_web_kqb10i.png",
+      "image_zoomed": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765488963/visuvisu_onyxbois_png_web_kqb10i.png",
       "interaction": "zoom"
     }
   ]
