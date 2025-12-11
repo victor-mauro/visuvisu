@@ -174,6 +174,7 @@
       overflow: hidden;
     }
 
+    /* Transition douce pour le chargement des images */
     .main-image {
       max-width: 100%;
       max-height: 100%;
@@ -181,8 +182,13 @@
       height: auto;
       object-fit: contain;
       cursor: default;
-      transition: none;
       position: relative;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+    }
+
+    .main-image.loaded {
+      opacity: 1;
     }
 
     .main-image.zoomable {
@@ -214,6 +220,7 @@
       width: 100%;
       height: 100%;
       object-fit: contain;
+      opacity: 1; /* Les vidéos n'ont pas besoin de fade-in */
     }
 
     video.main-image.zoomed {
@@ -494,7 +501,16 @@
             interaction: "toggle"
           }
         ]
-      }
+      },
+      
+      // CONFIGURATION DU PRÉCHARGEMENT
+      // 'conservative' : Précharge 3 projets suivants, puis progressif (recommandé)
+      // 'aggressive' : Précharge 5 projets suivants, puis tous en parallèle
+      // 'all' : Précharge TOUS les projets immédiatement
+      preloadStrategy: 'conservative',
+      
+      // Activer l'optimisation automatique Cloudinary (recommandé)
+      enableCloudinaryOptimization: true
     };
 
     // ==================== ÉTAT ====================
@@ -502,6 +518,136 @@
     let currentProject = null;
     let isZoomed = false;
     let isUnzoomed = false;
+    let preloadQueue = [];
+    let isPreloading = false;
+    let preloadedUrls = new Set();
+
+    // ==================== OPTIMISATION CLOUDINARY ====================
+    function optimizeCloudinaryUrl(url) {
+      if (!CONFIG.enableCloudinaryOptimization || !url) return url;
+      
+      // Détecter si c'est une URL Cloudinary
+      if (url.includes('cloudinary.com') && url.includes('/upload/')) {
+        // Ajouter les transformations d'optimisation après /upload/
+        // f_auto : format automatique (WebP pour Chrome, JPEG pour Safari, etc.)
+        // q_auto : qualité automatique optimisée
+        // dpr_auto : résolution adaptée à l'écran (Retina, etc.)
+        return url.replace('/upload/', '/upload/f_auto,q_auto,dpr_auto/');
+      }
+      
+      return url;
+    }
+
+    // ==================== PRÉCHARGEMENT INTELLIGENT ====================
+    function extractAllImageUrls() {
+      const urls = [];
+      
+      projects.forEach(project => {
+        // Extraire toutes les URLs d'images/vidéos du projet
+        ['image', 'image_default', 'image_hover', 'image_zoomed', 
+         'video', 'video_default', 'video_hover', 'video_zoomed'].forEach(key => {
+          if (project[key]) {
+            urls.push(optimizeCloudinaryUrl(project[key]));
+          }
+        });
+      });
+      
+      return urls;
+    }
+
+    function preloadImage(url) {
+      return new Promise((resolve) => {
+        // Si déjà préchargée, résoudre immédiatement
+        if (preloadedUrls.has(url)) {
+          resolve();
+          return;
+        }
+        
+        // Précharger l'image
+        const img = new Image();
+        img.onload = () => {
+          preloadedUrls.add(url);
+          resolve();
+        };
+        img.onerror = () => {
+          // En cas d'erreur, continuer quand même
+          console.warn('Erreur de préchargement:', url);
+          resolve();
+        };
+        img.src = url;
+      });
+    }
+
+    async function preloadImagesInBackground() {
+      if (isPreloading || preloadQueue.length === 0) return;
+      
+      isPreloading = true;
+      
+      // Stratégie de préchargement
+      let batchSize = 1;
+      let delay = 100; // ms entre chaque image
+      
+      if (CONFIG.preloadStrategy === 'aggressive') {
+        batchSize = 3;
+        delay = 50;
+      } else if (CONFIG.preloadStrategy === 'all') {
+        batchSize = 5;
+        delay = 0;
+      }
+      
+      while (preloadQueue.length > 0) {
+        // Précharger un batch d'images
+        const batch = preloadQueue.splice(0, batchSize);
+        await Promise.all(batch.map(url => preloadImage(url)));
+        
+        // Petit délai pour ne pas bloquer l'interface
+        if (delay > 0 && preloadQueue.length > 0) {
+          await new Promise(resolve => setTimeout(resolve, delay));
+        }
+      }
+      
+      isPreloading = false;
+      console.log('✅ Préchargement terminé');
+    }
+
+    function startPreloading() {
+      // Extraire toutes les URLs
+      const allUrls = extractAllImageUrls();
+      
+      if (allUrls.length === 0) return;
+      
+      // Stratégie : prioriser les projets proches du projet actuel
+      const currentIndex = projects.findIndex(p => p.id === currentProject?.id);
+      const priorityCount = CONFIG.preloadStrategy === 'aggressive' ? 5 : 3;
+      
+      // 1. Ajouter les projets suivants en priorité
+      const priorityUrls = [];
+      for (let i = 1; i <= priorityCount && currentIndex + i < projects.length; i++) {
+        const project = projects[currentIndex + i];
+        ['image', 'image_default', 'image_hover', 'image_zoomed',
+         'video', 'video_default', 'video_hover', 'video_zoomed'].forEach(key => {
+          if (project[key]) {
+            const url = optimizeCloudinaryUrl(project[key]);
+            if (!preloadedUrls.has(url)) {
+              priorityUrls.push(url);
+            }
+          }
+        });
+      }
+      
+      // 2. Ajouter le reste des URLs
+      const remainingUrls = allUrls.filter(url => 
+        !preloadedUrls.has(url) && !priorityUrls.includes(url)
+      );
+      
+      // Construire la file : prioritaires d'abord, puis le reste
+      preloadQueue = [...priorityUrls, ...remainingUrls];
+      
+      console.log(`🚀 Démarrage du préchargement : ${preloadQueue.length} images`);
+      
+      // Démarrer le préchargement en arrière-plan
+      preloadImagesInBackground();
+    }
 
     // ==================== MENU MOBILE ====================
     function initMenu() {
@@ -544,6 +690,11 @@
       }
       
       render();
+      
+      // Démarrer le préchargement après un court délai
+      setTimeout(() => {
+        startPreloading();
+      }, 500);
     }
 
     // ==================== RENDU ====================
@@ -600,9 +751,41 @@
       });
       
       displayImage();
+      
+      // Redémarrer le préchargement avec les nouvelles priorités
+      if (!isPreloading && preloadQueue.length > 0) {
+        startPreloading();
+      }
     }
 
-    // ==================== AFFICHAGE IMAGE ====================
+    // ==================== AFFICHAGE IMAGE AVEC FADE-IN ====================
+    function createMediaElement(url, tagName, className, attributes = {}) {
+      const wrapper = document.getElementById('imageWrapper');
+      const optimizedUrl = optimizeCloudinaryUrl(url);
+      
+      let html = `<${tagName} src="${optimizedUrl}" id="mainImage" class="${className}"`;
+      
+      // Ajouter les attributs supplémentaires
+      Object.entries(attributes).forEach(([key, value]) => {
+        html += ` ${key}="${value}"`;
+      });
+      
+      html += `></${tagName}>`;
+      wrapper.innerHTML = html;
+      
+      // Ajouter le fade-in pour les images
+      if (tagName === 'img') {
+        const img = document.getElementById('mainImage');
+        img.onload = () => {
+          img.classList.add('loaded');
+        };
+        // Si l'image est déjà en cache, déclencher immédiatement
+        if (img.complete) {
+          img.classList.add('loaded');
+        }
+      }
+    }
+
     function displayImage() {
       const wrapper = document.getElementById('imageWrapper');
       const isMobile = window.innerWidth <= 479;
@@ -612,13 +795,13 @@
         const imageUrl = currentProject.image_default || currentProject.image || currentProject.video;
         if (currentProject.video) {
           wrapper.style.backgroundImage = 'none';
-          wrapper.innerHTML = `<video src="${currentProject.video}" 
+          wrapper.innerHTML = `<video src="${optimizeCloudinaryUrl(currentProject.video)}" 
                                       class="main-image" 
                                       autoplay loop muted playsinline
                                       alt="${currentProject.title}"></video>`;
         } else {
-          wrapper.style.backgroundImage = `url(${imageUrl})`;
-          wrapper.innerHTML = `<img src="${imageUrl}" 
+          wrapper.style.backgroundImage = `url(${optimizeCloudinaryUrl(imageUrl)})`;
+          wrapper.innerHTML = `<img src="${optimizeCloudinaryUrl(imageUrl)}" 
                                     class="main-image" 
                                     alt="${currentProject.title}"
                                     style="opacity: 0;">`;
@@ -628,62 +811,50 @@
         wrapper.style.backgroundImage = 'none';
         
         if (currentProject.interaction === 'zoom') {
-          // ZOOM : Image/Vidéo normale → Zoomée au hover
           const hasDefaultVideo = !!currentProject.video;
           const hasDefaultImage = !!currentProject.image;
           
           if (hasDefaultVideo) {
-            wrapper.innerHTML = `<video src="${currentProject.video}" 
-                                        id="mainImage"
-                                        class="main-image zoomable" 
-                                        autoplay loop muted playsinline
-                                        alt="${currentProject.title}"></video>`;
+            createMediaElement(currentProject.video, 'video', 'main-image zoomable', {
+              autoplay: '', loop: '', muted: '', playsinline: '', alt: currentProject.title
+            });
           } else if (hasDefaultImage) {
-            wrapper.innerHTML = `<img src="${currentProject.image}" 
-                                      id="mainImage"
-                                      class="main-image zoomable" 
-                                      alt="${currentProject.title}">`;
+            createMediaElement(currentProject.image, 'img', 'main-image zoomable', {
+              alt: currentProject.title
+            });
           }
           initZoomBehavior();
           
         } else if (currentProject.interaction === 'unzoom') {
-          // UNZOOM : Image/Vidéo zoomée → Normale au hover (effet inverse)
           const hasZoomedVideo = !!currentProject.video_zoomed;
           const hasZoomedImage = !!currentProject.image_zoomed;
           
           if (hasZoomedVideo) {
-            wrapper.innerHTML = `<video src="${currentProject.video_zoomed}" 
-                                        id="mainImage"
-                                        class="main-image zoomed" 
-                                        autoplay loop muted playsinline
-                                        alt="${currentProject.title}"></video>`;
+            createMediaElement(currentProject.video_zoomed, 'video', 'main-image zoomed', {
+              autoplay: '', loop: '', muted: '', playsinline: '', alt: currentProject.title
+            });
           } else if (hasZoomedImage) {
-            wrapper.innerHTML = `<img src="${currentProject.image_zoomed}" 
-                                      id="mainImage"
-                                      class="main-image zoomed" 
-                                      alt="${currentProject.title}">`;
+            createMediaElement(currentProject.image_zoomed, 'img', 'main-image zoomed', {
+              alt: currentProject.title
+            });
           }
           initUnzoomBehavior();
           
         } else if (currentProject.interaction === 'toggle') {
           if (currentProject.video_default) {
-            wrapper.innerHTML = `<video src="${currentProject.video_default}" 
-                                        id="mainImage"
-                                        class="main-image" 
-                                        autoplay loop muted playsinline
-                                        alt="${currentProject.title}"></video>`;
+            createMediaElement(currentProject.video_default, 'video', 'main-image', {
+              autoplay: '', loop: '', muted: '', playsinline: '', alt: currentProject.title
+            });
           } else {
-            wrapper.innerHTML = `<img src="${currentProject.image_default}" 
-                                      id="mainImage"
-                                      class="main-image" 
-                                      alt="${currentProject.title}">`;
+            createMediaElement(currentProject.image_default, 'img', 'main-image', {
+              alt: currentProject.title
+            });
           }
           initToggleBehavior();
           
         } else if (currentProject.interaction === '3d') {
-          // VIEWER 3D
           wrapper.innerHTML = `<model-viewer 
-                                  src="${currentProject.model_3d}" 
+                                  src="${optimizeCloudinaryUrl(currentProject.model_3d)}" 
                                   alt="${currentProject.title}"
                                   camera-controls 
                                   touch-action="pan-y"
@@ -692,25 +863,21 @@
                                   ar></model-viewer>`;
           
         } else {
-          // Pas d'interaction
           const mediaUrl = currentProject.video || currentProject.image || currentProject.image_default;
           if (currentProject.video) {
-            wrapper.innerHTML = `<video src="${mediaUrl}" 
-                                        id="mainImage"
-                                        class="main-image" 
-                                        autoplay loop muted playsinline
-                                        alt="${currentProject.title}"></video>`;
+            createMediaElement(mediaUrl, 'video', 'main-image', {
+              autoplay: '', loop: '', muted: '', playsinline: '', alt: currentProject.title
+            });
           } else {
-            wrapper.innerHTML = `<img src="${mediaUrl}" 
-                                      id="mainImage"
-                                      class="main-image" 
-                                      alt="${currentProject.title}">`;
+            createMediaElement(mediaUrl, 'img', 'main-image', {
+              alt: currentProject.title
+            });
           }
         }
       }
     }
 
-    // ==================== ZOOM : Normale → Zoomée ====================
+    // ==================== ZOOM ====================
     function initZoomBehavior() {
       const wrapper = document.getElementById('imageWrapper');
       const container = document.querySelector('.main-content');
@@ -735,16 +902,13 @@
       const hasZoomedImage = !!currentProject.image_zoomed;
       
       if (hasZoomedVideo) {
-        wrapper.innerHTML = `<video src="${currentProject.video_zoomed}" 
-                                    id="mainImage"
-                                    class="main-image zoomed" 
-                                    autoplay loop muted playsinline
-                                    alt="${currentProject.title}"></video>`;
+        createMediaElement(currentProject.video_zoomed, 'video', 'main-image zoomed', {
+          autoplay: '', loop: '', muted: '', playsinline: '', alt: currentProject.title
+        });
       } else if (hasZoomedImage) {
-        wrapper.innerHTML = `<img src="${currentProject.image_zoomed}" 
-                                  id="mainImage"
-                                  class="main-image zoomed" 
-                                  alt="${currentProject.title}">`;
+        createMediaElement(currentProject.image_zoomed, 'img', 'main-image zoomed', {
+          alt: currentProject.title
+        });
       } else {
         oldMedia.classList.add('zoomed');
       }
@@ -762,27 +926,22 @@
       const hasDefaultImage = !!currentProject.image;
       
       if (hasDefaultVideo) {
-        wrapper.innerHTML = `<video src="${currentProject.video}" 
-                                    id="mainImage"
-                                    class="main-image zoomable" 
-                                    autoplay loop muted playsinline
-                                    alt="${currentProject.title}"></video>`;
+        createMediaElement(currentProject.video, 'video', 'main-image zoomable', {
+          autoplay: '', loop: '', muted: '', playsinline: '', alt: currentProject.title
+        });
       } else if (hasDefaultImage) {
-        wrapper.innerHTML = `<img src="${currentProject.image}" 
-                                  id="mainImage"
-                                  class="main-image zoomable" 
-                                  alt="${currentProject.title}">`;
+        createMediaElement(currentProject.image, 'img', 'main-image zoomable', {
+          alt: currentProject.title
+        });
       }
       
       initZoomBehavior();
     }
 
-    // ==================== UNZOOM : Zoomée → Normale (INVERSE) ====================
+    // ==================== UNZOOM ====================
     function initUnzoomBehavior() {
       const wrapper = document.getElementById('imageWrapper');
       const container = document.querySelector('.main-content');
-      
-      // Par défaut : afficher en zoomed
       container.classList.add('zoomed');
       
       wrapper.addEventListener('mouseenter', () => activateUnzoom(container));
@@ -802,21 +961,17 @@
       container.classList.remove('zoomed');
       container.classList.add('unzoomed');
       
-      // Afficher la version normale
       const hasDefaultVideo = !!currentProject.video;
       const hasDefaultImage = !!currentProject.image;
       
       if (hasDefaultVideo) {
-        wrapper.innerHTML = `<video src="${currentProject.video}" 
-                                    id="mainImage"
-                                    class="main-image unzoomed" 
-                                    autoplay loop muted playsinline
-                                    alt="${currentProject.title}"></video>`;
+        createMediaElement(currentProject.video, 'video', 'main-image unzoomed', {
+          autoplay: '', loop: '', muted: '', playsinline: '', alt: currentProject.title
+        });
       } else if (hasDefaultImage) {
-        wrapper.innerHTML = `<img src="${currentProject.image}" 
-                                  id="mainImage"
-                                  class="main-image unzoomed" 
-                                  alt="${currentProject.title}">`;
+        createMediaElement(currentProject.image, 'img', 'main-image unzoomed', {
+          alt: currentProject.title
+        });
       } else {
         oldMedia.classList.remove('zoomed');
         oldMedia.classList.add('unzoomed');
@@ -832,21 +987,17 @@
       container.classList.remove('unzoomed');
       container.classList.add('zoomed');
       
-      // Retour à la version zoomée
       const hasZoomedVideo = !!currentProject.video_zoomed;
       const hasZoomedImage = !!currentProject.image_zoomed;
       
       if (hasZoomedVideo) {
-        wrapper.innerHTML = `<video src="${currentProject.video_zoomed}" 
-                                    id="mainImage"
-                                    class="main-image zoomed" 
-                                    autoplay loop muted playsinline
-                                    alt="${currentProject.title}"></video>`;
+        createMediaElement(currentProject.video_zoomed, 'video', 'main-image zoomed', {
+          autoplay: '', loop: '', muted: '', playsinline: '', alt: currentProject.title
+        });
       } else if (hasZoomedImage) {
-        wrapper.innerHTML = `<img src="${currentProject.image_zoomed}" 
-                                  id="mainImage"
-                                  class="main-image zoomed" 
-                                  alt="${currentProject.title}">`;
+        createMediaElement(currentProject.image_zoomed, 'img', 'main-image zoomed', {
+          alt: currentProject.title
+        });
       }
       
       initUnzoomBehavior();
@@ -868,9 +1019,9 @@
       if (!media) return;
       
       if (media.tagName === 'VIDEO' && currentProject.video_hover) {
-        media.src = currentProject.video_hover;
+        media.src = optimizeCloudinaryUrl(currentProject.video_hover);
       } else if (media.tagName === 'IMG' && currentProject.image_hover) {
-        media.src = currentProject.image_hover;
+        media.src = optimizeCloudinaryUrl(currentProject.image_hover);
       }
     }
 
@@ -881,9 +1032,9 @@
       if (!media) return;
       
       if (media.tagName === 'VIDEO' && currentProject.video_default) {
-        media.src = currentProject.video_default;
+        media.src = optimizeCloudinaryUrl(currentProject.video_default);
       } else if (media.tagName === 'IMG' && currentProject.image_default) {
-        media.src = currentProject.image_default;
+        media.src = optimizeCloudinaryUrl(currentProject.image_default);
       }
     }
 
