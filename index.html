@@ -485,10 +485,10 @@
       fallbackData: {
         projects: [
           {
-            id: "mejanes_2025",
-            title: "Emmanuelle Lainé, Méjanes, 2025",
-            image_default: "https://res.cloudinary.com/aioli/image/upload/v1763899225/aioli.collective/ircwf5wmehkbhvveosc6.jpg",
-            image_hover: "https://res.cloudinary.com/aioli/image/upload/v1764244852/aioli.collective/aiw1u7wv5p6mq0axmxji.jpg",
+            id: "chelles_2022",
+            title: "Emmanuelle Lainé, Gare de Chelles, 2022",
+            image: "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765187536/Tandems_papy_web_qx7e1u.jpg",
+            image_hover: "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765187773/Tandems_web_q7qmm2.jpg",
             interaction: "toggle"
           }
         ]
@@ -512,34 +512,6 @@
     let preloadQueue = [];
     let isPreloading = false;
     let preloadedUrls = new Set();
-
-    // ==================== HELPERS RÉTROCOMPATIBILITÉ ====================
-    // Système unifié : image/video (base), image_hover/video_hover (toggle), image_zoomed/video_zoomed (zoom)
-    // Garde compatibilité avec image_default/video_default pour projets existants
-    
-    function getBaseImage(project) {
-      return project.image || project.image_default;
-    }
-    
-    function getBaseVideo(project) {
-      return project.video || project.video_default;
-    }
-    
-    function getHoverImage(project) {
-      return project.image_hover;
-    }
-    
-    function getHoverVideo(project) {
-      return project.video_hover;
-    }
-    
-    function getZoomedImage(project) {
-      return project.image_zoomed;
-    }
-    
-    function getZoomedVideo(project) {
-      return project.video_zoomed;
-    }
 
     // ==================== OPTIMISATION CLOUDINARY ====================
     function optimizeCloudinaryUrl(url) {
@@ -795,8 +767,8 @@
       
       if (isMobile) {
         // Détecter la vidéo ou l'image à afficher sur mobile
-        const videoUrl = getBaseVideo(currentProject) || getZoomedVideo(currentProject);
-        const imageUrl = getBaseImage(currentProject) || getHoverImage(currentProject);
+        const videoUrl = currentProject.video || currentProject.video_zoomed;
+        const imageUrl = currentProject.image || currentProject.image_hover;
         
         if (videoUrl) {
           wrapper.style.backgroundImage = 'none';
@@ -815,17 +787,17 @@
         wrapper.style.backgroundImage = 'none';
         
         if (currentProject.interaction === 'zoom') {
-          const hasDefaultVideo = !!getBaseVideo(currentProject);
-          const hasDefaultImage = !!getBaseImage(currentProject);
+          const hasDefaultVideo = !!currentProject.video;
+          const hasDefaultImage = !!currentProject.image;
           
           if (hasDefaultVideo) {
-            wrapper.innerHTML = `<video src="${optimizeCloudinaryUrl(getBaseVideo(currentProject))}" 
+            wrapper.innerHTML = `<video src="${optimizeCloudinaryUrl(currentProject.video)}" 
                                         id="mainImage"
                                         class="main-image zoomable" 
                                         autoplay loop muted playsinline
                                         alt="${currentProject.title}"></video>`;
           } else if (hasDefaultImage) {
-            wrapper.innerHTML = `<img src="${optimizeCloudinaryUrl(getBaseImage(currentProject))}" 
+            wrapper.innerHTML = `<img src="${optimizeCloudinaryUrl(currentProject.image)}" 
                                       id="mainImage"
                                       class="main-image zoomable" 
                                       alt="${currentProject.title}">`;
@@ -833,17 +805,17 @@
           initZoomBehavior();
           
         } else if (currentProject.interaction === 'unzoom') {
-          const hasZoomedVideo = !!getZoomedVideo(currentProject);
-          const hasZoomedImage = !!getZoomedImage(currentProject);
+          const hasZoomedVideo = !!currentProject.video_zoomed;
+          const hasZoomedImage = !!currentProject.image_zoomed;
           
           if (hasZoomedVideo) {
-            wrapper.innerHTML = `<video src="${optimizeCloudinaryUrl(getZoomedVideo(currentProject))}" 
+            wrapper.innerHTML = `<video src="${optimizeCloudinaryUrl(currentProject.video_zoomed)}" 
                                         id="mainImage"
                                         class="main-image zoomed" 
                                         autoplay loop muted playsinline
                                         alt="${currentProject.title}"></video>`;
           } else if (hasZoomedImage) {
-            wrapper.innerHTML = `<img src="${optimizeCloudinaryUrl(getZoomedImage(currentProject))}" 
+            wrapper.innerHTML = `<img src="${optimizeCloudinaryUrl(currentProject.image_zoomed)}" 
                                       id="mainImage"
                                       class="main-image zoomed" 
                                       alt="${currentProject.title}">`;
@@ -851,14 +823,14 @@
           initUnzoomBehavior();
           
         } else if (currentProject.interaction === 'toggle') {
-          if (getBaseVideo(currentProject)) {
-            wrapper.innerHTML = `<video src="${optimizeCloudinaryUrl(getBaseVideo(currentProject))}" 
+          if (currentProject.video) {
+            wrapper.innerHTML = `<video src="${optimizeCloudinaryUrl(currentProject.video)}" 
                                         id="mainImage"
                                         class="main-image" 
                                         autoplay loop muted playsinline
                                         alt="${currentProject.title}"></video>`;
           } else {
-            wrapper.innerHTML = `<img src="${optimizeCloudinaryUrl(getBaseImage(currentProject))}" 
+            wrapper.innerHTML = `<img src="${optimizeCloudinaryUrl(currentProject.image)}" 
                                       id="mainImage"
                                       class="main-image" 
                                       alt="${currentProject.title}">`;
@@ -876,8 +848,8 @@
                                   ar></model-viewer>`;
           
         } else {
-          const mediaUrl = getBaseVideo(currentProject) || getBaseImage(currentProject);
-          if (getBaseVideo(currentProject)) {
+          const mediaUrl = currentProject.video || currentProject.image;
+          if (currentProject.video) {
             wrapper.innerHTML = `<video src="${optimizeCloudinaryUrl(mediaUrl)}" 
                                         id="mainImage"
                                         class="main-image" 
@@ -914,17 +886,17 @@
       isZoomed = true;
       container.classList.add('zoomed');
       
-      const hasZoomedVideo = !!getZoomedVideo(currentProject);
-      const hasZoomedImage = !!getZoomedImage(currentProject);
+      const hasZoomedVideo = !!currentProject.video_zoomed;
+      const hasZoomedImage = !!currentProject.image_zoomed;
       
       if (hasZoomedVideo) {
-        wrapper.innerHTML = `<video src="${optimizeCloudinaryUrl(getZoomedVideo(currentProject))}" 
+        wrapper.innerHTML = `<video src="${optimizeCloudinaryUrl(currentProject.video_zoomed)}" 
                                     id="mainImage"
                                     class="main-image zoomed" 
                                     autoplay loop muted playsinline
                                     alt="${currentProject.title}"></video>`;
       } else if (hasZoomedImage) {
-        wrapper.innerHTML = `<img src="${optimizeCloudinaryUrl(getZoomedImage(currentProject))}" 
+        wrapper.innerHTML = `<img src="${optimizeCloudinaryUrl(currentProject.image_zoomed)}" 
                                   id="mainImage"
                                   class="main-image zoomed" 
                                   alt="${currentProject.title}">`;
@@ -941,17 +913,17 @@
       isZoomed = false;
       container.classList.remove('zoomed');
       
-      const hasDefaultVideo = !!getBaseVideo(currentProject);
-      const hasDefaultImage = !!getBaseImage(currentProject);
+      const hasDefaultVideo = !!currentProject.video;
+      const hasDefaultImage = !!currentProject.image;
       
       if (hasDefaultVideo) {
-        wrapper.innerHTML = `<video src="${optimizeCloudinaryUrl(getBaseVideo(currentProject))}" 
+        wrapper.innerHTML = `<video src="${optimizeCloudinaryUrl(currentProject.video)}" 
                                     id="mainImage"
                                     class="main-image zoomable" 
                                     autoplay loop muted playsinline
                                     alt="${currentProject.title}"></video>`;
       } else if (hasDefaultImage) {
-        wrapper.innerHTML = `<img src="${optimizeCloudinaryUrl(getBaseImage(currentProject))}" 
+        wrapper.innerHTML = `<img src="${optimizeCloudinaryUrl(currentProject.image)}" 
                                   id="mainImage"
                                   class="main-image zoomable" 
                                   alt="${currentProject.title}">`;
@@ -983,17 +955,17 @@
       container.classList.remove('zoomed');
       container.classList.add('unzoomed');
       
-      const hasDefaultVideo = !!getBaseVideo(currentProject);
-      const hasDefaultImage = !!getBaseImage(currentProject);
+      const hasDefaultVideo = !!currentProject.video;
+      const hasDefaultImage = !!currentProject.image;
       
       if (hasDefaultVideo) {
-        wrapper.innerHTML = `<video src="${optimizeCloudinaryUrl(getBaseVideo(currentProject))}" 
+        wrapper.innerHTML = `<video src="${optimizeCloudinaryUrl(currentProject.video)}" 
                                     id="mainImage"
                                     class="main-image unzoomed" 
                                     autoplay loop muted playsinline
                                     alt="${currentProject.title}"></video>`;
       } else if (hasDefaultImage) {
-        wrapper.innerHTML = `<img src="${optimizeCloudinaryUrl(getBaseImage(currentProject))}" 
+        wrapper.innerHTML = `<img src="${optimizeCloudinaryUrl(currentProject.image)}" 
                                   id="mainImage"
                                   class="main-image unzoomed" 
                                   alt="${currentProject.title}">`;
@@ -1012,17 +984,17 @@
       container.classList.remove('unzoomed');
       container.classList.add('zoomed');
       
-      const hasZoomedVideo = !!getZoomedVideo(currentProject);
-      const hasZoomedImage = !!getZoomedImage(currentProject);
+      const hasZoomedVideo = !!currentProject.video_zoomed;
+      const hasZoomedImage = !!currentProject.image_zoomed;
       
       if (hasZoomedVideo) {
-        wrapper.innerHTML = `<video src="${optimizeCloudinaryUrl(getZoomedVideo(currentProject))}" 
+        wrapper.innerHTML = `<video src="${optimizeCloudinaryUrl(currentProject.video_zoomed)}" 
                                     id="mainImage"
                                     class="main-image zoomed" 
                                     autoplay loop muted playsinline
                                     alt="${currentProject.title}"></video>`;
       } else if (hasZoomedImage) {
-        wrapper.innerHTML = `<img src="${optimizeCloudinaryUrl(getZoomedImage(currentProject))}" 
+        wrapper.innerHTML = `<img src="${optimizeCloudinaryUrl(currentProject.image_zoomed)}" 
                                   id="mainImage"
                                   class="main-image zoomed" 
                                   alt="${currentProject.title}">`;
@@ -1046,10 +1018,10 @@
       const media = document.getElementById('mainImage');
       if (!media) return;
       
-      if (media.tagName === 'VIDEO' && getHoverVideo(currentProject)) {
-        media.src = optimizeCloudinaryUrl(getHoverVideo(currentProject));
-      } else if (media.tagName === 'IMG' && getHoverImage(currentProject)) {
-        media.src = optimizeCloudinaryUrl(getHoverImage(currentProject));
+      if (media.tagName === 'VIDEO' && currentProject.video_hover) {
+        media.src = optimizeCloudinaryUrl(currentProject.video_hover);
+      } else if (media.tagName === 'IMG' && currentProject.image_hover) {
+        media.src = optimizeCloudinaryUrl(currentProject.image_hover);
       }
     }
 
@@ -1059,10 +1031,10 @@
       const media = document.getElementById('mainImage');
       if (!media) return;
       
-      if (media.tagName === 'VIDEO' && getBaseVideo(currentProject)) {
-        media.src = optimizeCloudinaryUrl(getBaseVideo(currentProject));
-      } else if (media.tagName === 'IMG' && getBaseImage(currentProject)) {
-        media.src = optimizeCloudinaryUrl(getBaseImage(currentProject));
+      if (media.tagName === 'VIDEO' && currentProject.video) {
+        media.src = optimizeCloudinaryUrl(currentProject.video);
+      } else if (media.tagName === 'IMG' && currentProject.image) {
+        media.src = optimizeCloudinaryUrl(currentProject.image);
       }
     }
 
