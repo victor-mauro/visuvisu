@@ -442,7 +442,6 @@
     </div>
     <div class="contact-info">
       <a href="https://www.victormauro.fr/" target="_blank" rel="noopener noreferrer">Victor Mauro</a>
-      <a href="tel:+33650508155">+33 6 50 50 81 55</a>
       <a href="mailto:contact@victormauro.fr">contact@victormauro.fr</a>
     </div>
   </div>
@@ -474,7 +473,6 @@
   <!-- FOOTER (desktop uniquement) -->
   <div class="footer">
     <a href="https://www.victormauro.fr/" target="_blank" rel="noopener noreferrer">Victor Mauro</a>
-    <a href="tel:+33650508155">+33 6 50 50 81 55</a>
     <a href="mailto:contact@victormauro.fr">contact@victormauro.fr</a>
   </div>
 
@@ -676,6 +674,14 @@
       if (projects.length > 0) {
         const randomIndex = Math.floor(Math.random() * projects.length);
         selectProject(projects[randomIndex].id);
+        
+        // Auto-scroll vers le projet sélectionné au chargement initial
+        setTimeout(() => {
+          const activeItem = document.querySelector('.project-item.active');
+          if (activeItem) {
+            activeItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        }, 100);
       }
     }
 
