@@ -675,11 +675,11 @@
         const randomIndex = Math.floor(Math.random() * projects.length);
         selectProject(projects[randomIndex].id);
         
-        // Auto-scroll vers le projet sélectionné au chargement initial
+        // Auto-scroll vers le projet sélectionné au chargement initial (instantané)
         setTimeout(() => {
           const activeItem = document.querySelector('.project-item.active');
           if (activeItem) {
-            activeItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            activeItem.scrollIntoView({ behavior: 'instant', block: 'center' });
           }
         }, 100);
       }
