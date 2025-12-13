@@ -13,7 +13,7 @@
     {
       "id": "mejanes_2025",
       "title": "Emmanuelle Lainé, Méjanes, 2025",
-      "image_default": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765394759/Mejanes_zoom_web_hgpa0h.jpg",
+      "image": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765394759/Mejanes_zoom_web_hgpa0h.jpg",
       "image_hover": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765394759/Mejanes_detail_web_wg5oux.jpg",
       "interaction": "toggle",
       "group": "mejanes"
@@ -29,7 +29,7 @@
     {
       "id": "protoclub_emt01_2025",
       "title": "Protoclub, EMT_01, 2025",
-      "image_default": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765396533/EMT_01_web_end1ts.jpg",
+      "image": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765396533/EMT_01_web_end1ts.jpg",
       "image_hover": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765396533/EMT_02_web_gi4mvf.jpg",
       "interaction": "toggle",
       "group": "EMT"
@@ -45,7 +45,7 @@
     {
       "id": "aimko_ps_2023",
       "title": "Aimko.P, petit salon, 2023",
-      "image_default": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765189524/Aimko_nuit_web_ovscz5.jpg",
+      "image": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765189524/Aimko_nuit_web_ovscz5.jpg",
       "image_hover": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765189525/Aimko_jour_web_z891qi.jpg",
       "interaction": "toggle",
       "group": "aimko_salon"
@@ -95,7 +95,7 @@
     {
       "id": "chelles_2022",
       "title": "Emmanuelle Lainé, Gare de Chelles, 2022",
-      "image_default": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765187536/Tandems_papy_web_qx7e1u.jpg",
+      "image": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765187536/Tandems_papy_web_qx7e1u.jpg",
       "image_hover": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765187773/Tandems_web_q7qmm2.jpg",
       "interaction": "toggle"
     },
@@ -109,7 +109,7 @@
     {
       "id": "alpha_communica_2022",
       "title": "Alpha Immo, Communica, 2022",
-      "image_default": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765189619/Communica_04_web_xbdwtz.jpg",
+      "image": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765189619/Communica_04_web_xbdwtz.jpg",
       "image_hover": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765189620/Communica_03_web_viyqpj.jpg",
       "interaction": "toggle",
       "group": "alpha_immo"
@@ -117,7 +117,7 @@
     {
       "id": "alpha_hall_2022",
       "title": "Alpha Immo, Communica, hall d'accueil, 2022",
-      "image_default": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765216893/Communica_hall_Apres_web_qzkodg.jpg",
+      "image": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765216893/Communica_hall_Apres_web_qzkodg.jpg",
       "image_hover": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765216894/Communica_hall_Avant_web_dcbxwx.jpg",
       "interaction": "toggle",
       "group": "alpha_immo"
@@ -125,14 +125,14 @@
     {
       "id": "mauro_rigaud_2022",
       "title": "Mauro, Rigaud, salle de bain, 2022",
-      "image_default": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765488828/SDB_Rigaud_Apres_png2_web_rxpfju.png",
+      "image": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765488828/SDB_Rigaud_Apres_png2_web_rxpfju.png",
       "image_hover": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765488828/SDB_Rigaud_Avant_png2_web_hamrts.png",
       "interaction": "toggle"
     },
     {
       "id": "mauro_turcon_toggle_2021",
       "title": "Mauro, Turcon, 2021",
-      "image_default": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765187534/Turcon_Apres_web_mkd1o2.jpg",
+      "image": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765187534/Turcon_Apres_web_mkd1o2.jpg",
       "image_hover": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765187535/Turcon_Avant_web_hio3xy.jpg",
       "interaction": "toggle",
       "group": "turcon"
@@ -148,7 +148,7 @@
     {
       "id": "pello_9rr_salle_2021",
       "title": "Pello, 9RR, salle à manger, 2021",
-      "image_default": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765189702/9RR_RDC_Apres_web_ct74bm.jpg",
+      "image": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765189702/9RR_RDC_Apres_web_ct74bm.jpg",
       "image_hover": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765189704/9RR_RDC_Avant_web_cqdixl.jpg",
       "interaction": "toggle",
       "group": "9RR"
@@ -164,7 +164,7 @@
     {
       "id": "pello_9rr_dependance_2021",
       "title": "Pello, 9RR, dépendance, 2021",
-      "image_default": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765189844/9RR_EXT_Apres_web_ausbkm.jpg",
+      "image": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765189844/9RR_EXT_Apres_web_ausbkm.jpg",
       "image_hover": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765189842/9RR_EXT_Avant_web_spzivm.jpg",
       "interaction": "toggle",
       "group": "9RR"
@@ -172,7 +172,7 @@
     {
       "id": "mauro_sabater_toggle_2020",
       "title": "Mauro, Sabater, pergola, 2020",
-      "image_default": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765216815/MAURO_Sabater_Apres_web_ejohhu.jpg",
+      "image": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765216815/MAURO_Sabater_Apres_web_ejohhu.jpg",
       "image_hover": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765216817/MAURO_Sabater_Avant_web_lm3y8h.jpg",
       "interaction": "toggle",
       "group": "sabater"
@@ -188,7 +188,7 @@
     {
       "id": "abri_toggle_2020",
       "title": "David Leininger, Abri, 2020",
-      "image_default": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765189710/Abri_Apres_web_t0vomw.jpg",
+      "image": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765189710/Abri_Apres_web_t0vomw.jpg",
       "image_hover": "https://res.cloudinary.com/dn7fcolgl/image/upload/v1765189709/Abri_Avant_web_gye7eb.jpg",
       "interaction": "toggle",
       "group": "abri"
