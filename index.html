@@ -102,7 +102,7 @@
     .contact-info {
       display: flex;
       flex-direction: column;
-      gap: 5px;
+      gap: 0;
       padding: 14px;
       border-top: 1px solid #000;
     }
@@ -111,6 +111,7 @@
       color: #333;
       text-decoration: none;
       transition: font-weight 0.2s;
+      padding: 1px 0;
     }
 
     .contact-info a:hover {
@@ -218,6 +219,13 @@
 
     video.main-image.zoomed {
       object-fit: cover;
+    }
+
+    /* Vidéos en plein écran sur mobile et tablette responsive */
+    @media (max-width: 991px) {
+      video.main-image {
+        object-fit: cover;
+      }
     }
 
     /* Viewer 3D */
@@ -391,7 +399,7 @@
 
       .contact-info {
         flex-direction: column;
-        gap: 5px;
+        gap: 0;
         padding: 10px;
       }
 
@@ -780,6 +788,7 @@
           wrapper.style.backgroundImage = 'none';
           wrapper.innerHTML = `<video src="${optimizeCloudinaryUrl(videoUrl)}" 
                                       class="main-image" 
+                                      preload="auto"
                                       autoplay loop muted playsinline
                                       alt="${currentProject.title}"></video>`;
         } else if (imageUrl) {
@@ -800,6 +809,7 @@
             wrapper.innerHTML = `<video src="${optimizeCloudinaryUrl(currentProject.video)}" 
                                         id="mainImage"
                                         class="main-image zoomable" 
+                                        preload="auto"
                                         autoplay loop muted playsinline
                                         alt="${currentProject.title}"></video>`;
           } else if (hasDefaultImage) {
@@ -818,6 +828,7 @@
             wrapper.innerHTML = `<video src="${optimizeCloudinaryUrl(currentProject.video_zoomed)}" 
                                         id="mainImage"
                                         class="main-image zoomed" 
+                                        preload="auto"
                                         autoplay loop muted playsinline
                                         alt="${currentProject.title}"></video>`;
           } else if (hasZoomedImage) {
@@ -833,6 +844,7 @@
             wrapper.innerHTML = `<video src="${optimizeCloudinaryUrl(currentProject.video)}" 
                                         id="mainImage"
                                         class="main-image" 
+                                        preload="auto"
                                         autoplay loop muted playsinline
                                         alt="${currentProject.title}"></video>`;
           } else {
@@ -859,6 +871,7 @@
             wrapper.innerHTML = `<video src="${optimizeCloudinaryUrl(mediaUrl)}" 
                                         id="mainImage"
                                         class="main-image" 
+                                        preload="auto"
                                         autoplay loop muted playsinline
                                         alt="${currentProject.title}"></video>`;
           } else {
@@ -912,6 +925,7 @@
           wrapper.innerHTML = `<video src="${optimizeCloudinaryUrl(currentProject.video_zoomed)}" 
                                       id="mainImage"
                                       class="main-image zoomed" 
+                                      preload="auto"
                                       autoplay loop muted playsinline
                                       alt="${currentProject.title}"></video>`;
         } else if (hasZoomedImage) {
@@ -955,6 +969,7 @@
           wrapper.innerHTML = `<video src="${optimizeCloudinaryUrl(currentProject.video)}" 
                                       id="mainImage"
                                       class="main-image zoomable" 
+                                      preload="auto"
                                       autoplay loop muted playsinline
                                       alt="${currentProject.title}"></video>`;
         } else if (hasDefaultImage) {
@@ -1012,6 +1027,7 @@
           wrapper.innerHTML = `<video src="${optimizeCloudinaryUrl(currentProject.video)}" 
                                       id="mainImage"
                                       class="main-image unzoomed" 
+                                      preload="auto"
                                       autoplay loop muted playsinline
                                       alt="${currentProject.title}"></video>`;
         } else if (hasDefaultImage) {
@@ -1056,6 +1072,7 @@
           wrapper.innerHTML = `<video src="${optimizeCloudinaryUrl(currentProject.video_zoomed)}" 
                                       id="mainImage"
                                       class="main-image zoomed" 
+                                      preload="auto"
                                       autoplay loop muted playsinline
                                       alt="${currentProject.title}"></video>`;
         } else if (hasZoomedImage) {
