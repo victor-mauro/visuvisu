@@ -426,14 +426,8 @@
       
       /* Les vidéos restent visibles sur mobile */
       video.main-image {
-        opacity: 0;
-        object-fit: cover;
-        transition: opacity 0.3s ease;
-      }
-      
-      /* Vidéo visible une fois chargée */
-      video.main-image[data-loaded="true"] {
         opacity: 1;
+        object-fit: cover;
       }
     }
   </style>
@@ -785,9 +779,10 @@
         const imageUrl = currentProject.image;
         const model3dUrl = currentProject.model_3d;
         
+        wrapper.style.backgroundImage = 'none';
+        
         if (model3dUrl) {
           // Support du viewer 3D sur mobile
-          wrapper.style.backgroundImage = 'none';
           wrapper.innerHTML = `<model-viewer 
                                   src="${optimizeCloudinaryUrl(model3dUrl)}" 
                                   alt="${currentProject.title}"
@@ -797,26 +792,11 @@
                                   shadow-intensity="1"
                                   ar></model-viewer>`;
         } else if (videoUrl) {
-          // Afficher l'image en background pendant le chargement de la vidéo
-          if (imageUrl) {
-            wrapper.style.backgroundImage = `url(${optimizeCloudinaryUrl(imageUrl)})`;
-          } else {
-            wrapper.style.backgroundImage = 'none';
-          }
-          
           wrapper.innerHTML = `<video src="${optimizeCloudinaryUrl(videoUrl)}" 
                                       class="main-image" 
                                       preload="auto"
                                       autoplay loop muted playsinline
                                       alt="${currentProject.title}"></video>`;
-          
-          // Faire apparaître la vidéo une fois chargée
-          const videoEl = wrapper.querySelector('video');
-          if (videoEl) {
-            videoEl.addEventListener('loadeddata', () => {
-              videoEl.setAttribute('data-loaded', 'true');
-            }, { once: true });
-          }
         } else if (imageUrl) {
           wrapper.style.backgroundImage = `url(${optimizeCloudinaryUrl(imageUrl)})`;
           wrapper.innerHTML = `<img src="${optimizeCloudinaryUrl(imageUrl)}" 
