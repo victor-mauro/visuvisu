@@ -829,6 +829,8 @@
         } else if (currentProject.interaction === 'unzoom') {
           const hasZoomedVideo = !!currentProject.video_zoomed;
           const hasZoomedImage = !!currentProject.image_zoomed;
+          const hasDefaultVideo = !!currentProject.video;
+          const hasDefaultImage = !!currentProject.image;
           
           if (hasZoomedVideo) {
             wrapper.innerHTML = `<video src="${optimizeCloudinaryUrl(currentProject.video_zoomed)}" 
@@ -839,6 +841,20 @@
                                         alt="${currentProject.title}"></video>`;
           } else if (hasZoomedImage) {
             wrapper.innerHTML = `<img src="${optimizeCloudinaryUrl(currentProject.image_zoomed)}" 
+                                      id="mainImage"
+                                      class="main-image zoomed" 
+                                      alt="${currentProject.title}">`;
+          } else if (hasDefaultVideo) {
+            // Fallback : utiliser la vidéo par défaut en mode zoomed
+            wrapper.innerHTML = `<video src="${optimizeCloudinaryUrl(currentProject.video)}" 
+                                        id="mainImage"
+                                        class="main-image zoomed" 
+                                        preload="auto"
+                                        autoplay loop muted playsinline
+                                        alt="${currentProject.title}"></video>`;
+          } else if (hasDefaultImage) {
+            // Fallback : utiliser l'image par défaut en mode zoomed
+            wrapper.innerHTML = `<img src="${optimizeCloudinaryUrl(currentProject.image)}" 
                                       id="mainImage"
                                       class="main-image zoomed" 
                                       alt="${currentProject.title}">`;
