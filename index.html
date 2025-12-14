@@ -785,7 +785,13 @@
         const imageUrl = currentProject.image;
         
         if (videoUrl) {
-          wrapper.style.backgroundImage = 'none';
+          // Afficher l'image en background pendant le chargement de la vidéo
+          if (imageUrl) {
+            wrapper.style.backgroundImage = `url(${optimizeCloudinaryUrl(imageUrl)})`;
+          } else {
+            wrapper.style.backgroundImage = 'none';
+          }
+          
           wrapper.innerHTML = `<video src="${optimizeCloudinaryUrl(videoUrl)}" 
                                       class="main-image" 
                                       preload="auto"
