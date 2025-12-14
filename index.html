@@ -520,6 +520,93 @@
     let preloadQueue = [];
     let isPreloading = false;
     let preloadedUrls = new Set();
+    let mobileInteractionActive = false; // État du tap toggle mobile
+
+    // ==================== TOGGLE MOBILE ====================
+    function toggleMobileInteraction() {
+      if (!currentProject || window.innerWidth > 479) return;
+      
+      const wrapper = document.getElementById('imageWrapper');
+      if (!wrapper) return;
+      
+      const interaction = currentProject.interaction;
+      if (!interaction || interaction === '3d') return; // 3D garde son comportement par défaut
+      
+      if (!mobileInteractionActive) {
+        // ACTIVER : Afficher le média alternatif
+        mobileInteractionActive = true;
+        
+        if (interaction === 'zoom') {
+          // Afficher le média zoomé
+          const hasZoomedVideo = !!currentProject.video_zoomed;
+          const hasZoomedImage = !!currentProject.image_zoomed;
+          
+          if (hasZoomedVideo) {
+            wrapper.innerHTML = `<video src="${optimizeCloudinaryUrl(currentProject.video_zoomed)}" 
+                                        class="main-image" 
+                                        preload="auto"
+                                        autoplay loop muted playsinline
+                                        alt="${currentProject.title}"></video>`;
+          } else if (hasZoomedImage) {
+            wrapper.innerHTML = `<img src="${optimizeCloudinaryUrl(currentProject.image_zoomed)}" 
+                                      class="main-image" 
+                                      alt="${currentProject.title}"
+                                      style="opacity: 0;">`;
+            wrapper.style.backgroundImage = `url(${optimizeCloudinaryUrl(currentProject.image_zoomed)})`;
+          } else {
+            // Pas de média zoomé spécifique, garder le même (déjà en cover)
+            return;
+          }
+        } else if (interaction === 'unzoom') {
+          // Afficher le média normal (dézoomé)
+          const hasDefaultVideo = !!currentProject.video;
+          const hasDefaultImage = !!currentProject.image;
+          
+          if (hasDefaultVideo) {
+            wrapper.innerHTML = `<video src="${optimizeCloudinaryUrl(currentProject.video)}" 
+                                        class="main-image" 
+                                        preload="auto"
+                                        autoplay loop muted playsinline
+                                        alt="${currentProject.title}"></video>`;
+          } else if (hasDefaultImage) {
+            wrapper.innerHTML = `<img src="${optimizeCloudinaryUrl(currentProject.image)}" 
+                                      class="main-image" 
+                                      alt="${currentProject.title}"
+                                      style="opacity: 0;">`;
+            wrapper.style.backgroundImage = `url(${optimizeCloudinaryUrl(currentProject.image)})`;
+          }
+        } else if (interaction === 'toggle') {
+          // Afficher le média hover
+          const hasHoverVideo = !!currentProject.video_hover;
+          const hasHoverImage = !!currentProject.image_hover;
+          
+          if (hasHoverVideo) {
+            wrapper.innerHTML = `<video src="${optimizeCloudinaryUrl(currentProject.video_hover)}" 
+                                        class="main-image" 
+                                        preload="auto"
+                                        autoplay loop muted playsinline
+                                        alt="${currentProject.title}"></video>`;
+          } else if (hasHoverImage) {
+            wrapper.innerHTML = `<img src="${optimizeCloudinaryUrl(currentProject.image_hover)}" 
+                                      class="main-image" 
+                                      alt="${currentProject.title}"
+                                      style="opacity: 0;">`;
+            wrapper.style.backgroundImage = `url(${optimizeCloudinaryUrl(currentProject.image_hover)})`;
+          }
+        }
+        
+        // Réattacher l'event listener
+        wrapper.removeEventListener('click', toggleMobileInteraction);
+        setTimeout(() => {
+          wrapper.addEventListener('click', toggleMobileInteraction);
+        }, 100);
+        
+      } else {
+        // DÉSACTIVER : Retour au média par défaut
+        mobileInteractionActive = false;
+        displayImage(); // Réafficher le média par défaut
+      }
+    }
 
     // ==================== OPTIMISATION CLOUDINARY ====================
     function optimizeCloudinaryUrl(url) {
@@ -774,12 +861,13 @@
       const isMobile = window.innerWidth <= 479;
       
       if (isMobile) {
-        // Sur mobile : afficher le média PAR DÉFAUT uniquement (pas les versions zoomées/hover)
+        // Sur mobile : afficher le média PAR DÉFAUT selon l'interaction
         const videoUrl = currentProject.video;
         const imageUrl = currentProject.image;
         const model3dUrl = currentProject.model_3d;
         
         wrapper.style.backgroundImage = 'none';
+        mobileInteractionActive = false; // Reset de l'état
         
         if (model3dUrl) {
           // Support du viewer 3D sur mobile
@@ -791,7 +879,39 @@
                                   auto-rotate
                                   shadow-intensity="1"
                                   ar></model-viewer>`;
+        } else if (currentProject.interaction === 'unzoom') {
+          // Pour UNZOOM : afficher le média ZOOMÉ par défaut
+          const zoomedVideoUrl = currentProject.video_zoomed;
+          const zoomedImageUrl = currentProject.image_zoomed;
+          
+          if (zoomedVideoUrl) {
+            wrapper.innerHTML = `<video src="${optimizeCloudinaryUrl(zoomedVideoUrl)}" 
+                                        class="main-image" 
+                                        preload="auto"
+                                        autoplay loop muted playsinline
+                                        alt="${currentProject.title}"></video>`;
+          } else if (zoomedImageUrl) {
+            wrapper.style.backgroundImage = `url(${optimizeCloudinaryUrl(zoomedImageUrl)})`;
+            wrapper.innerHTML = `<img src="${optimizeCloudinaryUrl(zoomedImageUrl)}" 
+                                      class="main-image" 
+                                      alt="${currentProject.title}"
+                                      style="opacity: 0;">`;
+          } else if (videoUrl) {
+            // Fallback : utiliser le média normal
+            wrapper.innerHTML = `<video src="${optimizeCloudinaryUrl(videoUrl)}" 
+                                        class="main-image" 
+                                        preload="auto"
+                                        autoplay loop muted playsinline
+                                        alt="${currentProject.title}"></video>`;
+          } else if (imageUrl) {
+            wrapper.style.backgroundImage = `url(${optimizeCloudinaryUrl(imageUrl)})`;
+            wrapper.innerHTML = `<img src="${optimizeCloudinaryUrl(imageUrl)}" 
+                                      class="main-image" 
+                                      alt="${currentProject.title}"
+                                      style="opacity: 0;">`;
+          }
         } else if (videoUrl) {
+          // Pour ZOOM et TOGGLE : afficher le média normal
           wrapper.innerHTML = `<video src="${optimizeCloudinaryUrl(videoUrl)}" 
                                       class="main-image" 
                                       preload="auto"
@@ -803,6 +923,20 @@
                                     class="main-image" 
                                     alt="${currentProject.title}"
                                     style="opacity: 0;">`;
+        }
+        
+        // Ajouter le tap toggle si interaction présente (sauf 3D)
+        const hasInteraction = currentProject.interaction && 
+                               currentProject.interaction !== '3d' &&
+                               (currentProject.interaction === 'zoom' || 
+                                currentProject.interaction === 'unzoom' || 
+                                currentProject.interaction === 'toggle');
+        
+        if (hasInteraction) {
+          // Retirer les anciens listeners
+          wrapper.removeEventListener('click', toggleMobileInteraction);
+          // Ajouter le nouveau
+          wrapper.addEventListener('click', toggleMobileInteraction);
         }
       } else {
         wrapper.style.backgroundImage = 'none';
@@ -1216,6 +1350,15 @@
       
       if (window.innerWidth > 991) {
         document.getElementById('menuContent').classList.remove('open');
+      }
+      
+      // Réinitialiser l'état mobile si on quitte le mode mobile
+      if (window.innerWidth > 479) {
+        mobileInteractionActive = false;
+        const wrapper = document.getElementById('imageWrapper');
+        if (wrapper) {
+          wrapper.removeEventListener('click', toggleMobileInteraction);
+        }
       }
     });
 
