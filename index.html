@@ -911,33 +911,50 @@
       isZoomed = true;
       container.classList.add('zoomed');
       
-      // Priorité : regarder ce qui est disponible dans le projet
+      // Déterminer quel média DOIT être affiché au zoom (priorité)
       const hasZoomedVideo = !!currentProject.video_zoomed;
       const hasZoomedImage = !!currentProject.image_zoomed;
       const hasDefaultVideo = !!currentProject.video;
       const hasDefaultImage = !!currentProject.image;
       
-      // Déterminer quel média afficher au zoom
+      let targetIsVideo, targetUrl;
+      
       if (hasZoomedVideo) {
-        // Vidéo zoomée disponible
-        wrapper.innerHTML = `<video src="${optimizeCloudinaryUrl(currentProject.video_zoomed)}" 
+        targetIsVideo = true;
+        targetUrl = currentProject.video_zoomed;
+      } else if (hasZoomedImage) {
+        targetIsVideo = false;
+        targetUrl = currentProject.image_zoomed;
+      } else if (hasDefaultVideo) {
+        targetIsVideo = true;
+        targetUrl = currentProject.video;
+      } else {
+        targetIsVideo = false;
+        targetUrl = currentProject.image;
+      }
+      
+      // Comparer avec le média ACTUEL
+      const currentIsVideo = oldMedia.tagName === 'VIDEO';
+      const currentUrl = currentIsVideo ? currentProject.video : currentProject.image;
+      
+      // Si même type ET même URL → Optimisation : juste CSS
+      if (currentIsVideo === targetIsVideo && currentUrl === targetUrl) {
+        oldMedia.classList.add('zoomed');
+      } else {
+        // Types ou URLs différents → Recréer l'élément
+        if (targetIsVideo) {
+          wrapper.innerHTML = `<video src="${optimizeCloudinaryUrl(targetUrl)}" 
+                                      id="mainImage"
+                                      class="main-image zoomed" 
+                                      preload="auto"
+                                      autoplay loop muted playsinline
+                                      alt="${currentProject.title}"></video>`;
+        } else {
+          wrapper.innerHTML = `<img src="${optimizeCloudinaryUrl(targetUrl)}" 
                                     id="mainImage"
                                     class="main-image zoomed" 
-                                    preload="auto"
-                                    autoplay loop muted playsinline
-                                    alt="${currentProject.title}"></video>`;
-      } else if (hasZoomedImage) {
-        // Image zoomée disponible
-        wrapper.innerHTML = `<img src="${optimizeCloudinaryUrl(currentProject.image_zoomed)}" 
-                                  id="mainImage"
-                                  class="main-image zoomed" 
-                                  alt="${currentProject.title}">`;
-      } else if (hasDefaultVideo) {
-        // Pas de média zoomé, utiliser la vidéo par défaut
-        oldMedia.classList.add('zoomed');
-      } else if (hasDefaultImage) {
-        // Pas de média zoomé, utiliser l'image par défaut
-        oldMedia.classList.add('zoomed');
+                                    alt="${currentProject.title}">`;
+        }
       }
     }
 
@@ -952,34 +969,56 @@
       
       if (!media) return;
       
-      // Priorité : regarder ce qui est disponible dans le projet
+      // Déterminer quel média était zoomé et quel est le défaut
       const hasZoomedVideo = !!currentProject.video_zoomed;
       const hasZoomedImage = !!currentProject.image_zoomed;
       const hasDefaultVideo = !!currentProject.video;
       const hasDefaultImage = !!currentProject.image;
       
-      // Si on a un média zoomé différent du défaut, recréer l'élément par défaut
-      if (hasZoomedVideo || hasZoomedImage) {
-        // On a bien un média zoomé, il faut revenir au défaut
-        if (hasDefaultVideo) {
-          wrapper.innerHTML = `<video src="${optimizeCloudinaryUrl(currentProject.video)}" 
+      let targetIsVideo, targetUrl;
+      
+      // Le média cible est le média PAR DÉFAUT
+      if (hasDefaultVideo) {
+        targetIsVideo = true;
+        targetUrl = currentProject.video;
+      } else if (hasDefaultImage) {
+        targetIsVideo = false;
+        targetUrl = currentProject.image;
+      } else if (hasZoomedVideo) {
+        targetIsVideo = true;
+        targetUrl = currentProject.video_zoomed;
+      } else {
+        targetIsVideo = false;
+        targetUrl = currentProject.image_zoomed;
+      }
+      
+      // Comparer avec le média ACTUEL
+      const currentIsVideo = media.tagName === 'VIDEO';
+      const currentUrl = currentIsVideo 
+        ? (currentProject.video_zoomed || currentProject.video)
+        : (currentProject.image_zoomed || currentProject.image);
+      
+      // Si même type ET même URL → Optimisation : juste CSS
+      if (currentIsVideo === targetIsVideo && currentUrl === targetUrl) {
+        media.classList.remove('zoomed');
+        media.classList.add('zoomable');
+      } else {
+        // Types ou URLs différents → Recréer l'élément
+        if (targetIsVideo) {
+          wrapper.innerHTML = `<video src="${optimizeCloudinaryUrl(targetUrl)}" 
                                       id="mainImage"
                                       class="main-image zoomable" 
                                       preload="auto"
                                       autoplay loop muted playsinline
                                       alt="${currentProject.title}"></video>`;
-        } else if (hasDefaultImage) {
-          wrapper.innerHTML = `<img src="${optimizeCloudinaryUrl(currentProject.image)}" 
+        } else {
+          wrapper.innerHTML = `<img src="${optimizeCloudinaryUrl(targetUrl)}" 
                                     id="mainImage"
                                     class="main-image zoomable" 
                                     alt="${currentProject.title}">`;
         }
         
         initZoomBehavior();
-      } else {
-        // Pas de média zoomé séparé, juste retirer la classe
-        media.classList.remove('zoomed');
-        media.classList.add('zoomable');
       }
     }
 
@@ -1006,32 +1045,53 @@
       container.classList.remove('zoomed');
       container.classList.add('unzoomed');
       
-      // Priorité : regarder ce qui est disponible dans le projet
+      // Pour unzoom : afficher le média NORMAL au hover
       const hasDefaultVideo = !!currentProject.video;
       const hasDefaultImage = !!currentProject.image;
       const hasZoomedVideo = !!currentProject.video_zoomed;
       const hasZoomedImage = !!currentProject.image_zoomed;
       
-      // Pour unzoom : afficher le média normal (pas le zoomé)
+      let targetIsVideo, targetUrl;
+      
       if (hasDefaultVideo) {
-        wrapper.innerHTML = `<video src="${optimizeCloudinaryUrl(currentProject.video)}" 
+        targetIsVideo = true;
+        targetUrl = currentProject.video;
+      } else if (hasDefaultImage) {
+        targetIsVideo = false;
+        targetUrl = currentProject.image;
+      } else if (hasZoomedVideo) {
+        targetIsVideo = true;
+        targetUrl = currentProject.video_zoomed;
+      } else {
+        targetIsVideo = false;
+        targetUrl = currentProject.image_zoomed;
+      }
+      
+      // Comparer avec le média ACTUEL (qui est zoomé)
+      const currentIsVideo = oldMedia.tagName === 'VIDEO';
+      const currentUrl = currentIsVideo 
+        ? (currentProject.video_zoomed || currentProject.video)
+        : (currentProject.image_zoomed || currentProject.image);
+      
+      // Si même type ET même URL → Optimisation : juste CSS
+      if (currentIsVideo === targetIsVideo && currentUrl === targetUrl) {
+        oldMedia.classList.remove('zoomed');
+        oldMedia.classList.add('unzoomed');
+      } else {
+        // Types ou URLs différents → Recréer l'élément
+        if (targetIsVideo) {
+          wrapper.innerHTML = `<video src="${optimizeCloudinaryUrl(targetUrl)}" 
+                                      id="mainImage"
+                                      class="main-image unzoomed" 
+                                      preload="auto"
+                                      autoplay loop muted playsinline
+                                      alt="${currentProject.title}"></video>`;
+        } else {
+          wrapper.innerHTML = `<img src="${optimizeCloudinaryUrl(targetUrl)}" 
                                     id="mainImage"
                                     class="main-image unzoomed" 
-                                    preload="auto"
-                                    autoplay loop muted playsinline
-                                    alt="${currentProject.title}"></video>`;
-      } else if (hasDefaultImage) {
-        wrapper.innerHTML = `<img src="${optimizeCloudinaryUrl(currentProject.image)}" 
-                                  id="mainImage"
-                                  class="main-image unzoomed" 
-                                  alt="${currentProject.title}">`;
-      } else if (hasZoomedVideo) {
-        // Pas de média normal, garder le zoomé mais changer le style
-        oldMedia.classList.remove('zoomed');
-        oldMedia.classList.add('unzoomed');
-      } else if (hasZoomedImage) {
-        oldMedia.classList.remove('zoomed');
-        oldMedia.classList.add('unzoomed');
+                                    alt="${currentProject.title}">`;
+        }
       }
     }
 
@@ -1047,34 +1107,55 @@
       
       if (!media) return;
       
-      // Priorité : regarder ce qui est disponible dans le projet
+      // Pour unzoom : revenir au média ZOOMÉ (affiché par défaut)
       const hasDefaultVideo = !!currentProject.video;
       const hasDefaultImage = !!currentProject.image;
       const hasZoomedVideo = !!currentProject.video_zoomed;
       const hasZoomedImage = !!currentProject.image_zoomed;
       
-      // Pour unzoom : revenir au média zoomé
-      if (hasDefaultVideo || hasDefaultImage) {
-        // On a un média normal, il faut revenir au zoomé
-        if (hasZoomedVideo) {
-          wrapper.innerHTML = `<video src="${optimizeCloudinaryUrl(currentProject.video_zoomed)}" 
+      let targetIsVideo, targetUrl;
+      
+      if (hasZoomedVideo) {
+        targetIsVideo = true;
+        targetUrl = currentProject.video_zoomed;
+      } else if (hasZoomedImage) {
+        targetIsVideo = false;
+        targetUrl = currentProject.image_zoomed;
+      } else if (hasDefaultVideo) {
+        targetIsVideo = true;
+        targetUrl = currentProject.video;
+      } else {
+        targetIsVideo = false;
+        targetUrl = currentProject.image;
+      }
+      
+      // Comparer avec le média ACTUEL (qui est normal/unzoomed)
+      const currentIsVideo = media.tagName === 'VIDEO';
+      const currentUrl = currentIsVideo 
+        ? (currentProject.video || currentProject.video_zoomed)
+        : (currentProject.image || currentProject.image_zoomed);
+      
+      // Si même type ET même URL → Optimisation : juste CSS
+      if (currentIsVideo === targetIsVideo && currentUrl === targetUrl) {
+        media.classList.remove('unzoomed');
+        media.classList.add('zoomed');
+      } else {
+        // Types ou URLs différents → Recréer l'élément
+        if (targetIsVideo) {
+          wrapper.innerHTML = `<video src="${optimizeCloudinaryUrl(targetUrl)}" 
                                       id="mainImage"
                                       class="main-image zoomed" 
                                       preload="auto"
                                       autoplay loop muted playsinline
                                       alt="${currentProject.title}"></video>`;
-        } else if (hasZoomedImage) {
-          wrapper.innerHTML = `<img src="${optimizeCloudinaryUrl(currentProject.image_zoomed)}" 
+        } else {
+          wrapper.innerHTML = `<img src="${optimizeCloudinaryUrl(targetUrl)}" 
                                     id="mainImage"
                                     class="main-image zoomed" 
                                     alt="${currentProject.title}">`;
         }
         
         initUnzoomBehavior();
-      } else {
-        // Pas de média normal séparé, juste modifier les classes
-        media.classList.remove('unzoomed');
-        media.classList.add('zoomed');
       }
     }
 
