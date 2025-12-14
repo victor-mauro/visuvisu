@@ -540,6 +540,20 @@
           // Afficher le média zoomé
           const hasZoomedVideo = !!currentProject.video_zoomed;
           const hasZoomedImage = !!currentProject.image_zoomed;
+          const currentVideo = currentProject.video;
+          const currentImage = currentProject.image;
+          
+          // Vérifier si même URL (pas besoin de recréer)
+          if (hasZoomedVideo && currentProject.video_zoomed === currentVideo) {
+            // Même vidéo, ne rien faire (déjà affichée)
+            mobileInteractionActive = false;
+            return;
+          }
+          if (hasZoomedImage && currentProject.image_zoomed === currentImage) {
+            // Même image, ne rien faire (déjà affichée)
+            mobileInteractionActive = false;
+            return;
+          }
           
           if (hasZoomedVideo) {
             wrapper.innerHTML = `<video src="${optimizeCloudinaryUrl(currentProject.video_zoomed)}" 
@@ -554,13 +568,28 @@
                                       style="opacity: 0;">`;
             wrapper.style.backgroundImage = `url(${optimizeCloudinaryUrl(currentProject.image_zoomed)})`;
           } else {
-            // Pas de média zoomé spécifique, garder le même (déjà en cover)
+            // Pas de média zoomé spécifique, ne rien faire
+            mobileInteractionActive = false;
             return;
           }
         } else if (interaction === 'unzoom') {
           // Afficher le média normal (dézoomé)
           const hasDefaultVideo = !!currentProject.video;
           const hasDefaultImage = !!currentProject.image;
+          const currentZoomedVideo = currentProject.video_zoomed;
+          const currentZoomedImage = currentProject.image_zoomed;
+          
+          // Vérifier si même URL (pas besoin de recréer)
+          if (hasDefaultVideo && currentProject.video === currentZoomedVideo) {
+            // Même vidéo, ne rien faire
+            mobileInteractionActive = false;
+            return;
+          }
+          if (hasDefaultImage && currentProject.image === currentZoomedImage) {
+            // Même image, ne rien faire
+            mobileInteractionActive = false;
+            return;
+          }
           
           if (hasDefaultVideo) {
             wrapper.innerHTML = `<video src="${optimizeCloudinaryUrl(currentProject.video)}" 
@@ -579,6 +608,20 @@
           // Afficher le média hover
           const hasHoverVideo = !!currentProject.video_hover;
           const hasHoverImage = !!currentProject.image_hover;
+          const currentVideo = currentProject.video;
+          const currentImage = currentProject.image;
+          
+          // Vérifier si même URL (pas besoin de recréer)
+          if (hasHoverVideo && currentProject.video_hover === currentVideo) {
+            // Même vidéo, ne rien faire
+            mobileInteractionActive = false;
+            return;
+          }
+          if (hasHoverImage && currentProject.image_hover === currentImage) {
+            // Même image, ne rien faire
+            mobileInteractionActive = false;
+            return;
+          }
           
           if (hasHoverVideo) {
             wrapper.innerHTML = `<video src="${optimizeCloudinaryUrl(currentProject.video_hover)}" 
