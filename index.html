@@ -429,18 +429,6 @@
         opacity: 1;
         object-fit: cover;
       }
-      
-      /* Conteneur de préchargement vidéo (caché) */
-      #videoPreloadPool {
-        position: fixed;
-        top: -9999px;
-        left: -9999px;
-        width: 1px;
-        height: 1px;
-        overflow: hidden;
-        visibility: hidden;
-        pointer-events: none;
-      }
     }
   </style>
 </head>
@@ -495,9 +483,6 @@
     <a href="https://www.victormauro.fr/" target="_blank" rel="noopener noreferrer">Victor Mauro</a>
     <a href="mailto:contact@victormauro.fr">contact@victormauro.fr</a>
   </div>
-  
-  <!-- POOL DE PRÉ-CHARGEMENT VIDÉO (mobile uniquement) -->
-  <div id="videoPreloadPool"></div>
 
   <!-- JAVASCRIPT -->
   <script>
@@ -535,67 +520,6 @@
     let preloadQueue = [];
     let isPreloading = false;
     let preloadedUrls = new Set();
-    
-    // Pool de vidéos préchargées (mobile uniquement)
-    let videoPreloadPool = new Map(); // videoUrl -> HTMLVideoElement
-
-    // ==================== PRÉCHARGEMENT VIDÉO MOBILE ====================
-    function preloadMobileVideos() {
-      const isMobile = window.innerWidth <= 479;
-      if (!isMobile) return;
-      
-      const pool = document.getElementById('videoPreloadPool');
-      if (!pool) return;
-      
-      const currentIndex = projects.findIndex(p => p.id === currentProject?.id);
-      const videosToPreload = [];
-      
-      // Précharger les 2 prochaines vidéos uniquement
-      for (let i = 1; i <= 2 && currentIndex + i < projects.length; i++) {
-        const nextProject = projects[currentIndex + i];
-        if (nextProject.video && !videoPreloadPool.has(nextProject.video)) {
-          videosToPreload.push({
-            url: nextProject.video,
-            project: nextProject
-          });
-        }
-      }
-      
-      // Limiter le pool à 3 vidéos max pour ne pas surcharger
-      if (videoPreloadPool.size > 3) {
-        const oldestKey = videoPreloadPool.keys().next().value;
-        const oldVideo = videoPreloadPool.get(oldestKey);
-        if (oldVideo && oldVideo.parentNode) {
-          oldVideo.remove();
-        }
-        videoPreloadPool.delete(oldestKey);
-      }
-      
-      // Créer les vidéos de préchargement
-      videosToPreload.forEach(({ url, project }) => {
-        const video = document.createElement('video');
-        video.src = optimizeCloudinaryUrl(url);
-        video.muted = true;
-        video.playsInline = true;
-        video.loop = true;
-        video.preload = 'auto';
-        
-        // Essayer de démarrer la lecture (peut échouer sur certains navigateurs)
-        video.play().catch(() => {
-          // Si échec, ce n'est pas grave, le preload="auto" fera le travail
-        });
-        
-        pool.appendChild(video);
-        videoPreloadPool.set(url, video);
-      });
-    }
-    
-    function getMobilePreloadedVideo(url) {
-      const isMobile = window.innerWidth <= 479;
-      if (!isMobile) return null;
-      
-      return videoPreloadPool.get(url) || null;
-    }
 
     // ==================== OPTIMISATION CLOUDINARY ====================
     function optimizeCloudinaryUrl(url) {
@@ -790,11 +714,6 @@
             activeItem.scrollIntoView({ behavior: 'instant', block: 'center' });
           }
         }, 100);
-        
-        // Précharger les vidéos mobile dès le début
-        if (window.innerWidth <= 479) {
-          setTimeout(() => preloadMobileVideos(), 500);
-        }
       }
     }
 
@@ -873,28 +792,11 @@
                                   shadow-intensity="1"
                                   ar></model-viewer>`;
         } else if (videoUrl) {
-          // Vérifier si la vidéo est déjà préchargée
-          const preloadedVideo = getMobilePreloadedVideo(videoUrl);
-          
-          if (preloadedVideo) {
-            // Cloner la vidéo préchargée (déjà en cours de lecture)
-            const videoClone = preloadedVideo.cloneNode(true);
-            videoClone.className = 'main-image';
-            videoClone.id = 'mainImage';
-            videoClone.play().catch(() => {}); // Relancer la lecture
-            wrapper.innerHTML = '';
-            wrapper.appendChild(videoClone);
-          } else {
-            // Créer normalement si pas préchargée
-            wrapper.innerHTML = `<video src="${optimizeCloudinaryUrl(videoUrl)}" 
-                                        class="main-image" 
-                                        preload="auto"
-                                        autoplay loop muted playsinline
-                                        alt="${currentProject.title}"></video>`;
-          }
-          
-          // Précharger les prochaines vidéos
-          setTimeout(() => preloadMobileVideos(), 100);
+          wrapper.innerHTML = `<video src="${optimizeCloudinaryUrl(videoUrl)}" 
+                                      class="main-image" 
+                                      preload="auto"
+                                      autoplay loop muted playsinline
+                                      alt="${currentProject.title}"></video>`;
         } else if (imageUrl) {
           wrapper.style.backgroundImage = `url(${optimizeCloudinaryUrl(imageUrl)})`;
           wrapper.innerHTML = `<img src="${optimizeCloudinaryUrl(imageUrl)}" 
@@ -1298,15 +1200,6 @@
       
       if (window.innerWidth > 991) {
         document.getElementById('menuContent').classList.remove('open');
-      }
-      
-      // Nettoyer le pool vidéo si on quitte le mode mobile
-      if (window.innerWidth > 479 && videoPreloadPool.size > 0) {
-        const pool = document.getElementById('videoPreloadPool');
-        if (pool) {
-          pool.innerHTML = '';
-        }
-        videoPreloadPool.clear();
       }
     });
 
