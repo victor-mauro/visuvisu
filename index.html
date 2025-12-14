@@ -911,35 +911,33 @@
       isZoomed = true;
       container.classList.add('zoomed');
       
-      // Déterminer le média zoomé (ou utiliser le même si pas spécifié)
-      const isVideo = oldMedia.tagName === 'VIDEO';
-      const zoomedUrl = isVideo 
-        ? (currentProject.video_zoomed || currentProject.video)
-        : (currentProject.image_zoomed || currentProject.image);
+      // Priorité : regarder ce qui est disponible dans le projet
+      const hasZoomedVideo = !!currentProject.video_zoomed;
+      const hasZoomedImage = !!currentProject.image_zoomed;
+      const hasDefaultVideo = !!currentProject.video;
+      const hasDefaultImage = !!currentProject.image;
       
-      const currentUrl = isVideo ? currentProject.video : currentProject.image;
-      
-      // Si même URL, juste changer le CSS (pas de recréation)
-      if (zoomedUrl === currentUrl) {
-        oldMedia.classList.add('zoomed');
-      } else {
-        // URLs différentes, recréer l'élément
-        const hasZoomedVideo = !!currentProject.video_zoomed;
-        const hasZoomedImage = !!currentProject.image_zoomed;
-        
-        if (hasZoomedVideo) {
-          wrapper.innerHTML = `<video src="${optimizeCloudinaryUrl(currentProject.video_zoomed)}" 
-                                      id="mainImage"
-                                      class="main-image zoomed" 
-                                      preload="auto"
-                                      autoplay loop muted playsinline
-                                      alt="${currentProject.title}"></video>`;
-        } else if (hasZoomedImage) {
-          wrapper.innerHTML = `<img src="${optimizeCloudinaryUrl(currentProject.image_zoomed)}" 
+      // Déterminer quel média afficher au zoom
+      if (hasZoomedVideo) {
+        // Vidéo zoomée disponible
+        wrapper.innerHTML = `<video src="${optimizeCloudinaryUrl(currentProject.video_zoomed)}" 
                                     id="mainImage"
                                     class="main-image zoomed" 
-                                    alt="${currentProject.title}">`;
-        }
+                                    preload="auto"
+                                    autoplay loop muted playsinline
+                                    alt="${currentProject.title}"></video>`;
+      } else if (hasZoomedImage) {
+        // Image zoomée disponible
+        wrapper.innerHTML = `<img src="${optimizeCloudinaryUrl(currentProject.image_zoomed)}" 
+                                  id="mainImage"
+                                  class="main-image zoomed" 
+                                  alt="${currentProject.title}">`;
+      } else if (hasDefaultVideo) {
+        // Pas de média zoomé, utiliser la vidéo par défaut
+        oldMedia.classList.add('zoomed');
+      } else if (hasDefaultImage) {
+        // Pas de média zoomé, utiliser l'image par défaut
+        oldMedia.classList.add('zoomed');
       }
     }
 
@@ -954,23 +952,15 @@
       
       if (!media) return;
       
-      // Déterminer si on doit recréer ou juste changer le CSS
-      const isVideo = media.tagName === 'VIDEO';
-      const zoomedUrl = isVideo 
-        ? (currentProject.video_zoomed || currentProject.video)
-        : (currentProject.image_zoomed || currentProject.image);
+      // Priorité : regarder ce qui est disponible dans le projet
+      const hasZoomedVideo = !!currentProject.video_zoomed;
+      const hasZoomedImage = !!currentProject.image_zoomed;
+      const hasDefaultVideo = !!currentProject.video;
+      const hasDefaultImage = !!currentProject.image;
       
-      const defaultUrl = isVideo ? currentProject.video : currentProject.image;
-      
-      // Si même URL, juste retirer la classe
-      if (zoomedUrl === defaultUrl) {
-        media.classList.remove('zoomed');
-        media.classList.add('zoomable');
-      } else {
-        // URLs différentes, recréer l'élément
-        const hasDefaultVideo = !!currentProject.video;
-        const hasDefaultImage = !!currentProject.image;
-        
+      // Si on a un média zoomé différent du défaut, recréer l'élément par défaut
+      if (hasZoomedVideo || hasZoomedImage) {
+        // On a bien un média zoomé, il faut revenir au défaut
         if (hasDefaultVideo) {
           wrapper.innerHTML = `<video src="${optimizeCloudinaryUrl(currentProject.video)}" 
                                       id="mainImage"
@@ -986,6 +976,10 @@
         }
         
         initZoomBehavior();
+      } else {
+        // Pas de média zoomé séparé, juste retirer la classe
+        media.classList.remove('zoomed');
+        media.classList.add('zoomable');
       }
     }
 
@@ -1012,36 +1006,32 @@
       container.classList.remove('zoomed');
       container.classList.add('unzoomed');
       
-      // Déterminer le média normal (ou utiliser le zoomé si pas spécifié)
-      const isVideo = oldMedia.tagName === 'VIDEO';
-      const normalUrl = isVideo 
-        ? (currentProject.video || currentProject.video_zoomed)
-        : (currentProject.image || currentProject.image_zoomed);
+      // Priorité : regarder ce qui est disponible dans le projet
+      const hasDefaultVideo = !!currentProject.video;
+      const hasDefaultImage = !!currentProject.image;
+      const hasZoomedVideo = !!currentProject.video_zoomed;
+      const hasZoomedImage = !!currentProject.image_zoomed;
       
-      const zoomedUrl = isVideo ? currentProject.video_zoomed : currentProject.image_zoomed;
-      
-      // Si même URL, juste changer le CSS
-      if (normalUrl === zoomedUrl) {
-        oldMedia.classList.remove('zoomed');
-        oldMedia.classList.add('unzoomed');
-      } else {
-        // URLs différentes, recréer l'élément
-        const hasDefaultVideo = !!currentProject.video;
-        const hasDefaultImage = !!currentProject.image;
-        
-        if (hasDefaultVideo) {
-          wrapper.innerHTML = `<video src="${optimizeCloudinaryUrl(currentProject.video)}" 
-                                      id="mainImage"
-                                      class="main-image unzoomed" 
-                                      preload="auto"
-                                      autoplay loop muted playsinline
-                                      alt="${currentProject.title}"></video>`;
-        } else if (hasDefaultImage) {
-          wrapper.innerHTML = `<img src="${optimizeCloudinaryUrl(currentProject.image)}" 
+      // Pour unzoom : afficher le média normal (pas le zoomé)
+      if (hasDefaultVideo) {
+        wrapper.innerHTML = `<video src="${optimizeCloudinaryUrl(currentProject.video)}" 
                                     id="mainImage"
                                     class="main-image unzoomed" 
-                                    alt="${currentProject.title}">`;
-        }
+                                    preload="auto"
+                                    autoplay loop muted playsinline
+                                    alt="${currentProject.title}"></video>`;
+      } else if (hasDefaultImage) {
+        wrapper.innerHTML = `<img src="${optimizeCloudinaryUrl(currentProject.image)}" 
+                                  id="mainImage"
+                                  class="main-image unzoomed" 
+                                  alt="${currentProject.title}">`;
+      } else if (hasZoomedVideo) {
+        // Pas de média normal, garder le zoomé mais changer le style
+        oldMedia.classList.remove('zoomed');
+        oldMedia.classList.add('unzoomed');
+      } else if (hasZoomedImage) {
+        oldMedia.classList.remove('zoomed');
+        oldMedia.classList.add('unzoomed');
       }
     }
 
@@ -1057,23 +1047,15 @@
       
       if (!media) return;
       
-      // Déterminer si on doit recréer ou juste changer le CSS
-      const isVideo = media.tagName === 'VIDEO';
-      const normalUrl = isVideo 
-        ? (currentProject.video || currentProject.video_zoomed)
-        : (currentProject.image || currentProject.image_zoomed);
+      // Priorité : regarder ce qui est disponible dans le projet
+      const hasDefaultVideo = !!currentProject.video;
+      const hasDefaultImage = !!currentProject.image;
+      const hasZoomedVideo = !!currentProject.video_zoomed;
+      const hasZoomedImage = !!currentProject.image_zoomed;
       
-      const zoomedUrl = isVideo ? currentProject.video_zoomed : currentProject.image_zoomed;
-      
-      // Si même URL, juste modifier les classes
-      if (normalUrl === zoomedUrl) {
-        media.classList.remove('unzoomed');
-        media.classList.add('zoomed');
-      } else {
-        // URLs différentes, recréer l'élément
-        const hasZoomedVideo = !!currentProject.video_zoomed;
-        const hasZoomedImage = !!currentProject.image_zoomed;
-        
+      // Pour unzoom : revenir au média zoomé
+      if (hasDefaultVideo || hasDefaultImage) {
+        // On a un média normal, il faut revenir au zoomé
         if (hasZoomedVideo) {
           wrapper.innerHTML = `<video src="${optimizeCloudinaryUrl(currentProject.video_zoomed)}" 
                                       id="mainImage"
@@ -1089,6 +1071,10 @@
         }
         
         initUnzoomBehavior();
+      } else {
+        // Pas de média normal séparé, juste modifier les classes
+        media.classList.remove('unzoomed');
+        media.classList.add('zoomed');
       }
     }
 
