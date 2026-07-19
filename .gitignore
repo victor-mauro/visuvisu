@@ -1,0 +1,15 @@
+# Contexte local pour Claude Code — ne jamais publier
+CLAUDE.md
+
+# Jetons / secrets — ne JAMAIS publier
+TOKEN*
+*.token
+*_token.txt
+
+# Fichiers système macOS / Windows
+.DS_Store
+.AppleDouble
+Thumbs.db
+
+# Notes de travail perso (optionnel)
+/notes/
