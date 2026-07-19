@@ -1,6 +1,9 @@
 # Contexte local pour Claude Code — ne jamais publier
 CLAUDE.md
 
+# Sauvegarde locale des médias Cloudinary (script sync-media.py) — ne jamais publier
+_media-local/
+
 # Jetons / secrets — ne JAMAIS publier
 TOKEN*
 *.token
