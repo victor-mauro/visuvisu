@@ -403,69 +403,69 @@
     </image:image>
   </url>
   <url>
-    <loc>https://visuvisu.fr/pello-9rr-salle.html</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/pello-9rr-salle.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/pello-9rr-salle.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/pello-9rr-salle.html"/>
+    <loc>https://visuvisu.fr/pello-9rr-dining.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/pello-9rr-dining.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/pello-9rr-dining.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/pello-9rr-dining.html"/>
     <image:image>
-      <image:loc>https://visuvisu.fr/images/projets/pello-9rr-salle-01.webp</image:loc>
+      <image:loc>https://visuvisu.fr/images/projets/pello-9rr-dining-01.webp</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://visuvisu.fr/images/projets/pello-9rr-salle-02.webp</image:loc>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://visuvisu.fr/en/pello-9rr-salle.html</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/pello-9rr-salle.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/pello-9rr-salle.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/pello-9rr-salle.html"/>
-    <image:image>
-      <image:loc>https://visuvisu.fr/images/projets/pello-9rr-salle-01.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://visuvisu.fr/images/projets/pello-9rr-salle-02.webp</image:loc>
+      <image:loc>https://visuvisu.fr/images/projets/pello-9rr-dining-02.webp</image:loc>
     </image:image>
   </url>
   <url>
-    <loc>https://visuvisu.fr/pello-9rr-chambre.html</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/pello-9rr-chambre.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/pello-9rr-chambre.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/pello-9rr-chambre.html"/>
+    <loc>https://visuvisu.fr/en/pello-9rr-dining.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/pello-9rr-dining.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/pello-9rr-dining.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/pello-9rr-dining.html"/>
     <image:image>
-      <image:loc>https://visuvisu.fr/images/projets/pello-9rr-chambre-01.webp</image:loc>
+      <image:loc>https://visuvisu.fr/images/projets/pello-9rr-dining-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/pello-9rr-dining-02.webp</image:loc>
     </image:image>
   </url>
   <url>
-    <loc>https://visuvisu.fr/en/pello-9rr-chambre.html</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/pello-9rr-chambre.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/pello-9rr-chambre.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/pello-9rr-chambre.html"/>
+    <loc>https://visuvisu.fr/pello-9rr-suite.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/pello-9rr-suite.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/pello-9rr-suite.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/pello-9rr-suite.html"/>
     <image:image>
-      <image:loc>https://visuvisu.fr/images/projets/pello-9rr-chambre-01.webp</image:loc>
+      <image:loc>https://visuvisu.fr/images/projets/pello-9rr-suite-01.webp</image:loc>
     </image:image>
   </url>
   <url>
-    <loc>https://visuvisu.fr/pello-9rr-dependance.html</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/pello-9rr-dependance.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/pello-9rr-dependance.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/pello-9rr-dependance.html"/>
+    <loc>https://visuvisu.fr/en/pello-9rr-suite.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/pello-9rr-suite.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/pello-9rr-suite.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/pello-9rr-suite.html"/>
     <image:image>
-      <image:loc>https://visuvisu.fr/images/projets/pello-9rr-dependance-01.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://visuvisu.fr/images/projets/pello-9rr-dependance-02.webp</image:loc>
+      <image:loc>https://visuvisu.fr/images/projets/pello-9rr-suite-01.webp</image:loc>
     </image:image>
   </url>
   <url>
-    <loc>https://visuvisu.fr/en/pello-9rr-dependance.html</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/pello-9rr-dependance.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/pello-9rr-dependance.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/pello-9rr-dependance.html"/>
+    <loc>https://visuvisu.fr/pello-9rr-annexe.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/pello-9rr-annexe.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/pello-9rr-annexe.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/pello-9rr-annexe.html"/>
     <image:image>
-      <image:loc>https://visuvisu.fr/images/projets/pello-9rr-dependance-01.webp</image:loc>
+      <image:loc>https://visuvisu.fr/images/projets/pello-9rr-annexe-01.webp</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://visuvisu.fr/images/projets/pello-9rr-dependance-02.webp</image:loc>
+      <image:loc>https://visuvisu.fr/images/projets/pello-9rr-annexe-02.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://visuvisu.fr/en/pello-9rr-annexe.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/pello-9rr-annexe.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/pello-9rr-annexe.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/pello-9rr-annexe.html"/>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/pello-9rr-annexe-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/pello-9rr-annexe-02.webp</image:loc>
     </image:image>
   </url>
   <url>
@@ -553,21 +553,21 @@
     </image:image>
   </url>
   <url>
-    <loc>https://visuvisu.fr/nowatt-onyx-bois.html</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/nowatt-onyx-bois.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/nowatt-onyx-bois.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/nowatt-onyx-bois.html"/>
+    <loc>https://visuvisu.fr/nowatt-onyx.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/nowatt-onyx.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/nowatt-onyx.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/nowatt-onyx.html"/>
     <image:image>
-      <image:loc>https://visuvisu.fr/images/projets/nowatt-onyx-bois-01.webp</image:loc>
+      <image:loc>https://visuvisu.fr/images/projets/nowatt-onyx-01.webp</image:loc>
     </image:image>
   </url>
   <url>
-    <loc>https://visuvisu.fr/en/nowatt-onyx-bois.html</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/nowatt-onyx-bois.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/nowatt-onyx-bois.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/nowatt-onyx-bois.html"/>
+    <loc>https://visuvisu.fr/en/nowatt-onyx.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/nowatt-onyx.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/nowatt-onyx.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/nowatt-onyx.html"/>
     <image:image>
-      <image:loc>https://visuvisu.fr/images/projets/nowatt-onyx-bois-01.webp</image:loc>
+      <image:loc>https://visuvisu.fr/images/projets/nowatt-onyx-01.webp</image:loc>
     </image:image>
   </url>
 </urlset>
