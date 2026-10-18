@@ -1,0 +1,532 @@
+/* ==========================================================================
+   Visu Visu — feuille de style unique du site
+   --------------------------------------------------------------------------
+   Mise en page fixe sur toute la hauteur de l'écran : en-tête, trois colonnes
+   (présentation 20 % | image 50 % | liste des projets 30 %), pied de page.
+   Seule la liste des projets défile.
+
+   Points de rupture :
+     > 991 px   ordinateur : trois colonnes, pied de page avec le contact
+     ≤ 991 px   tablette : le logo ouvre un menu (présentation + contact),
+                image en haut (60 % de la hauteur), liste dessous
+     ≤ 479 px   mobile : marges latérales de 11 px, image en fond (50 % de
+                la hauteur), textes plus petits
+
+   Sommaire
+     1. Base                       6. Colonne centrale : image, vidéo, 3D
+     2. Marges latérales (mobile)  7. Colonne droite : liste des projets
+     3. En-tête, langues, menu     8. Pied de page
+     4. Mise en page               9. Tablette (≤ 991 px)
+     5. Colonne gauche             10. Mobile (≤ 479 px)
+   ========================================================================== */
+
+
+/* 1. BASE ------------------------------------------------------------------ */
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  color: #333;
+  background: #fff;
+}
+
+img { max-width: 100%; display: block; }
+
+/* Masqué à l'écran mais lu par Google et les lecteurs d'écran (titre des pages projets) */
+.visuellement-cache {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+
+/* 2. MARGES LATÉRALES (mobile uniquement) ------------------------------------ */
+
+.marge-gauche,
+.marge-droite {
+  display: none;
+  position: fixed;
+  width: 11px;
+  height: 100vh;
+  top: 0;
+  z-index: 1000;
+  background: #f1f1f1;
+}
+
+.marge-gauche {
+  left: 0;
+  border-right: 1px solid #000;
+}
+
+.marge-droite {
+  right: 0;
+  border-left: 1px solid #000;
+}
+
+
+/* 3. EN-TÊTE, LANGUES, MENU DÉROULANT ---------------------------------------- */
+
+/* Logo et langues sur la même ligne de base ; le logo occupe le reste de la largeur
+   (sur tablette et mobile, un clic sur le logo ouvre le menu). */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 65px;
+  background: #f1f1f1;
+  z-index: 100;
+  border-bottom: 1px solid #000;
+  display: flex;
+  align-items: baseline;
+}
+
+.logo {
+  flex: 1;
+  padding: 10px 14px;
+  font-size: 38px;
+  line-height: 44px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: default;
+}
+
+@media (max-width: 991px) {
+  .logo {
+    cursor: pointer;
+  }
+
+  .logo:hover {
+    font-weight: 700;
+  }
+}
+
+/* FR / EN en haut à droite, comme les liens de contact : texte courant, langue active
+   en gras (comme le projet actif), gras au survol.
+   ::after réserve la largeur du texte en gras, pour que le survol ne décale rien. */
+.langues {
+  display: flex;
+  gap: 5px;
+  padding-right: 14px;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.langues a {
+  display: inline-grid;
+  justify-items: center;
+  color: #333;
+  font-weight: 400;
+  text-decoration: none;
+  transition: font-weight 0.2s;
+}
+
+.langues a::after {
+  content: attr(data-texte);
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
+  font-weight: 700;
+}
+
+.langues a:hover,
+.langues a.active {
+  font-weight: 700;
+}
+
+/* Menu ouvert par le logo (tablette et mobile) : présentation + contact */
+.menu-content {
+  display: none;
+  background: #f1f1f1;
+  position: absolute;
+  top: 65px;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  border-bottom: 1px solid #000;
+}
+
+.menu-content.open {
+  display: block;
+}
+
+.intro {
+  padding: 14px;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 14px;
+  border-top: 1px solid #000;
+}
+
+.contact-info a {
+  color: #333;
+  text-decoration: none;
+  transition: font-weight 0.2s;
+  padding: 1px 0;
+}
+
+.contact-info a:hover {
+  font-weight: 700;
+}
+
+
+/* 4. MISE EN PAGE ------------------------------------------------------------ */
+
+.container {
+  position: fixed;
+  top: 65px;
+  bottom: 60px;
+  left: 0;
+  right: 0;
+  display: flex;
+}
+
+
+/* 5. COLONNE GAUCHE (20 %) : présentation ----------------------------------- */
+
+.sidebar-left {
+  flex: 0 0 20%;
+  border-right: 1px solid #000;
+  display: flex;
+  flex-direction: column;
+  background: #f1f1f1;
+}
+
+.sidebar-left .intro {
+  padding: 14px;
+  font-size: 16px;
+  line-height: 24px;
+  flex: 1;
+}
+
+
+/* 6. COLONNE CENTRALE (50 %) : image, vidéo, 3D ------------------------------
+   .zoomed sur .main-content retire la marge intérieure (image plein cadre) ;
+   .zoomed sur l'image la fait couvrir tout le cadre (object-fit: cover). */
+
+.main-content {
+  flex: 0 0 50%;
+  border-right: 1px solid #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  overflow: hidden;
+  position: relative;
+  background: #f1f1f1;
+}
+
+.main-content.zoomed {
+  padding: 0;
+}
+
+.main-content.unzoomed {
+  padding: 20px;
+}
+
+.image-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.main-image {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  cursor: default;
+  transition: none;
+  position: relative;
+}
+
+.main-image.zoomable {
+  cursor: default;
+}
+
+.main-image.zoomed {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  cursor: default;
+  top: 0;
+  left: 0;
+}
+
+.main-image.unzoomed {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  position: relative;
+}
+
+video.main-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+video.main-image.zoomed {
+  object-fit: cover;
+}
+
+/* Vue 3D : modèle .glb / .gltf (model-viewer) ou Gaussian splat (canvas) */
+model-viewer,
+.vue-splat {
+  width: 100%;
+  height: 100%;
+  background-color: #f1f1f1;
+}
+
+.vue-splat {
+  display: block;
+  touch-action: none;
+}
+
+
+/* 7. COLONNE DROITE (30 %) : liste des projets -------------------------------
+   Lignes d'un même groupe resserrées : group-first / group-middle / group-last. */
+
+.sidebar-right {
+  flex: 0 0 30%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: #f1f1f1;
+}
+
+.project-item {
+  padding: 14px 14px;
+  border-top: 1px solid #000;
+  font-size: 16px;
+  line-height: 22px;
+  font-style: italic;
+  cursor: pointer;
+  transition: font-weight 0.2s;
+}
+
+/* Chaque ligne est un lien vers la page du projet, affiché comme un bloc de texte */
+a.project-item {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.project-item:first-child {
+  border-top: none;
+}
+
+.project-item.group-first {
+  padding-top: 14px;
+  padding-bottom: 1px;
+}
+
+.project-item.group-middle {
+  border-top: none;
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+
+.project-item.group-last {
+  border-top: none;
+  padding-top: 1px;
+  padding-bottom: 14px;
+}
+
+.project-item:hover,
+.project-item.active {
+  font-weight: 700;
+}
+
+
+/* 8. PIED DE PAGE (ordinateur) : contact ------------------------------------- */
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: #f1f1f1;
+  border-top: 1px solid #000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 14px;
+  gap: 20px;
+  z-index: 100;
+}
+
+.footer a {
+  color: #333;
+  text-decoration: none;
+  transition: font-weight 0.2s;
+}
+
+.footer a:hover {
+  font-weight: 700;
+}
+
+
+/* 9. TABLETTE (≤ 991 px) ------------------------------------------------------- */
+
+@media (max-width: 991px) {
+  .header {
+    cursor: pointer;
+  }
+
+  .logo:hover {
+    font-weight: 700;
+  }
+
+  .container {
+    top: 65px;
+    bottom: 0;
+    flex-direction: column;
+  }
+
+  .sidebar-left {
+    display: none;
+  }
+
+  .main-content {
+    flex: none;
+    height: 60vh;
+    border-right: none;
+    border-bottom: 1px solid #000;
+    padding: 10px;
+  }
+
+  .main-content.zoomed {
+    padding: 0;
+  }
+
+  .main-content.unzoomed {
+    padding: 10px;
+  }
+
+  .sidebar-right {
+    flex: 1;
+  }
+
+  .footer {
+    display: none;
+  }
+}
+
+
+/* 10. MOBILE (≤ 479 px) --------------------------------------------------------
+   Les images sont affichées en fond de .image-wrapper (cadrage « cover ») et
+   l'image elle-même est transparente ; les vidéos restent visibles. */
+
+@media (max-width: 479px) {
+  .marge-gauche,
+  .marge-droite {
+    display: block;
+  }
+
+  body {
+    margin: 0 11px;
+  }
+
+  .container {
+    top: 55px;
+    left: 11px;
+    right: 11px;
+  }
+
+  .header {
+    height: 55px;
+    left: 11px;
+    right: 11px;
+  }
+
+  .logo {
+    font-size: 27px;
+    line-height: 35px;
+    padding: 10px;
+  }
+
+  .langues {
+    gap: 4px;
+    padding-right: 10px;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .menu-content {
+    top: 55px;
+    left: 11px;
+    right: 11px;
+  }
+
+  .intro {
+    font-size: 14px;
+    line-height: 20px;
+    padding: 10px;
+  }
+
+  .contact-info {
+    flex-direction: column;
+    gap: 0;
+    padding: 10px;
+  }
+
+  .contact-info a,
+  .contact-info span {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .main-content {
+    height: 50vh;
+    padding: 0;
+  }
+
+  .project-item {
+    font-size: 14px;
+    line-height: 20px;
+    padding: 10px;
+  }
+
+  .image-wrapper {
+    background-size: cover;
+    background-position: center;
+  }
+
+  img.main-image {
+    opacity: 0;
+  }
+
+  video.main-image {
+    opacity: 1;
+    object-fit: cover;
+  }
+}
