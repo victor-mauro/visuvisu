@@ -235,8 +235,14 @@ for (const p of projets) {
   if (p.interaction === '3d' && !p.model_3d) avertir(`${nom} : interaction 3d sans « model_3d »`);
   if (p.interaction === '3d' && !p.image) avertir(`${nom} : projet 3d sans « image » (aperçu, référencement, partage)`);
   if (!CLES_MEDIAS.some((c) => p[c])) avertir(`${nom} : aucun média`);
+  // Nommage des médias : <slug>-NN.ext, le slug sans son suffixe -2, -3… (seconde vue d'un même projet)
+  const base = p.slug.replace(/-\d+$/, '');
   for (const c of CLES_MEDIAS) {
     if (!p[c]) continue;
+    const fichier = path.basename(p[c]);
+    if (![p.slug, base].some((s) => new RegExp(`^${s}-\\d{2}\\.\\w+$`).test(fichier))) {
+      avertir(`${nom} : « ${p[c]} » ne suit pas le nommage ${base}-NN.${fichier.split('.').pop()}`);
+    }
     if (!fs.existsSync(path.join(RACINE, p[c]))) avertir(`${nom} : fichier manquant « ${p[c]} » (${c})`);
     else if (c.startsWith('image')) infoImage(p[c]);
     else if (c.startsWith('video')) infoVideo(p[c]);
