@@ -1,11 +1,6 @@
-# robots.txt pour visuvisu.fr
-
 User-agent: *
-Allow: /
+Disallow: /content/
+Disallow: /templates/
+Disallow: /build.mjs
 
-# Sitemap
 Sitemap: https://visuvisu.fr/sitemap.xml
-
-# Autoriser explicitement les crawlers d'images
-User-agent: Googlebot-Image
-Allow: /

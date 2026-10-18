@@ -2,1518 +2,205 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8">
-  <title>Visu Visu | Visualisation 3D & Rendu photoréaliste à Marseille</title>
+  <title>Visu Visu | Visualisation 3D &amp; Rendu photoréaliste à Marseille</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Visu Visu : studio de visualisation 3D à Marseille spécialisé en rendu photoréaliste pour l'architecture, la scénographie et le design. Modélisation 3D professionnelle par Victor Mauro.">
   <meta name="keywords" content="visualisation 3D, rendu 3D, modélisation architecture, rendu photoréaliste, studio 3D Marseille, images architecture, scénographie 3D, design d'espace, perspective 3D, infographie architecture">
   <meta name="author" content="Victor Mauro - Visu Visu">
   <meta name="robots" content="index, follow">
-  <meta name="language" content="fr-FR">
   <meta name="geo.region" content="FR-13">
   <meta name="geo.placename" content="Marseille">
-  <meta name="geo.position" content="43.296482;5.369780">
-  <meta name="ICBM" content="43.296482, 5.369780">
-  
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://visuvisu.fr/">
-  <meta property="og:title" content="Visu Visu | Visualisation 3D & Rendu photoréaliste à Marseille">
-  <meta property="og:description" content="Studio de visualisation 3D à Marseille pour architectes, designers et scénographes. Rendus photoréalistes et modélisation 3D professionnelle par Victor Mauro.">
-  <meta property="og:image" content="https://visuvisu.fr/images/interface/favicon.png">
-  <meta property="og:locale" content="fr_FR">
-  <meta property="og:locale:alternate" content="en_US">
-  
-  <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="https://visuvisu.fr/">
-  <meta property="twitter:title" content="Visu Visu | Visualisation 3D & Rendu photoréaliste">
-  <meta property="twitter:description" content="Studio de visualisation 3D à Marseille pour architectes, designers et scénographes.">
-  <meta property="twitter:image" content="https://visuvisu.fr/images/interface/favicon.png">
-  
-  <!-- Canonical URL -->
+  <meta name="geo.position" content="43.296482;5.36978">
+  <meta name="ICBM" content="43.296482, 5.36978">
   <link rel="canonical" href="https://visuvisu.fr/">
-  
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" sizes="32x32" href="images/interface/favicon.png">
-  <link rel="shortcut icon" href="images/interface/favicon.png">
-  
-  <!-- Schema.org Structured Data -->
+  <link rel="alternate" hreflang="fr" href="https://visuvisu.fr/">
+  <link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/">
+  <link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Visu Visu">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:locale:alternate" content="en_GB">
+  <meta property="og:url" content="https://visuvisu.fr/">
+  <meta property="og:title" content="Visu Visu | Visualisation 3D &amp; Rendu photoréaliste à Marseille">
+  <meta property="og:description" content="Studio de visualisation 3D à Marseille pour architectes, designers et scénographes. Rendus photoréalistes et modélisation 3D professionnelle par Victor Mauro.">
+  <meta property="og:image" content="https://visuvisu.fr/images/partage/accueil.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Page d'accueil de Visu Visu : présentation du studio, rendu 3D d'un projet et liste des projets">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Visu Visu | Visualisation 3D &amp; Rendu photoréaliste à Marseille">
+  <meta name="twitter:description" content="Studio de visualisation 3D à Marseille pour architectes, designers et scénographes. Rendus photoréalistes et modélisation 3D professionnelle par Victor Mauro.">
+  <meta name="twitter:image" content="https://visuvisu.fr/images/partage/accueil.jpg">
+  <meta name="twitter:image:alt" content="Page d'accueil de Visu Visu : présentation du studio, rendu 3D d'un projet et liste des projets">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="images/interface/favicon.png?v=97157a45">
+  <link rel="stylesheet" href="css/site.css?v=60b646ea">
+  <script type="importmap">{"imports":{"three":"./js/vendor/three/three.module.js?v=3f776a49","three/addons/":"./js/vendor/three/addons/"}}</script>
+  <noscript><style>@media (max-width: 479px) { .image-wrapper { background-image: url("images/projets/mejanes-2025-01.webp"); } }</style></noscript>
+
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    "name": "Visu Visu",
-    "alternateName": "Victor Mauro - Visu Visu",
-    "image": "https://visuvisu.fr/images/interface/favicon.png",
-    "description": "Studio de visualisation 3D spécialisé en rendu photoréaliste pour l'architecture, le design et la scénographie",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Marseille",
-      "addressRegion": "Provence-Alpes-Côte d'Azur",
-      "postalCode": "13000",
-      "addressCountry": "FR"
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://visuvisu.fr/#studio",
+      "name": "Visu Visu",
+      "alternateName": "Victor Mauro - Visu Visu",
+      "description": "Studio de visualisation 3D spécialisé en rendu photoréaliste pour l'architecture, le design et la scénographie",
+      "url": "https://visuvisu.fr/",
+      "image": "https://visuvisu.fr/images/partage/accueil.jpg",
+      "logo": "https://visuvisu.fr/images/interface/favicon.png",
+      "telephone": "+33650508155",
+      "email": "contact@victormauro.fr",
+      "priceRange": "€€€",
+      "openingHours": "Mo-Fr 09:00-18:00",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Marseille",
+        "addressRegion": "Provence-Alpes-Côte d'Azur",
+        "postalCode": "13000",
+        "addressCountry": "FR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 43.296482,
+        "longitude": 5.36978
+      },
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Marseille"
+        },
+        {
+          "@type": "Country",
+          "name": "France"
+        },
+        {
+          "@type": "Country",
+          "name": "International"
+        }
+      ],
+      "knowsAbout": [
+        "Visualisation 3D",
+        "Rendu photoréaliste",
+        "Modélisation architecturale",
+        "Scénographie",
+        "Design d'espace",
+        "Infographie 3D"
+      ],
+      "founder": {
+        "@id": "https://visuvisu.fr/#victor-mauro"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/in/victor-mauro/"
+      ]
     },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 43.296482,
-      "longitude": 5.369780
-    },
-    "url": "https://visuvisu.fr",
-    "telephone": "+33650508155",
-    "email": "contact@victormauro.fr",
-    "priceRange": "€€€",
-    "openingHours": "Mo-Fr 09:00-18:00",
-    "sameAs": [
-      "https://www.victormauro.fr/"
-    ],
-    "founder": {
+    {
       "@type": "Person",
+      "@id": "https://visuvisu.fr/#victor-mauro",
       "name": "Victor Mauro",
-      "url": "https://www.victormauro.fr/"
+      "url": "https://www.linkedin.com/in/victor-mauro/",
+      "email": "contact@victormauro.fr",
+      "sameAs": [
+        "https://www.linkedin.com/in/victor-mauro/"
+      ],
+      "worksFor": {
+        "@id": "https://visuvisu.fr/#studio"
+      }
     },
-    "areaServed": [
-      {
-        "@type": "City",
-        "name": "Marseille"
-      },
-      {
-        "@type": "Country",
-        "name": "France"
-      },
-      {
-        "@type": "Country",
-        "name": "International"
+    {
+      "@type": "WebSite",
+      "@id": "https://visuvisu.fr/#site",
+      "name": "Visu Visu",
+      "url": "https://visuvisu.fr/",
+      "description": "Visu Visu : studio de visualisation 3D à Marseille spécialisé en rendu photoréaliste pour l'architecture, la scénographie et le design. Modélisation 3D professionnelle par Victor Mauro.",
+      "inLanguage": "fr",
+      "publisher": {
+        "@id": "https://visuvisu.fr/#studio"
       }
-    ],
-    "knowsAbout": [
-      "Visualisation 3D",
-      "Rendu photoréaliste",
-      "Modélisation architecturale",
-      "Scénographie",
-      "Design d'espace",
-      "Infographie 3D"
-    ]
-  }
+    }
+  ]
+}
   </script>
-  
-  <!-- Model Viewer pour l'interaction 3D -->
-  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.3.0/model-viewer.min.js"></script>
-  
-  <style>
-    /* ==================== RESET ==================== */
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    
-    html, body {
-      height: 100%;
-      overflow: hidden;
-      font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
-      font-size: 16px;
-      line-height: 24px;
-      color: #333;
-      background: #fff;
-    }
-
-    img { max-width: 100%; display: block; }
-
-    /* ==================== MARGES LATÉRALES ==================== */
-    .marge-gauche,
-    .marge-droite {
-      display: none;
-      position: fixed;
-      width: 11px;
-      height: 100vh;
-      top: 0;
-      z-index: 1000;
-      background: #f1f1f1;
-    }
-
-    .marge-gauche {
-      left: 0;
-      border-right: 1px solid #000;
-    }
-
-    .marge-droite {
-      right: 0;
-      border-left: 1px solid #000;
-    }
-
-    /* ==================== HEADER ==================== */
-    .header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 65px;
-      background: #f1f1f1;
-      z-index: 100;
-      border-bottom: 1px solid #000;
-    }
-
-    .logo {
-      padding: 10px 14px;
-      font-size: 38px;
-      line-height: 44px;
-      font-weight: bold;
-      text-transform: uppercase;
-      cursor: default;
-    }
-
-    @media (max-width: 991px) {
-      .logo {
-        cursor: pointer;
-      }
-
-      .logo:hover {
-        font-weight: 700;
-      }
-    }
-
-    .menu-content {
-      display: none;
-      background: #f1f1f1;
-      position: absolute;
-      top: 65px;
-      left: 0;
-      right: 0;
-      z-index: 200;
-      border-bottom: 1px solid #000;
-    }
-
-    .menu-content.open {
-      display: block;
-    }
-
-    .intro {
-      padding: 14px;
-      font-size: 16px;
-      line-height: 24px;
-    }
-
-    .contact-info {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-      padding: 14px;
-      border-top: 1px solid #000;
-    }
-
-    .contact-info a {
-      color: #333;
-      text-decoration: none;
-      transition: font-weight 0.2s;
-      padding: 1px 0;
-    }
-
-    .contact-info a:hover {
-      font-weight: 700;
-    }
-
-    /* ==================== LAYOUT PRINCIPAL ==================== */
-    .container {
-      position: fixed;
-      top: 65px;
-      bottom: 60px;
-      left: 0;
-      right: 0;
-      display: flex;
-    }
-
-    /* ==================== COLONNE GAUCHE (20%) ==================== */
-    .sidebar-left {
-      flex: 0 0 20%;
-      border-right: 1px solid #000;
-      display: flex;
-      flex-direction: column;
-      background: #f1f1f1;
-    }
-
-    .sidebar-left .intro {
-      padding: 14px;
-      font-size: 16px;
-      line-height: 24px;
-      flex: 1;
-    }
-
-    /* ==================== COLONNE CENTRALE (50%) ==================== */
-    .main-content {
-      flex: 0 0 50%;
-      border-right: 1px solid #000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      overflow: hidden;
-      position: relative;
-      background: #f1f1f1;
-    }
-
-    .main-content.zoomed {
-      padding: 0;
-    }
-
-    .main-content.unzoomed {
-      padding: 20px;
-    }
-
-    .image-wrapper {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .main-image {
-      max-width: 100%;
-      max-height: 100%;
-      width: auto;
-      height: auto;
-      object-fit: contain;
-      cursor: default;
-      transition: none;
-      position: relative;
-    }
-
-    .main-image.zoomable {
-      cursor: default;
-    }
-
-    .main-image.zoomed {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: cover;
-      cursor: default;
-      top: 0;
-      left: 0;
-    }
-
-    .main-image.unzoomed {
-      max-width: 100%;
-      max-height: 100%;
-      width: auto;
-      height: auto;
-      object-fit: contain;
-      position: relative;
-    }
-
-    video.main-image {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-
-    video.main-image.zoomed {
-      object-fit: cover;
-    }
-
-    /* Viewer 3D */
-    model-viewer {
-      width: 100%;
-      height: 100%;
-      background-color: #f1f1f1;
-    }
-
-    .placeholder {
-      color: #999;
-      font-size: 18px;
-    }
-
-    /* ==================== COLONNE DROITE (30%) ==================== */
-    .sidebar-right {
-      flex: 0 0 30%;
-      overflow-y: auto;
-      overflow-x: hidden;
-      background: #f1f1f1;
-    }
-
-    .project-item {
-      padding: 14px 14px;
-      border-top: 1px solid #000;
-      font-size: 16px;
-      line-height: 22px;
-      font-style: italic;
-      cursor: pointer;
-      transition: font-weight 0.2s;
-    }
-
-    .project-item:first-child {
-      border-top: none;
-    }
-
-    .project-item.group-first {
-      padding-top: 14px;
-      padding-bottom: 1px;
-    }
-
-    .project-item.group-middle {
-      border-top: none;
-      padding-top: 1px;
-      padding-bottom: 1px;
-    }
-
-    .project-item.group-last {
-      border-top: none;
-      padding-top: 1px;
-      padding-bottom: 14px;
-    }
-
-    .project-item:hover,
-    .project-item.active {
-      font-weight: 700;
-    }
-
-    /* ==================== FOOTER ==================== */
-    .footer {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 60px;
-      background: #f1f1f1;
-      border-top: 1px solid #000;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 14px;
-      gap: 20px;
-      z-index: 100;
-    }
-
-    .footer a {
-      color: #333;
-      text-decoration: none;
-      transition: font-weight 0.2s;
-    }
-
-    .footer a:hover {
-      font-weight: 700;
-    }
-
-    /* ==================== RESPONSIVE TABLETTE ==================== */
-    @media (max-width: 991px) {
-      .header {
-        cursor: pointer;
-      }
-
-      .logo:hover {
-        font-weight: 700;
-      }
-
-      .container {
-        top: 65px;
-        bottom: 0;
-        flex-direction: column;
-      }
-
-      .sidebar-left {
-        display: none;
-      }
-
-      .main-content {
-        flex: none;
-        height: 60vh;
-        border-right: none;
-        border-bottom: 1px solid #000;
-        padding: 10px;
-      }
-
-      .main-content.zoomed {
-        padding: 0;
-      }
-
-      .main-content.unzoomed {
-        padding: 10px;
-      }
-
-      .sidebar-right {
-        flex: 1;
-      }
-
-      .footer {
-        display: none;
-      }
-    }
-
-    /* ==================== RESPONSIVE MOBILE ==================== */
-    @media (max-width: 479px) {
-      .marge-gauche,
-      .marge-droite {
-        display: block;
-      }
-
-      body {
-        margin: 0 11px;
-      }
-
-      .container {
-        top: 55px;
-        left: 11px;
-        right: 11px;
-      }
-
-      .header {
-        height: 55px;
-        left: 11px;
-        right: 11px;
-      }
-
-      .logo {
-        font-size: 27px;
-        line-height: 35px;
-        padding: 10px;
-      }
-
-      .menu-content {
-        top: 55px;
-        left: 11px;
-        right: 11px;
-      }
-
-      .intro {
-        font-size: 14px;
-        line-height: 20px;
-        padding: 10px;
-      }
-
-      .contact-info {
-        flex-direction: column;
-        gap: 0;
-        padding: 10px;
-      }
-
-      .contact-info a,
-      .contact-info span {
-        font-size: 14px;
-        line-height: 20px;
-      }
-
-      .main-content {
-        height: 50vh;
-        padding: 0;
-      }
-
-      .project-item {
-        font-size: 14px;
-        line-height: 20px;
-        padding: 10px;
-      }
-
-      /* Image en background sur mobile */
-      .image-wrapper {
-        background-size: cover;
-        background-position: center;
-      }
-
-      /* Cacher uniquement les IMAGES (pas les vidéos) */
-      img.main-image {
-        opacity: 0;
-      }
-      
-      /* Les vidéos restent visibles sur mobile */
-      video.main-image {
-        opacity: 1;
-        object-fit: cover;
-      }
-    }
-  </style>
 </head>
 <body>
 
-  <!-- MARGES LATÉRALES (mobile uniquement) -->
+  <!-- Marges latérales (mobile uniquement) -->
   <div class="marge-gauche"></div>
   <div class="marge-droite"></div>
 
-  <!-- HEADER -->
+  <!-- En-tête : logo (ouvre le menu sur tablette et mobile), langues -->
   <header class="header" id="header">
     <h1 class="logo" id="logoToggle">VISU VISU</h1>
+    <nav class="langues" aria-label="Langue">
+      <a href="./" hreflang="fr" lang="fr" class="active" aria-current="true" data-texte="FR">FR</a>
+      <span aria-hidden="true">/</span>
+      <a href="en/" hreflang="en" lang="en" data-texte="EN">EN</a>
+    </nav>
   </header>
 
-  <!-- MENU DÉROULANT (responsive uniquement) -->
+  <!-- Menu déroulant (tablette et mobile) -->
   <nav class="menu-content" id="menuContent" aria-label="Menu principal">
-    <div class="intro">
-      Création d'images pour des projets d'architecture, de scénographie et de design. Visu Visu vous accompagne dans la représentation de vos projets, de la modélisation 3D à la réalisation de rendus photoréalistes et texturés.
-    </div>
+    <div class="intro">Création d'images pour des projets d'architecture, de scénographie et de design. Visu Visu vous accompagne dans la représentation de vos projets, de la modélisation 3D à la réalisation de rendus photoréalistes et texturés.</div>
     <div class="contact-info">
-      <a href="https://www.victormauro.fr/" target="_blank" rel="noopener noreferrer">Victor Mauro</a>
+      <a href="https://www.linkedin.com/in/victor-mauro/" target="_blank" rel="noopener noreferrer">Victor Mauro</a>
       <a href="mailto:contact@victormauro.fr">contact@victormauro.fr</a>
     </div>
   </nav>
 
-  <!-- CONTAINER PRINCIPAL -->
   <main class="container">
-    
-    <!-- COLONNE GAUCHE -->
+
+    <!-- Colonne gauche : présentation -->
     <aside class="sidebar-left">
-      <div class="intro">
-        Création d'images pour des projets d'architecture, de scénographie et de design. Visu Visu vous accompagne dans la représentation de vos projets, de la modélisation 3D à la réalisation de rendus photoréalistes et texturés.
-      </div>
+      <div class="intro">Création d'images pour des projets d'architecture, de scénographie et de design. Visu Visu vous accompagne dans la représentation de vos projets, de la modélisation 3D à la réalisation de rendus photoréalistes et texturés.</div>
     </aside>
 
-    <!-- COLONNE CENTRALE - IMAGE -->
-    <section class="main-content" role="main" aria-label="Galerie de projets">
-      <div class="image-wrapper" id="imageWrapper">
-        <div class="placeholder">Sélectionnez un projet</div>
-      </div>
+    <!-- Colonne centrale : image du projet -->
+    <section class="main-content" aria-label="Galerie de projets">
+      <div class="image-wrapper" id="imageWrapper"><noscript><img src="images/projets/mejanes-2025-01.webp" srcset="images/projets/mejanes-2025-01-1000.webp 800w, images/projets/mejanes-2025-01.webp 1440w" sizes="(max-width: 479px) 1440px, (max-width: 991px) min(100vw, 1440px), min(50vw, 1440px)" width="1440" height="1800" id="mainImage" class="main-image" alt="Bâtiment de plain-pied au toit de tuiles, façade peinte en trompe-l'œil d'un atelier d'artiste, sous les platanes d'une cour en gravier avec bancs et passants" fetchpriority="high"></noscript></div>
     </section>
 
-    <!-- COLONNE DROITE - PROJETS -->
+    <!-- Colonne droite : liste des projets -->
     <nav class="sidebar-right" id="projectsList" aria-label="Liste des projets">
-      <!-- Généré dynamiquement -->
+      <a class="project-item" id="project-mejanes-2025" href="mejanes-2025.html">Emmanuelle Lainé, Méjanes, 2025</a>
+      <a class="project-item group-first" id="project-protoclub-emt02-2025" href="protoclub-emt02-2025.html">Protoclub, EMT_02, 2025</a>
+      <a class="project-item group-last" id="project-protoclub-emt01-2025" href="protoclub-emt01-2025.html">Protoclub, EMT_01, 2025</a>
+      <a class="project-item group-first" id="project-aimko-gs-2024" href="aimko-gs-2024.html">Aimko.P, grand salon, 2024</a>
+      <a class="project-item group-last" id="project-aimko-ps-2023" href="aimko-ps-2023.html">Aimko.P, petit salon, 2023</a>
+      <a class="project-item" id="project-aimko-store-2023" href="aimko-store-2023.html">Aimko.P, concept store, 2023</a>
+      <a class="project-item" id="project-bmt-2023" href="bmt-2023.html">Atelier Aïno, BMT, avec Lambert David, 2023</a>
+      <a class="project-item" id="project-ctgp-55mpc-2023" href="ctgp-55mpc-2023.html">CT&amp;GP, 55MPC, 2023</a>
+      <a class="project-item" id="project-sharjah-2022" href="sharjah-2022.html">Atelier Philippe Parreno, Sharjah, 2022</a>
+      <a class="project-item" id="project-enso-2022" href="enso-2022.html">CT&amp;GP, Enso, 2022</a>
+      <a class="project-item" id="project-radar-2022" href="radar-2022.html">Radar, Pulse, 64Hz, 2022</a>
+      <a class="project-item" id="project-chelles-2022" href="chelles-2022.html">Emmanuelle Lainé, Gare de Chelles, 2022</a>
+      <a class="project-item" id="project-verandah-2022" href="verandah-2022.html">CT&amp;GP, Vérandah, 2022</a>
+      <a class="project-item group-first" id="project-alpha-communica-2022" href="alpha-communica-2022.html">Alpha Immo, Communica, 2022</a>
+      <a class="project-item group-last" id="project-alpha-hall-2022" href="alpha-hall-2022.html">Alpha Immo, Communica, hall d'accueil, 2022</a>
+      <a class="project-item" id="project-mauro-rigaud-2022" href="mauro-rigaud-2022.html">Mauro, Rigaud, salle de bain, 2022</a>
+      <a class="project-item group-first" id="project-mauro-turcon-2021" href="mauro-turcon-2021.html">Mauro, Turcon, 2021</a>
+      <a class="project-item group-last" id="project-mauro-turcon-2021-2" href="mauro-turcon-2021-2.html">Mauro, Turcon, 2021</a>
+      <a class="project-item group-first" id="project-pello-9rr-salle-2021" href="pello-9rr-salle-2021.html">Pello, 9RR, salle à manger, 2021</a>
+      <a class="project-item group-middle" id="project-pello-9rr-chambre-2021" href="pello-9rr-chambre-2021.html">Pello, 9RR, chambre nuptiale, 2021</a>
+      <a class="project-item group-last" id="project-pello-9rr-dependance-2021" href="pello-9rr-dependance-2021.html">Pello, 9RR, dépendance, 2021</a>
+      <a class="project-item group-first" id="project-mauro-sabater-2020" href="mauro-sabater-2020.html">Mauro, Sabater, pergola, 2020</a>
+      <a class="project-item group-last" id="project-mauro-sabater-2020-2" href="mauro-sabater-2020-2.html">Mauro, Sabater, pergola, 2020</a>
+      <a class="project-item group-first" id="project-abri-2020" href="abri-2020.html">David Leininger, Abri, 2020</a>
+      <a class="project-item group-last" id="project-abri-2020-2" href="abri-2020-2.html">David Leininger, Abri, 2020</a>
+      <a class="project-item" id="project-nowatt-2020" href="nowatt-2020.html">Nowatt Lighting, Onyx, version bois, 2020</a>
     </nav>
 
   </main>
 
-  <!-- FOOTER (desktop uniquement) -->
+  <!-- Pied de page (ordinateur) : contact -->
   <footer class="footer">
-    <a href="https://www.victormauro.fr/" target="_blank" rel="noopener noreferrer">Victor Mauro</a>
-    <a href="mailto:contact@victormauro.fr">contact@victormauro.fr</a>
+    <a href="https://www.linkedin.com/in/victor-mauro/" target="_blank" rel="noopener noreferrer">Victor Mauro</a>
+      <a href="mailto:contact@victormauro.fr">contact@victormauro.fr</a>
   </footer>
 
-  <!-- JAVASCRIPT -->
-  <script>
-    // ==================== CONFIGURATION ====================
-    const CONFIG = {
-      jsonUrl: './projects.json',
-      jsonUrlFallback: 'https://visuvisu.fr/projects.json',
-      fallbackData: {
-        projects: [
-          {
-            id: "chelles_2022",
-            title: "Emmanuelle Lainé, Gare de Chelles, 2022",
-            image: "images/projets/chelles-2022-01.webp",
-            image_hover: "images/projets/chelles-2022-02.webp",
-            interaction: "toggle"
-          }
-        ]
-      },
-      
-      // PRÉCHARGEMENT EN ARRIÈRE-PLAN
-      // 'conservative' : Précharge 3 projets suivants (recommandé)
-      // 'aggressive' : Précharge 5 projets suivants
-      // 'all' : Précharge tous les projets
-      preloadStrategy: 'conservative',
-      
-      // OPTIMISATION CLOUDINARY (images 70% plus légères)
-      enableCloudinaryOptimization: true
-    };
-
-    // ==================== ÉTAT ====================
-    let projects = [];
-    let currentProject = null;
-    let isZoomed = false;
-    let isUnzoomed = false;
-    let preloadQueue = [];
-    let isPreloading = false;
-    let preloadedUrls = new Set();
-    let mobileInteractionActive = false; // État du tap toggle mobile
-
-    // ==================== TOGGLE MOBILE ====================
-    function toggleMobileInteraction() {
-      if (!currentProject || window.innerWidth > 479) return;
-      
-      const wrapper = document.getElementById('imageWrapper');
-      if (!wrapper) return;
-      
-      const interaction = currentProject.interaction;
-      if (!interaction || interaction === '3d') return; // 3D garde son comportement par défaut
-      
-      if (!mobileInteractionActive) {
-        // ACTIVER : Afficher le média alternatif
-        mobileInteractionActive = true;
-        
-        if (interaction === 'zoom') {
-          // Afficher le média zoomé
-          const hasZoomedVideo = !!currentProject.video_zoomed;
-          const hasZoomedImage = !!currentProject.image_zoomed;
-          const currentVideo = currentProject.video;
-          const currentImage = currentProject.image;
-          
-          // Vérifier si même URL (pas besoin de recréer)
-          if (hasZoomedVideo && currentProject.video_zoomed === currentVideo) {
-            // Même vidéo, ne rien faire (déjà affichée)
-            mobileInteractionActive = false;
-            return;
-          }
-          if (hasZoomedImage && currentProject.image_zoomed === currentImage) {
-            // Même image, ne rien faire (déjà affichée)
-            mobileInteractionActive = false;
-            return;
-          }
-          
-          if (hasZoomedVideo) {
-            wrapper.innerHTML = `<video src="${optimizeCloudinaryUrl(currentProject.video_zoomed)}" 
-                                        class="main-image" 
-                                        preload="auto"
-                                        autoplay loop muted playsinline
-                                        aria-label="Visualisation 3D - ${currentProject.title}"></video>`;
-          } else if (hasZoomedImage) {
-            wrapper.innerHTML = `<img src="${optimizeCloudinaryUrl(currentProject.image_zoomed)}" 
-                                      class="main-image" 
-                                      alt="Visualisation 3D - ${currentProject.title} par Victor Mauro - Visu Visu"
-                                      loading="lazy"
-                                      style="opacity: 0;">`;
-            wrapper.style.backgroundImage = `url(${optimizeCloudinaryUrl(currentProject.image_zoomed)})`;
-          } else {
-            // Pas de média zoomé spécifique, ne rien faire
-            mobileInteractionActive = false;
-            return;
-          }
-        } else if (interaction === 'unzoom') {
-          // Afficher le média normal (dézoomé)
-          const hasDefaultVideo = !!currentProject.video;
-          const hasDefaultImage = !!currentProject.image;
-          const currentZoomedVideo = currentProject.video_zoomed;
-          const currentZoomedImage = currentProject.image_zoomed;
-          
-          // Vérifier si même URL (pas besoin de recréer)
-          if (hasDefaultVideo && currentProject.video === currentZoomedVideo) {
-            // Même vidéo, ne rien faire
-            mobileInteractionActive = false;
-            return;
-          }
-          if (hasDefaultImage && currentProject.image === currentZoomedImage) {
-            // Même image, ne rien faire
-            mobileInteractionActive = false;
-            return;
-          }
-          
-          if (hasDefaultVideo) {
-            wrapper.innerHTML = `<video src="${optimizeCloudinaryUrl(currentProject.video)}" 
-                                        class="main-image" 
-                                        preload="auto"
-                                        autoplay loop muted playsinline
-                                        aria-label="Visualisation 3D - ${currentProject.title}"></video>`;
-          } else if (hasDefaultImage) {
-            wrapper.innerHTML = `<img src="${optimizeCloudinaryUrl(currentProject.image)}" 
-                                      class="main-image" 
-                                      alt="Visualisation 3D - ${currentProject.title} par Victor Mauro - Visu Visu"
-                                      loading="lazy"
-                                      style="opacity: 0;">`;
-            wrapper.style.backgroundImage = `url(${optimizeCloudinaryUrl(currentProject.image)})`;
-          }
-        } else if (interaction === 'toggle') {
-          // Afficher le média hover
-          const hasHoverVideo = !!currentProject.video_hover;
-          const hasHoverImage = !!currentProject.image_hover;
-          const currentVideo = currentProject.video;
-          const currentImage = currentProject.image;
-          
-          // Vérifier si même URL (pas besoin de recréer)
-          if (hasHoverVideo && currentProject.video_hover === currentVideo) {
-            // Même vidéo, ne rien faire
-            mobileInteractionActive = false;
-            return;
-          }
-          if (hasHoverImage && currentProject.image_hover === currentImage) {
-            // Même image, ne rien faire
-            mobileInteractionActive = false;
-            return;
-          }
-          
-          if (hasHoverVideo) {
-            wrapper.innerHTML = `<video src="${optimizeCloudinaryUrl(currentProject.video_hover)}" 
-                                        class="main-image" 
-                                        preload="auto"
-                                        autoplay loop muted playsinline
-                                        aria-label="Visualisation 3D - ${currentProject.title}"></video>`;
-          } else if (hasHoverImage) {
-            wrapper.innerHTML = `<img src="${optimizeCloudinaryUrl(currentProject.image_hover)}" 
-                                      class="main-image" 
-                                      alt="Visualisation 3D - ${currentProject.title} par Victor Mauro - Visu Visu"
-                                      loading="lazy"
-                                      style="opacity: 0;">`;
-            wrapper.style.backgroundImage = `url(${optimizeCloudinaryUrl(currentProject.image_hover)})`;
-          }
-        }
-        
-        // Réattacher l'event listener
-        wrapper.removeEventListener('click', toggleMobileInteraction);
-        setTimeout(() => {
-          wrapper.addEventListener('click', toggleMobileInteraction);
-        }, 100);
-        
-      } else {
-        // DÉSACTIVER : Retour au média par défaut
-        mobileInteractionActive = false;
-        displayImage(); // Réafficher le média par défaut
-      }
-    }
-
-    // ==================== OPTIMISATION CLOUDINARY ====================
-    function optimizeCloudinaryUrl(url) {
-      if (!CONFIG.enableCloudinaryOptimization || !url) return url;
-      
-      if (url.includes('cloudinary.com') && url.includes('/upload/')) {
-        return url.replace('/upload/', '/upload/f_auto,q_auto,dpr_auto/');
-      }
-      
-      return url;
-    }
-
-    // ==================== PRÉCHARGEMENT EN ARRIÈRE-PLAN ====================
-    function extractAllImageUrls() {
-      const urls = [];
-      
-      projects.forEach(project => {
-        ['image', 'image_default', 'image_hover', 'image_zoomed', 
-         'video', 'video_default', 'video_hover', 'video_zoomed'].forEach(key => {
-          if (project[key]) {
-            urls.push(optimizeCloudinaryUrl(project[key]));
-          }
-        });
-      });
-      
-      return urls;
-    }
-
-    function isVideoUrl(url) {
-      return url.toLowerCase().match(/\.(mp4|webm|ogg|mov)$/);
-    }
-
-    function preloadImage(url) {
-      return new Promise((resolve) => {
-        if (preloadedUrls.has(url)) {
-          resolve();
-          return;
-        }
-        
-        // Détecter si c'est une vidéo ou une image
-        if (isVideoUrl(url)) {
-          // Précharger vidéo
-          const video = document.createElement('video');
-          video.preload = 'auto';
-          video.muted = true;
-          video.playsInline = true;
-          
-          video.onloadeddata = () => {
-            preloadedUrls.add(url);
-            resolve();
-          };
-          video.onerror = () => {
-            resolve();
-          };
-          
-          video.src = url;
-        } else {
-          // Précharger image
-          const img = new Image();
-          img.onload = () => {
-            preloadedUrls.add(url);
-            resolve();
-          };
-          img.onerror = () => {
-            resolve();
-          };
-          img.src = url;
-        }
-      });
-    }
-
-    async function preloadImagesInBackground() {
-      if (isPreloading || preloadQueue.length === 0) return;
-      
-      isPreloading = true;
-      
-      let batchSize = 1;
-      let delay = 100;
-      
-      if (CONFIG.preloadStrategy === 'aggressive') {
-        batchSize = 3;
-        delay = 50;
-      } else if (CONFIG.preloadStrategy === 'all') {
-        batchSize = 5;
-        delay = 0;
-      }
-      
-      while (preloadQueue.length > 0) {
-        const batch = preloadQueue.splice(0, batchSize);
-        await Promise.all(batch.map(url => preloadImage(url)));
-        
-        if (delay > 0 && preloadQueue.length > 0) {
-          await new Promise(resolve => setTimeout(resolve, delay));
-        }
-      }
-      
-      isPreloading = false;
-      console.log('✅ Préchargement terminé');
-    }
-
-    function startPreloading() {
-      const allUrls = extractAllImageUrls();
-      
-      if (allUrls.length === 0) return;
-      
-      const currentIndex = projects.findIndex(p => p.id === currentProject?.id);
-      const priorityCount = CONFIG.preloadStrategy === 'aggressive' ? 5 : 3;
-      
-      const priorityUrls = [];
-      for (let i = 1; i <= priorityCount && currentIndex + i < projects.length; i++) {
-        const project = projects[currentIndex + i];
-        ['image', 'image_default', 'image_hover', 'image_zoomed',
-         'video', 'video_default', 'video_hover', 'video_zoomed'].forEach(key => {
-          if (project[key]) {
-            const url = optimizeCloudinaryUrl(project[key]);
-            if (!preloadedUrls.has(url)) {
-              priorityUrls.push(url);
-            }
-          }
-        });
-      }
-      
-      const remainingUrls = allUrls.filter(url => 
-        !preloadedUrls.has(url) && !priorityUrls.includes(url)
-      );
-      
-      preloadQueue = [...priorityUrls, ...remainingUrls];
-      
-      console.log(`🚀 Préchargement : ${preloadQueue.length} images`);
-      
-      preloadImagesInBackground();
-    }
-
-    // ==================== MENU MOBILE ====================
-    function initMenu() {
-      const logoToggle = document.getElementById('logoToggle');
-      const menuContent = document.getElementById('menuContent');
-      
-      logoToggle.addEventListener('click', () => {
-        if (window.innerWidth <= 991) {
-          menuContent.classList.toggle('open');
-        }
-      });
-
-      menuContent.addEventListener('click', (e) => {
-        if (e.target.tagName === 'A') {
-          menuContent.classList.remove('open');
-        }
-      });
-    }
-
-    // ==================== CHARGEMENT DONNÉES ====================
-    async function loadData() {
-      try {
-        let response = await fetch(CONFIG.jsonUrl);
-        
-        if (!response.ok) {
-          console.log('📡 Tentative avec URL fallback...');
-          response = await fetch(CONFIG.jsonUrlFallback);
-        }
-        
-        if (response.ok) {
-          const data = await response.json();
-          projects = data.projects;
-          console.log('✅ Projets chargés depuis JSON');
-        } else {
-          throw new Error('Échec de chargement du JSON');
-        }
-      } catch (error) {
-        console.log('📦 Données de test chargées');
-        projects = CONFIG.fallbackData.projects;
-      }
-      
-      render();
-      
-      setTimeout(() => {
-        startPreloading();
-      }, 500);
-    }
-
-    // ==================== RENDU ====================
-    function render() {
-      renderProjectsList();
-      if (projects.length > 0) {
-        const randomIndex = Math.floor(Math.random() * projects.length);
-        selectProject(projects[randomIndex].id);
-        
-        // Auto-scroll vers le projet sélectionné au chargement initial (instantané)
-        setTimeout(() => {
-          const activeItem = document.querySelector('.project-item.active');
-          if (activeItem) {
-            activeItem.scrollIntoView({ behavior: 'instant', block: 'center' });
-          }
-        }, 100);
-      }
-    }
-
-    function renderProjectsList() {
-      const html = projects.map((p, index) => {
-        const prevProject = index > 0 ? projects[index - 1] : null;
-        const nextProject = index < projects.length - 1 ? projects[index + 1] : null;
-        
-        const hasSameGroupPrev = prevProject && p.group && p.group === prevProject.group;
-        const hasSameGroupNext = nextProject && p.group && p.group === nextProject.group;
-        
-        let groupClass = '';
-        
-        if (p.group) {
-          if (!hasSameGroupPrev && hasSameGroupNext) {
-            groupClass = 'group-first';
-          } else if (hasSameGroupPrev && hasSameGroupNext) {
-            groupClass = 'group-middle';
-          } else if (hasSameGroupPrev && !hasSameGroupNext) {
-            groupClass = 'group-last';
-          }
-        }
-        
-        return `
-          <div class="project-item ${groupClass}" 
-               id="project-${p.id}"
-               onclick="selectProject('${p.id}')">
-            ${p.title}
-          </div>
-        `;
-      }).join('');
-      
-      document.getElementById('projectsList').innerHTML = html;
-    }
-
-    // ==================== SÉLECTION PROJET ====================
-    function selectProject(id) {
-      currentProject = projects.find(p => p.id === id);
-      if (!currentProject) return;
-      
-      isZoomed = false;
-      isUnzoomed = false;
-      
-      document.querySelectorAll('.project-item').forEach(el => {
-        el.classList.toggle('active', el.id === `project-${id}`);
-      });
-      
-      displayImage();
-      
-      if (!isPreloading && preloadQueue.length > 0) {
-        startPreloading();
-      }
-    }
-
-    // ==================== AFFICHAGE IMAGE ====================
-    function displayImage() {
-      const wrapper = document.getElementById('imageWrapper');
-      const isMobile = window.innerWidth <= 479;
-      
-      if (isMobile) {
-        // Sur mobile : afficher le média PAR DÉFAUT selon l'interaction
-        const videoUrl = currentProject.video;
-        const imageUrl = currentProject.image;
-        const model3dUrl = currentProject.model_3d;
-        
-        wrapper.style.backgroundImage = 'none';
-        mobileInteractionActive = false; // Reset de l'état
-        
-        if (model3dUrl) {
-          // Support du viewer 3D sur mobile
-          wrapper.innerHTML = `<model-viewer 
-                                  src="${optimizeCloudinaryUrl(model3dUrl)}" 
-                                  alt="Visualisation 3D - ${currentProject.title}"
-                                  camera-controls 
-                                  touch-action="pan-y"
-                                  auto-rotate
-                                  shadow-intensity="1"
-                                  ar></model-viewer>`;
-        } else if (currentProject.interaction === 'unzoom') {
-          // Pour UNZOOM : afficher le média ZOOMÉ par défaut
-          const zoomedVideoUrl = currentProject.video_zoomed;
-          const zoomedImageUrl = currentProject.image_zoomed;
-          
-          if (zoomedVideoUrl) {
-            wrapper.innerHTML = `<video src="${optimizeCloudinaryUrl(zoomedVideoUrl)}" 
-                                        class="main-image" 
-                                        preload="auto"
-                                        autoplay loop muted playsinline
-                                        aria-label="Visualisation 3D - ${currentProject.title}"></video>`;
-          } else if (zoomedImageUrl) {
-            wrapper.style.backgroundImage = `url(${optimizeCloudinaryUrl(zoomedImageUrl)})`;
-            wrapper.innerHTML = `<img src="${optimizeCloudinaryUrl(zoomedImageUrl)}" 
-                                      class="main-image" 
-                                      alt="Visualisation 3D - ${currentProject.title} par Victor Mauro - Visu Visu"
-                                      loading="lazy"
-                                      style="opacity: 0;">`;
-          } else if (videoUrl) {
-            // Fallback : utiliser le média normal
-            wrapper.innerHTML = `<video src="${optimizeCloudinaryUrl(videoUrl)}" 
-                                        class="main-image" 
-                                        preload="auto"
-                                        autoplay loop muted playsinline
-                                        aria-label="Visualisation 3D - ${currentProject.title}"></video>`;
-          } else if (imageUrl) {
-            wrapper.style.backgroundImage = `url(${optimizeCloudinaryUrl(imageUrl)})`;
-            wrapper.innerHTML = `<img src="${optimizeCloudinaryUrl(imageUrl)}" 
-                                      class="main-image" 
-                                      alt="Visualisation 3D - ${currentProject.title} par Victor Mauro - Visu Visu"
-                                      loading="lazy"
-                                      style="opacity: 0;">`;
-          }
-        } else if (videoUrl) {
-          // Pour ZOOM et TOGGLE : afficher le média normal
-          wrapper.innerHTML = `<video src="${optimizeCloudinaryUrl(videoUrl)}" 
-                                      class="main-image" 
-                                      preload="auto"
-                                      autoplay loop muted playsinline
-                                      aria-label="Visualisation 3D - ${currentProject.title}"></video>`;
-        } else if (imageUrl) {
-          wrapper.style.backgroundImage = `url(${optimizeCloudinaryUrl(imageUrl)})`;
-          wrapper.innerHTML = `<img src="${optimizeCloudinaryUrl(imageUrl)}" 
-                                    class="main-image" 
-                                    alt="Visualisation 3D - ${currentProject.title} par Victor Mauro - Visu Visu"
-                                    loading="lazy"
-                                    style="opacity: 0;">`;
-        }
-        
-        // Ajouter le tap toggle si interaction présente (sauf 3D)
-        const hasInteraction = currentProject.interaction && 
-                               currentProject.interaction !== '3d' &&
-                               (currentProject.interaction === 'zoom' || 
-                                currentProject.interaction === 'unzoom' || 
-                                currentProject.interaction === 'toggle');
-        
-        if (hasInteraction) {
-          // Retirer les anciens listeners
-          wrapper.removeEventListener('click', toggleMobileInteraction);
-          // Ajouter le nouveau
-          wrapper.addEventListener('click', toggleMobileInteraction);
-        }
-      } else {
-        wrapper.style.backgroundImage = 'none';
-        
-        if (currentProject.interaction === 'zoom') {
-          const hasDefaultVideo = !!currentProject.video;
-          const hasDefaultImage = !!currentProject.image;
-          
-          if (hasDefaultVideo) {
-            wrapper.innerHTML = `<video src="${optimizeCloudinaryUrl(currentProject.video)}" 
-                                        id="mainImage"
-                                        class="main-image zoomable" 
-                                        preload="auto"
-                                        autoplay loop muted playsinline
-                                        aria-label="Visualisation 3D - ${currentProject.title}"></video>`;
-          } else if (hasDefaultImage) {
-            wrapper.innerHTML = `<img src="${optimizeCloudinaryUrl(currentProject.image)}" 
-                                      id="mainImage"
-                                      class="main-image zoomable" 
-                                      alt="Visualisation 3D - ${currentProject.title} par Victor Mauro - Visu Visu"
-                                      loading="lazy">`;
-          }
-          initZoomBehavior();
-          
-        } else if (currentProject.interaction === 'unzoom') {
-          const hasZoomedVideo = !!currentProject.video_zoomed;
-          const hasZoomedImage = !!currentProject.image_zoomed;
-          const hasDefaultVideo = !!currentProject.video;
-          const hasDefaultImage = !!currentProject.image;
-          
-          if (hasZoomedVideo) {
-            wrapper.innerHTML = `<video src="${optimizeCloudinaryUrl(currentProject.video_zoomed)}" 
-                                        id="mainImage"
-                                        class="main-image zoomed" 
-                                        preload="auto"
-                                        autoplay loop muted playsinline
-                                        aria-label="Visualisation 3D - ${currentProject.title}"></video>`;
-          } else if (hasZoomedImage) {
-            wrapper.innerHTML = `<img src="${optimizeCloudinaryUrl(currentProject.image_zoomed)}" 
-                                      id="mainImage"
-                                      class="main-image zoomed" 
-                                      alt="Visualisation 3D - ${currentProject.title} par Victor Mauro - Visu Visu"
-                                      loading="lazy">`;
-          } else if (hasDefaultVideo) {
-            // Fallback : utiliser la vidéo par défaut en mode zoomed
-            wrapper.innerHTML = `<video src="${optimizeCloudinaryUrl(currentProject.video)}" 
-                                        id="mainImage"
-                                        class="main-image zoomed" 
-                                        preload="auto"
-                                        autoplay loop muted playsinline
-                                        aria-label="Visualisation 3D - ${currentProject.title}"></video>`;
-          } else if (hasDefaultImage) {
-            // Fallback : utiliser l'image par défaut en mode zoomed
-            wrapper.innerHTML = `<img src="${optimizeCloudinaryUrl(currentProject.image)}" 
-                                      id="mainImage"
-                                      class="main-image zoomed" 
-                                      alt="Visualisation 3D - ${currentProject.title} par Victor Mauro - Visu Visu"
-                                      loading="lazy">`;
-          }
-          initUnzoomBehavior();
-          
-        } else if (currentProject.interaction === 'toggle') {
-          if (currentProject.video) {
-            wrapper.innerHTML = `<video src="${optimizeCloudinaryUrl(currentProject.video)}" 
-                                        id="mainImage"
-                                        class="main-image" 
-                                        preload="auto"
-                                        autoplay loop muted playsinline
-                                        aria-label="Visualisation 3D - ${currentProject.title}"></video>`;
-          } else {
-            wrapper.innerHTML = `<img src="${optimizeCloudinaryUrl(currentProject.image)}" 
-                                      id="mainImage"
-                                      class="main-image" 
-                                      alt="Visualisation 3D - ${currentProject.title} par Victor Mauro - Visu Visu"
-                                      loading="lazy">`;
-          }
-          initToggleBehavior();
-          
-        } else if (currentProject.interaction === '3d') {
-          wrapper.innerHTML = `<model-viewer 
-                                  src="${optimizeCloudinaryUrl(currentProject.model_3d)}" 
-                                  alt="Visualisation 3D - ${currentProject.title}"
-                                  camera-controls 
-                                  touch-action="pan-y"
-                                  auto-rotate
-                                  shadow-intensity="1"
-                                  ar></model-viewer>`;
-          
-        } else {
-          const mediaUrl = currentProject.video || currentProject.image;
-          if (currentProject.video) {
-            wrapper.innerHTML = `<video src="${optimizeCloudinaryUrl(mediaUrl)}" 
-                                        id="mainImage"
-                                        class="main-image" 
-                                        preload="auto"
-                                        autoplay loop muted playsinline
-                                        aria-label="Visualisation 3D - ${currentProject.title}"></video>`;
-          } else {
-            wrapper.innerHTML = `<img src="${optimizeCloudinaryUrl(mediaUrl)}" 
-                                      id="mainImage"
-                                      class="main-image" 
-                                      alt="Visualisation 3D - ${currentProject.title} par Victor Mauro - Visu Visu"
-                                      loading="lazy">`;
-          }
-        }
-      }
-    }
-
-    // ==================== ZOOM ====================
-    function initZoomBehavior() {
-      const wrapper = document.getElementById('imageWrapper');
-      const container = document.querySelector('.main-content');
-      
-      wrapper.addEventListener('mouseenter', () => activateZoom(container));
-      wrapper.addEventListener('mouseleave', () => deactivateZoom(container));
-    }
-
-    function activateZoom(container) {
-      if (!currentProject || currentProject.interaction !== 'zoom') return;
-      if (window.innerWidth <= 479) return;
-      if (isZoomed) return;
-      
-      const wrapper = document.getElementById('imageWrapper');
-      const oldMedia = document.getElementById('mainImage');
-      if (!oldMedia) return;
-      
-      isZoomed = true;
-      container.classList.add('zoomed');
-      
-      // Déterminer quel média DOIT être affiché au zoom (priorité)
-      const hasZoomedVideo = !!currentProject.video_zoomed;
-      const hasZoomedImage = !!currentProject.image_zoomed;
-      const hasDefaultVideo = !!currentProject.video;
-      const hasDefaultImage = !!currentProject.image;
-      
-      let targetIsVideo, targetUrl;
-      
-      if (hasZoomedVideo) {
-        targetIsVideo = true;
-        targetUrl = currentProject.video_zoomed;
-      } else if (hasZoomedImage) {
-        targetIsVideo = false;
-        targetUrl = currentProject.image_zoomed;
-      } else if (hasDefaultVideo) {
-        targetIsVideo = true;
-        targetUrl = currentProject.video;
-      } else {
-        targetIsVideo = false;
-        targetUrl = currentProject.image;
-      }
-      
-      // Comparer avec le média ACTUEL
-      const currentIsVideo = oldMedia.tagName === 'VIDEO';
-      const currentUrl = currentIsVideo ? currentProject.video : currentProject.image;
-      
-      // Si même type ET même URL → Optimisation : juste CSS
-      if (currentIsVideo === targetIsVideo && currentUrl === targetUrl) {
-        oldMedia.classList.add('zoomed');
-      } else {
-        // Types ou URLs différents → Recréer l'élément
-        if (targetIsVideo) {
-          wrapper.innerHTML = `<video src="${optimizeCloudinaryUrl(targetUrl)}" 
-                                      id="mainImage"
-                                      class="main-image zoomed" 
-                                      preload="auto"
-                                      autoplay loop muted playsinline
-                                      aria-label="Visualisation 3D - ${currentProject.title}"></video>`;
-        } else {
-          wrapper.innerHTML = `<img src="${optimizeCloudinaryUrl(targetUrl)}" 
-                                    id="mainImage"
-                                    class="main-image zoomed" 
-                                    alt="Visualisation 3D - ${currentProject.title} par Victor Mauro - Visu Visu"
-                                    loading="lazy">`;
-        }
-      }
-    }
-
-    function deactivateZoom(container) {
-      if (!isZoomed) return;
-      
-      const wrapper = document.getElementById('imageWrapper');
-      const media = document.getElementById('mainImage');
-      
-      isZoomed = false;
-      container.classList.remove('zoomed');
-      
-      if (!media) return;
-      
-      // Déterminer quel média était zoomé et quel est le défaut
-      const hasZoomedVideo = !!currentProject.video_zoomed;
-      const hasZoomedImage = !!currentProject.image_zoomed;
-      const hasDefaultVideo = !!currentProject.video;
-      const hasDefaultImage = !!currentProject.image;
-      
-      let targetIsVideo, targetUrl;
-      
-      // Le média cible est le média PAR DÉFAUT
-      if (hasDefaultVideo) {
-        targetIsVideo = true;
-        targetUrl = currentProject.video;
-      } else if (hasDefaultImage) {
-        targetIsVideo = false;
-        targetUrl = currentProject.image;
-      } else if (hasZoomedVideo) {
-        targetIsVideo = true;
-        targetUrl = currentProject.video_zoomed;
-      } else {
-        targetIsVideo = false;
-        targetUrl = currentProject.image_zoomed;
-      }
-      
-      // Comparer avec le média ACTUEL
-      const currentIsVideo = media.tagName === 'VIDEO';
-      const currentUrl = currentIsVideo 
-        ? (currentProject.video_zoomed || currentProject.video)
-        : (currentProject.image_zoomed || currentProject.image);
-      
-      // Si même type ET même URL → Optimisation : juste CSS
-      if (currentIsVideo === targetIsVideo && currentUrl === targetUrl) {
-        media.classList.remove('zoomed');
-        media.classList.add('zoomable');
-      } else {
-        // Types ou URLs différents → Recréer l'élément
-        if (targetIsVideo) {
-          wrapper.innerHTML = `<video src="${optimizeCloudinaryUrl(targetUrl)}" 
-                                      id="mainImage"
-                                      class="main-image zoomable" 
-                                      preload="auto"
-                                      autoplay loop muted playsinline
-                                      aria-label="Visualisation 3D - ${currentProject.title}"></video>`;
-        } else {
-          wrapper.innerHTML = `<img src="${optimizeCloudinaryUrl(targetUrl)}" 
-                                    id="mainImage"
-                                    class="main-image zoomable" 
-                                    alt="Visualisation 3D - ${currentProject.title} par Victor Mauro - Visu Visu"
-                                    loading="lazy">`;
-        }
-        
-        initZoomBehavior();
-      }
-    }
-
-    // ==================== UNZOOM ====================
-    function initUnzoomBehavior() {
-      const wrapper = document.getElementById('imageWrapper');
-      const container = document.querySelector('.main-content');
-      container.classList.add('zoomed');
-      
-      wrapper.addEventListener('mouseenter', () => activateUnzoom(container));
-      wrapper.addEventListener('mouseleave', () => deactivateUnzoom(container));
-    }
-
-    function activateUnzoom(container) {
-      if (!currentProject || currentProject.interaction !== 'unzoom') return;
-      if (window.innerWidth <= 479) return;
-      if (isUnzoomed) return;
-      
-      const wrapper = document.getElementById('imageWrapper');
-      const oldMedia = document.getElementById('mainImage');
-      if (!oldMedia) return;
-      
-      isUnzoomed = true;
-      container.classList.remove('zoomed');
-      container.classList.add('unzoomed');
-      
-      // Pour unzoom : afficher le média NORMAL au hover
-      const hasDefaultVideo = !!currentProject.video;
-      const hasDefaultImage = !!currentProject.image;
-      const hasZoomedVideo = !!currentProject.video_zoomed;
-      const hasZoomedImage = !!currentProject.image_zoomed;
-      
-      let targetIsVideo, targetUrl;
-      
-      if (hasDefaultVideo) {
-        targetIsVideo = true;
-        targetUrl = currentProject.video;
-      } else if (hasDefaultImage) {
-        targetIsVideo = false;
-        targetUrl = currentProject.image;
-      } else if (hasZoomedVideo) {
-        targetIsVideo = true;
-        targetUrl = currentProject.video_zoomed;
-      } else {
-        targetIsVideo = false;
-        targetUrl = currentProject.image_zoomed;
-      }
-      
-      // Comparer avec le média ACTUEL (qui est zoomé)
-      const currentIsVideo = oldMedia.tagName === 'VIDEO';
-      const currentUrl = currentIsVideo 
-        ? (currentProject.video_zoomed || currentProject.video)
-        : (currentProject.image_zoomed || currentProject.image);
-      
-      // Si même type ET même URL → Optimisation : juste CSS
-      if (currentIsVideo === targetIsVideo && currentUrl === targetUrl) {
-        oldMedia.classList.remove('zoomed');
-        oldMedia.classList.add('unzoomed');
-      } else {
-        // Types ou URLs différents → Recréer l'élément
-        if (targetIsVideo) {
-          wrapper.innerHTML = `<video src="${optimizeCloudinaryUrl(targetUrl)}" 
-                                      id="mainImage"
-                                      class="main-image unzoomed" 
-                                      preload="auto"
-                                      autoplay loop muted playsinline
-                                      aria-label="Visualisation 3D - ${currentProject.title}"></video>`;
-        } else {
-          wrapper.innerHTML = `<img src="${optimizeCloudinaryUrl(targetUrl)}" 
-                                    id="mainImage"
-                                    class="main-image unzoomed" 
-                                    alt="Visualisation 3D - ${currentProject.title} par Victor Mauro - Visu Visu"
-                                    loading="lazy">`;
-        }
-      }
-    }
-
-    function deactivateUnzoom(container) {
-      if (!isUnzoomed) return;
-      
-      const wrapper = document.getElementById('imageWrapper');
-      const media = document.getElementById('mainImage');
-      
-      isUnzoomed = false;
-      container.classList.remove('unzoomed');
-      container.classList.add('zoomed');
-      
-      if (!media) return;
-      
-      // Pour unzoom : revenir au média ZOOMÉ (affiché par défaut)
-      const hasDefaultVideo = !!currentProject.video;
-      const hasDefaultImage = !!currentProject.image;
-      const hasZoomedVideo = !!currentProject.video_zoomed;
-      const hasZoomedImage = !!currentProject.image_zoomed;
-      
-      let targetIsVideo, targetUrl;
-      
-      if (hasZoomedVideo) {
-        targetIsVideo = true;
-        targetUrl = currentProject.video_zoomed;
-      } else if (hasZoomedImage) {
-        targetIsVideo = false;
-        targetUrl = currentProject.image_zoomed;
-      } else if (hasDefaultVideo) {
-        targetIsVideo = true;
-        targetUrl = currentProject.video;
-      } else {
-        targetIsVideo = false;
-        targetUrl = currentProject.image;
-      }
-      
-      // Comparer avec le média ACTUEL (qui est normal/unzoomed)
-      const currentIsVideo = media.tagName === 'VIDEO';
-      const currentUrl = currentIsVideo 
-        ? (currentProject.video || currentProject.video_zoomed)
-        : (currentProject.image || currentProject.image_zoomed);
-      
-      // Si même type ET même URL → Optimisation : juste CSS
-      if (currentIsVideo === targetIsVideo && currentUrl === targetUrl) {
-        media.classList.remove('unzoomed');
-        media.classList.add('zoomed');
-      } else {
-        // Types ou URLs différents → Recréer l'élément
-        if (targetIsVideo) {
-          wrapper.innerHTML = `<video src="${optimizeCloudinaryUrl(targetUrl)}" 
-                                      id="mainImage"
-                                      class="main-image zoomed" 
-                                      preload="auto"
-                                      autoplay loop muted playsinline
-                                      aria-label="Visualisation 3D - ${currentProject.title}"></video>`;
-        } else {
-          wrapper.innerHTML = `<img src="${optimizeCloudinaryUrl(targetUrl)}" 
-                                    id="mainImage"
-                                    class="main-image zoomed" 
-                                    alt="Visualisation 3D - ${currentProject.title} par Victor Mauro - Visu Visu"
-                                    loading="lazy">`;
-        }
-        
-        initUnzoomBehavior();
-      }
-    }
-
-    // ==================== TOGGLE ====================
-    function initToggleBehavior() {
-      const wrapper = document.getElementById('imageWrapper');
-      
-      wrapper.addEventListener('mouseenter', showHoverMedia);
-      wrapper.addEventListener('mouseleave', showDefaultMedia);
-    }
-
-    function showHoverMedia() {
-      if (!currentProject || currentProject.interaction !== 'toggle') return;
-      if (window.innerWidth <= 479) return;
-      
-      const media = document.getElementById('mainImage');
-      if (!media) return;
-      
-      if (media.tagName === 'VIDEO' && currentProject.video_hover) {
-        media.src = optimizeCloudinaryUrl(currentProject.video_hover);
-      } else if (media.tagName === 'IMG' && currentProject.image_hover) {
-        media.src = optimizeCloudinaryUrl(currentProject.image_hover);
-      }
-    }
-
-    function showDefaultMedia() {
-      if (!currentProject || currentProject.interaction !== 'toggle') return;
-      
-      const media = document.getElementById('mainImage');
-      if (!media) return;
-      
-      if (media.tagName === 'VIDEO' && currentProject.video) {
-        media.src = optimizeCloudinaryUrl(currentProject.video);
-      } else if (media.tagName === 'IMG' && currentProject.image) {
-        media.src = optimizeCloudinaryUrl(currentProject.image);
-      }
-    }
-
-    // ==================== RESPONSIVE ====================
-    window.addEventListener('resize', () => {
-      if (currentProject) displayImage();
-      
-      if (window.innerWidth > 991) {
-        document.getElementById('menuContent').classList.remove('open');
-      }
-      
-      // Réinitialiser l'état mobile si on quitte le mode mobile
-      if (window.innerWidth > 479) {
-        mobileInteractionActive = false;
-        const wrapper = document.getElementById('imageWrapper');
-        if (wrapper) {
-          wrapper.removeEventListener('click', toggleMobileInteraction);
-        }
-      }
-    });
-
-    // ==================== INIT ====================
-    initMenu();
-    loadData();
-  </script>
-
+  <script type="application/json" id="donnees">{"langue":"fr","page":"accueil","accueil":{"onglet":"Visu Visu | Visualisation 3D & Rendu photoréaliste à Marseille"},"langues":{"fr":"./","en":"en/"},"vendor":{"modelViewer":"js/vendor/model-viewer/model-viewer.min.js?v=5ddfff66","draco":"js/vendor/draco/","basis":"js/vendor/basis/","three":"js/vendor/three/three.module.js?v=3f776a49","orbit":"js/vendor/three/addons/controls/OrbitControls.js","spark":"js/vendor/spark/spark.module.min.js?v=050d7405"},"projets":[{"id":"mejanes-2025","url":"mejanes-2025.html","titre":"Emmanuelle Lainé, Méjanes, 2025","onglet":"Emmanuelle Lainé, Méjanes, 2025 — fresque en trompe-l'œil | Visu Visu","interaction":"toggle","group":"mejanes","medias":{"images/projets/mejanes-2025-01.webp":{"alt":"Bâtiment de plain-pied au toit de tuiles, façade peinte en trompe-l'œil d'un atelier d'artiste, sous les platanes d'une cour en gravier avec bancs et passants","srcset":"images/projets/mejanes-2025-01-1000.webp 800w, images/projets/mejanes-2025-01.webp 1440w","sizes":"(max-width: 479px) 1440px, (max-width: 991px) min(100vw, 1440px), min(50vw, 1440px)"},"images/projets/mejanes-2025-02.webp":{"alt":"Détail de la façade : baie en pierre de taille peinte en trompe-l'œil d'un tronc de platane et d'étagères garnies de céramiques","srcset":"images/projets/mejanes-2025-02-1000.webp 800w, images/projets/mejanes-2025-02.webp 1440w","sizes":"(max-width: 479px) 1440px, (max-width: 991px) min(100vw, 1440px), min(50vw, 1440px)"}},"image":"images/projets/mejanes-2025-01.webp","image_hover":"images/projets/mejanes-2025-02.webp"},{"id":"protoclub-emt02-2025","url":"protoclub-emt02-2025.html","titre":"Protoclub, EMT_02, 2025","onglet":"Protoclub, EMT_02, 2025 — banc en profilés aluminium | Visu Visu","interaction":"zoom","group":"EMT","medias":{"images/projets/protoclub-emt02-2025-01.webp":{"alt":"Homme en t-shirt blanc assis sur un banc en profilés d'aluminium, dans une pièce sombre traversée par un rai de lumière"},"videos/protoclub-emt02-2025-02.mp4":{"alt":"Animation : un homme assis sur le banc EMT_02 se lève et s'éloigne, laissant le banc en profilés d'aluminium seul dans la lumière"}},"image":"images/projets/protoclub-emt02-2025-01.webp","video_zoomed":"videos/protoclub-emt02-2025-02.mp4"},{"id":"protoclub-emt01-2025","url":"protoclub-emt01-2025.html","titre":"Protoclub, EMT_01, 2025","onglet":"Protoclub, EMT_01, 2025 — chaise et banc en profilés aluminium | Visu Visu","interaction":"toggle","group":"EMT","medias":{"images/projets/protoclub-emt01-2025-01.webp":{"alt":"Chaise en profilés d'aluminium empilés, en clair-obscur sur fond noir"},"images/projets/protoclub-emt01-2025-02.webp":{"alt":"Banc deux places en profilés d'aluminium, éclairé par une lumière rasante"}},"image":"images/projets/protoclub-emt01-2025-01.webp","image_hover":"images/projets/protoclub-emt01-2025-02.webp"},{"id":"aimko-gs-2024","url":"aimko-gs-2024.html","titre":"Aimko.P, grand salon, 2024","onglet":"Aimko.P, grand salon, 2024 — architecture intérieure | Visu Visu","interaction":"zoom","group":"aimko_salon","medias":{"images/projets/aimko-gs-2024-01.webp":{"alt":"Salon tout en boiseries au plafond courbe, deux banquettes bouclées en arc de cercle face à face, tables de présentation éclairées par des lampes de bureau et niches lumineuses ambrées","srcset":"images/projets/aimko-gs-2024-01-1000.webp 1000w, images/projets/aimko-gs-2024-01.webp 1800w","sizes":"(max-width: 479px) 1800px, (max-width: 991px) min(max(100vw, 60vh * 2), 1800px), min(max(50vw, (100vh - 125px) * 2), 1800px)"}},"image":"images/projets/aimko-gs-2024-01.webp","image_zoomed":"images/projets/aimko-gs-2024-01.webp"},{"id":"aimko-ps-2023","url":"aimko-ps-2023.html","titre":"Aimko.P, petit salon, 2023","onglet":"Aimko.P, petit salon, 2023 — ambiances de nuit et de jour | Visu Visu","interaction":"toggle","group":"aimko_salon","medias":{"images/projets/aimko-ps-2023-01.webp":{"alt":"De nuit, salon rond sous un puits de lumière circulaire, vu à travers une cloison vitrée voilée de rideaux, canapé courbe et table basse en pierre","srcset":"images/projets/aimko-ps-2023-01-1000.webp 1000w, images/projets/aimko-ps-2023-01.webp 1778w","sizes":"(max-width: 479px) 1778px, (max-width: 991px) min(100vw, 1778px), min(50vw, 1778px)"},"images/projets/aimko-ps-2023-02.webp":{"alt":"Le même salon de jour, boiseries claires et vue sur les montagnes à travers la baie","srcset":"images/projets/aimko-ps-2023-02-1000.webp 1000w, images/projets/aimko-ps-2023-02.webp 1778w","sizes":"(max-width: 479px) 1778px, (max-width: 991px) min(100vw, 1778px), min(50vw, 1778px)"}},"image":"images/projets/aimko-ps-2023-01.webp","image_hover":"images/projets/aimko-ps-2023-02.webp"},{"id":"aimko-store-2023","url":"aimko-store-2023.html","titre":"Aimko.P, concept store, 2023","onglet":"Aimko.P, concept store, 2023 — aménagement de boutique | Visu Visu","interaction":"zoom","medias":{"images/projets/aimko-store-2023-01.webp":{"alt":"Concept store : t-shirts blancs sur portants en tubes d’acier, casquettes alignées sur un comptoir en béton, écrans et lumières vert fluo","srcset":"images/projets/aimko-store-2023-01-1000.webp 1000w, images/projets/aimko-store-2023-01.webp 1920w","sizes":"(max-width: 479px) 1920px, (max-width: 991px) min(max(100vw, 60vh * 1.7778), 1920px), min(max(50vw, (100vh - 125px) * 1.7778), 1920px)"}},"image":"images/projets/aimko-store-2023-01.webp","image_zoomed":"images/projets/aimko-store-2023-01.webp"},{"id":"bmt-2023","url":"bmt-2023.html","titre":"Atelier Aïno, BMT, avec Lambert David, 2023","onglet":"Atelier Aïno, BMT, 2023 — logements | Visu Visu","interaction":"zoom","medias":{"images/projets/bmt-2023-01.webp":{"alt":"Immeuble de logements de trois niveaux, socle en brique et claustras, galeries et balcons à structure bois, jardin où jouent des enfants sous des amandiers en fleurs","srcset":"images/projets/bmt-2023-01-1000.webp 1000w, images/projets/bmt-2023-01.webp 1600w","sizes":"(max-width: 479px) 1600px, (max-width: 991px) min(max(100vw, 60vh * 1.3333), 1600px), min(max(50vw, (100vh - 125px) * 1.3333), 1600px)"}},"image":"images/projets/bmt-2023-01.webp","image_zoomed":"images/projets/bmt-2023-01.webp"},{"id":"ctgp-55mpc-2023","url":"ctgp-55mpc-2023.html","titre":"CT&GP, 55MPC, 2023","onglet":"CT&GP, 55MPC, 2023 — salle de bain | Visu Visu","interaction":"zoom","medias":{"images/projets/ctgp-55mpc-2023-01.webp":{"alt":"Salle de bain en faïence bleue, baignoire à l’extrémité arrondie, miroir rond et appliques globes, vasque sur meuble orange, fenêtre ouverte sur des tours","srcset":"images/projets/ctgp-55mpc-2023-01-1000.webp 1000w, images/projets/ctgp-55mpc-2023-01.webp 1600w","sizes":"(max-width: 479px) 1600px, (max-width: 991px) min(max(100vw, 60vh * 1), 1600px), min(max(50vw, (100vh - 125px) * 1), 1600px)"}},"image":"images/projets/ctgp-55mpc-2023-01.webp","image_zoomed":"images/projets/ctgp-55mpc-2023-01.webp"},{"id":"sharjah-2022","url":"sharjah-2022.html","titre":"Atelier Philippe Parreno, Sharjah, 2022","onglet":"Atelier Philippe Parreno, Sharjah, 2022 — installation | Visu Visu","interaction":"zoom","medias":{"images/projets/sharjah-2022-01.webp":{"alt":"Paysage désertique avec arbres et pylône, sculptures en acier sur pieds tubulaires portant un disque violet, tache de lumière magenta au sol","srcset":"images/projets/sharjah-2022-01-1000.webp 1000w, images/projets/sharjah-2022-01.webp 1600w","sizes":"(max-width: 479px) 1600px, (max-width: 991px) min(max(100vw, 60vh * 1.5009), 1600px), min(max(50vw, (100vh - 125px) * 1.5009), 1600px)"}},"image":"images/projets/sharjah-2022-01.webp","image_zoomed":"images/projets/sharjah-2022-01.webp"},{"id":"enso-2022","url":"enso-2022.html","titre":"CT&GP, Enso, 2022","onglet":"CT&GP, Enso, 2022 — animation 3D | Visu Visu","interaction":"zoom","medias":{"videos/enso-2022-01.mp4":{"alt":"Animation : anneaux métalliques articulés qui pivotent les uns dans les autres sur fond noir, leur ombre circulaire projetée au sol"}},"video":"videos/enso-2022-01.mp4","video_zoomed":"videos/enso-2022-01.mp4"},{"id":"radar-2022","url":"radar-2022.html","titre":"Radar, Pulse, 64Hz, 2022","onglet":"Radar, Pulse, 64Hz, 2022 — luminaire | Visu Visu","interaction":"zoom","medias":{"images/projets/radar-2022-01.webp":{"alt":"Applique murale ronde et blanche au relief alvéolé, lumière au centre, sur un mur en béton brut au-dessus d’une banquette en bois","srcset":"images/projets/radar-2022-01-1000.webp 667w, images/projets/radar-2022-01.webp 1080w","sizes":"(max-width: 479px) 1080px, (max-width: 991px) min(max(100vw, 60vh * 0.6667), 1080px), min(max(50vw, (100vh - 125px) * 0.6667), 1080px)"}},"image":"images/projets/radar-2022-01.webp","image_zoomed":"images/projets/radar-2022-01.webp"},{"id":"chelles-2022","url":"chelles-2022.html","titre":"Emmanuelle Lainé, Gare de Chelles, 2022","onglet":"Emmanuelle Lainé, Gare de Chelles, 2022 — œuvre in situ | Visu Visu","interaction":"toggle","medias":{"images/projets/chelles-2022-01.webp":{"alt":"Homme âgé de dos devant un mur de pierre imprimé de bandes abstraites violettes, ocre et noires","srcset":"images/projets/chelles-2022-01-1000.webp 1000w, images/projets/chelles-2022-01.webp 1500w","sizes":"(max-width: 479px) 1500px, (max-width: 991px) min(100vw, 1500px), min(50vw, 1500px)"},"images/projets/chelles-2022-02.webp":{"alt":"Passage souterrain de la gare aux murs de pierre imprimés d’une foule de silhouettes dansantes, plafond en lattes de bois, voyageurs","srcset":"images/projets/chelles-2022-02-1000.webp 1000w, images/projets/chelles-2022-02.webp 1600w","sizes":"(max-width: 479px) 1600px, (max-width: 991px) min(100vw, 1600px), min(50vw, 1600px)"}},"image":"images/projets/chelles-2022-01.webp","image_hover":"images/projets/chelles-2022-02.webp"},{"id":"verandah-2022","url":"verandah-2022.html","titre":"CT&GP, Vérandah, 2022","onglet":"CT&GP, Vérandah, 2022 — pavillon | Visu Visu","interaction":"zoom","medias":{"images/projets/verandah-2022-01.webp":{"alt":"Pavillon en tubes d'acier courbés sous les pins, rideau de lamelles translucides vertes, bleues et ocre, bancs en bois courbes","srcset":"images/projets/verandah-2022-01-1000.webp 750w, images/projets/verandah-2022-01.webp 1200w","sizes":"(max-width: 479px) 1200px, (max-width: 991px) min(max(100vw, 60vh * 0.75), 1200px), min(max(50vw, (100vh - 125px) * 0.75), 1200px)"}},"image":"images/projets/verandah-2022-01.webp","image_zoomed":"images/projets/verandah-2022-01.webp"},{"id":"alpha-communica-2022","url":"alpha-communica-2022.html","titre":"Alpha Immo, Communica, 2022","onglet":"Alpha Immo, Communica, 2022 — immeuble de bureaux | Visu Visu","interaction":"toggle","group":"alpha_immo","medias":{"images/projets/alpha-communica-2022-01.webp":{"alt":"Contre-plongée sur un immeuble de bureaux aux façades blanches et vitrées, galerie vitrée inclinée au-dessus d’un porche, hautes colonnes blanches, immeubles anciens au fond"},"images/projets/alpha-communica-2022-02.webp":{"alt":"Le même immeuble depuis le parvis : façade blanche quadrillée de grandes fenêtres, entrée vitrée et colonnes","srcset":"images/projets/alpha-communica-2022-02-1000.webp 1000w, images/projets/alpha-communica-2022-02.webp 1500w","sizes":"(max-width: 479px) 1500px, (max-width: 991px) min(100vw, 1500px), min(50vw, 1500px)"}},"image":"images/projets/alpha-communica-2022-01.webp","image_hover":"images/projets/alpha-communica-2022-02.webp"},{"id":"alpha-hall-2022","url":"alpha-hall-2022.html","titre":"Alpha Immo, Communica, hall d'accueil, 2022","onglet":"Alpha Immo, Communica, hall d'accueil, 2022 — projet et chantier | Visu Visu","interaction":"toggle","group":"alpha_immo","medias":{"images/projets/alpha-hall-2022-01.webp":{"alt":"Rendu noir et blanc d'un hall d'accueil : banque d'accueil, plafond perforé de spots, grappe de suspensions noires devant de hautes baies, visiteurs sur une banquette"},"images/projets/alpha-hall-2022-02.webp":{"alt":"Photographie noir et blanc du même hall en chantier : cloisons en plaques de plâtre, échafaudage, échelle et bureau provisoire"}},"image":"images/projets/alpha-hall-2022-01.webp","image_hover":"images/projets/alpha-hall-2022-02.webp"},{"id":"mauro-rigaud-2022","url":"mauro-rigaud-2022.html","titre":"Mauro, Rigaud, salle de bain, 2022","onglet":"Mauro, Rigaud, salle de bain, 2022 — projet et relevé 3D | Visu Visu","interaction":"toggle","medias":{"images/projets/mauro-rigaud-2022-01.webp":{"alt":"Coupe 3D d’une salle de bain sous pente : douche à l’italienne en mosaïque et robinetterie laiton, meuble vasque en bois et pierre, rangements en bois cachant le lave-linge","srcset":"images/projets/mauro-rigaud-2022-01-1000.webp 1000w, images/projets/mauro-rigaud-2022-01.webp 1872w","sizes":"(max-width: 479px) 1872px, (max-width: 991px) min(100vw, 1872px), min(50vw, 1872px)"},"images/projets/mauro-rigaud-2022-02.webp":{"alt":"Relevé 3D de la salle de bain existante : carrelage beige, lavabo encombré, toilettes, chauffe-eau et lave-linge","srcset":"images/projets/mauro-rigaud-2022-02-1000.webp 1000w, images/projets/mauro-rigaud-2022-02.webp 1872w","sizes":"(max-width: 479px) 1872px, (max-width: 991px) min(100vw, 1872px), min(50vw, 1872px)"}},"image":"images/projets/mauro-rigaud-2022-01.webp","image_hover":"images/projets/mauro-rigaud-2022-02.webp"},{"id":"mauro-turcon-2021","url":"mauro-turcon-2021.html","titre":"Mauro, Turcon, 2021","onglet":"Mauro, Turcon, 2021 — cuisine, projet et existant | Visu Visu","interaction":"toggle","group":"turcon","medias":{"images/projets/mauro-turcon-2021-01.webp":{"alt":"Rendu noir et blanc d’une cuisine ouverte : îlot et tabourets, crédence en terrazzo, alcôve en bois à verre cannelé où une femme est assise"},"images/projets/mauro-turcon-2021-02.webp":{"alt":"Photographie noir et blanc de l’appartement avant travaux : kitchenette, bar sur consoles, tabouret et plantes"}},"image":"images/projets/mauro-turcon-2021-01.webp","image_hover":"images/projets/mauro-turcon-2021-02.webp"},{"id":"mauro-turcon-2021-2","url":"mauro-turcon-2021-2.html","titre":"Mauro, Turcon, 2021","onglet":"Mauro, Turcon, 2021 — cuisine vert d’eau et alcôve en chêne | Visu Visu","interaction":"zoom","group":"turcon","medias":{"images/projets/mauro-turcon-2021-03.webp":{"alt":"Cuisine aux meubles vert d’eau et crédence en terrazzo, îlot en bois avec tabourets rose et noir, alcôve en chêne à verre cannelé où une femme lit","srcset":"images/projets/mauro-turcon-2021-03-1000.webp 750w, images/projets/mauro-turcon-2021-03.webp 1200w","sizes":"(max-width: 479px) 1200px, (max-width: 991px) min(max(100vw, 60vh * 0.75), 1200px), min(max(50vw, (100vh - 125px) * 0.75), 1200px)"}},"image":"images/projets/mauro-turcon-2021-03.webp","image_zoomed":"images/projets/mauro-turcon-2021-03.webp"},{"id":"pello-9rr-salle-2021","url":"pello-9rr-salle-2021.html","titre":"Pello, 9RR, salle à manger, 2021","onglet":"Pello, 9RR, salle à manger, 2021 — projet et existant | Visu Visu","interaction":"toggle","group":"9RR","medias":{"images/projets/pello-9rr-salle-2021-01.webp":{"alt":"Rendu noir et blanc d’une cuisine ouverte sous poutres blanchies : plan de travail en L prolongé d’une table arrondie sur pieds ronds, tabourets, parquet"},"images/projets/pello-9rr-salle-2021-02.webp":{"alt":"Photographie noir et blanc de la pièce vide avant travaux : poutres blanches, bloc de placards, parquet et portes vitrées"}},"image":"images/projets/pello-9rr-salle-2021-01.webp","image_hover":"images/projets/pello-9rr-salle-2021-02.webp"},{"id":"pello-9rr-chambre-2021","url":"pello-9rr-chambre-2021.html","titre":"Pello, 9RR, chambre nuptiale, 2021","onglet":"Pello, 9RR, chambre nuptiale, 2021 — ambiance du soir | Visu Visu","interaction":"zoom","group":"9RR","medias":{"images/projets/pello-9rr-chambre-2021-01.webp":{"alt":"Chambre sous charpente blanchie, volume peint corail avec placards miroirs et passage éclairé où entre une femme, lit au premier plan","srcset":"images/projets/pello-9rr-chambre-2021-01-1000.webp 750w, images/projets/pello-9rr-chambre-2021-01.webp 1200w","sizes":"(max-width: 479px) 1200px, (max-width: 991px) min(max(100vw, 60vh * 0.75), 1200px), min(max(50vw, (100vh - 125px) * 0.75), 1200px)"}},"image":"images/projets/pello-9rr-chambre-2021-01.webp","image_zoomed":"images/projets/pello-9rr-chambre-2021-01.webp"},{"id":"pello-9rr-dependance-2021","url":"pello-9rr-dependance-2021.html","titre":"Pello, 9RR, dépendance, 2021","onglet":"Pello, 9RR, dépendance, 2021 — projet et existant | Visu Visu","interaction":"toggle","group":"9RR","medias":{"images/projets/pello-9rr-dependance-2021-01.webp":{"alt":"Rendu noir et blanc d’une cour : dépendance vitrée surmontée d’un toit-terrasse, escalier en béton qu’un homme gravit, jardin et arbustes"},"images/projets/pello-9rr-dependance-2021-02.webp":{"alt":"Photographie noir et blanc de la cour avant travaux : ancienne dépendance aux fenêtres blanches, lauriers-roses et sol en briques"}},"image":"images/projets/pello-9rr-dependance-2021-01.webp","image_hover":"images/projets/pello-9rr-dependance-2021-02.webp"},{"id":"mauro-sabater-2020","url":"mauro-sabater-2020.html","titre":"Mauro, Sabater, pergola, 2020","onglet":"Mauro, Sabater, pergola, 2020 — projet et chantier | Visu Visu","interaction":"toggle","group":"sabater","medias":{"images/projets/mauro-sabater-2020-01.webp":{"alt":"Rendu noir et blanc d’une terrasse en bois sous pergola de canisses, table et chaises, personne assise, maisons à flanc de colline au fond"},"images/projets/mauro-sabater-2020-02.webp":{"alt":"Photographie noir et blanc du toit-terrasse en chantier : ouvriers, gravats et vue sur les maisons à flanc de colline"}},"image":"images/projets/mauro-sabater-2020-01.webp","image_hover":"images/projets/mauro-sabater-2020-02.webp"},{"id":"mauro-sabater-2020-2","url":"mauro-sabater-2020-2.html","titre":"Mauro, Sabater, pergola, 2020","onglet":"Mauro, Sabater, pergola, 2020 — terrasse sous canisses | Visu Visu","interaction":"zoom","group":"sabater","medias":{"images/projets/mauro-sabater-2020-03.webp":{"alt":"Terrasse en bois sous une pergola de canisses à structure noire, mobilier blanc, femme assise, olivier et jardinière, maisons à flanc de colline","srcset":"images/projets/mauro-sabater-2020-03-1000.webp 1000w, images/projets/mauro-sabater-2020-03.webp 1600w","sizes":"(max-width: 479px) 1600px, (max-width: 991px) min(max(100vw, 60vh * 1.3333), 1600px), min(max(50vw, (100vh - 125px) * 1.3333), 1600px)"}},"image":"images/projets/mauro-sabater-2020-03.webp","image_zoomed":"images/projets/mauro-sabater-2020-03.webp"},{"id":"abri-2020","url":"abri-2020.html","titre":"David Leininger, Abri, 2020","onglet":"David Leininger, Abri, 2020 — projet et site | Visu Visu","interaction":"toggle","group":"abri","medias":{"images/projets/abri-2020-01.webp":{"alt":"Rendu noir et blanc d’un abri en charpente bois à contreventements obliques, bûches empilées, mur en pierre sèche, maison et falaise au fond"},"images/projets/abri-2020-02.webp":{"alt":"Photographie noir et blanc du terrain avant construction : gravier, mur en pierre sèche, végétation, maison et falaise"}},"image":"images/projets/abri-2020-01.webp","image_hover":"images/projets/abri-2020-02.webp"},{"id":"abri-2020-2","url":"abri-2020-2.html","titre":"David Leininger, Abri, 2020","onglet":"David Leininger, Abri, 2020 — charpente et bûcher | Visu Visu","interaction":"zoom","group":"abri","medias":{"images/projets/abri-2020-03.webp":{"alt":"Vue rapprochée de l’abri : poteaux et poutres en bois, toiture translucide ondulée, bûches empilées devant une voiture garée","srcset":"images/projets/abri-2020-03-1000.webp 1000w, images/projets/abri-2020-03.webp 1600w","sizes":"(max-width: 479px) 1600px, (max-width: 991px) min(max(100vw, 60vh * 1), 1600px), min(max(50vw, (100vh - 125px) * 1), 1600px)"}},"image":"images/projets/abri-2020-03.webp","image_zoomed":"images/projets/abri-2020-03.webp"},{"id":"nowatt-2020","url":"nowatt-2020.html","titre":"Nowatt Lighting, Onyx, version bois, 2020","onglet":"Nowatt Lighting, Onyx, version bois, 2020 — rendu produit | Visu Visu","interaction":"zoom","medias":{"images/projets/nowatt-2020-01.webp":{"alt":"Borne lumineuse solaire Onyx : poteau carré habillé de bois, panneau solaire noir sur une face, LED au sommet, socle en métal sombre"}},"image":"images/projets/nowatt-2020-01.webp","image_zoomed":"images/projets/nowatt-2020-01.webp"}]}</script>
+  <script src="js/site.js?v=28a7cfc8"></script>
 </body>
 </html>

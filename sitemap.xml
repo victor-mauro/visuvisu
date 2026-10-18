@@ -1,9 +1,573 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url>
     <loc>https://visuvisu.fr/</loc>
-    <lastmod>2025-01-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/"/>
+  </url>
+  <url>
+    <loc>https://visuvisu.fr/en/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/"/>
+  </url>
+  <url>
+    <loc>https://visuvisu.fr/mejanes-2025.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/mejanes-2025.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/mejanes-2025.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/mejanes-2025.html"/>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/mejanes-2025-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/mejanes-2025-02.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://visuvisu.fr/en/mejanes-2025.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/mejanes-2025.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/mejanes-2025.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/mejanes-2025.html"/>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/mejanes-2025-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/mejanes-2025-02.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://visuvisu.fr/protoclub-emt02-2025.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/protoclub-emt02-2025.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/protoclub-emt02-2025.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/protoclub-emt02-2025.html"/>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/protoclub-emt02-2025-01.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://visuvisu.fr/images/projets/protoclub-emt02-2025-01.webp</video:thumbnail_loc>
+      <video:title>Protoclub, EMT_02, 2025</video:title>
+      <video:description>Animation : un homme assis sur le banc EMT_02 se lève et s'éloigne, laissant le banc en profilés d'aluminium seul dans la lumière</video:description>
+      <video:content_loc>https://visuvisu.fr/videos/protoclub-emt02-2025-02.mp4</video:content_loc>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://visuvisu.fr/en/protoclub-emt02-2025.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/protoclub-emt02-2025.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/protoclub-emt02-2025.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/protoclub-emt02-2025.html"/>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/protoclub-emt02-2025-01.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://visuvisu.fr/images/projets/protoclub-emt02-2025-01.webp</video:thumbnail_loc>
+      <video:title>Protoclub, EMT_02, 2025</video:title>
+      <video:description>Animation: a man sitting on the EMT_02 bench gets up and walks away, leaving the aluminium extrusion bench alone in the light</video:description>
+      <video:content_loc>https://visuvisu.fr/videos/protoclub-emt02-2025-02.mp4</video:content_loc>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://visuvisu.fr/protoclub-emt01-2025.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/protoclub-emt01-2025.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/protoclub-emt01-2025.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/protoclub-emt01-2025.html"/>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/protoclub-emt01-2025-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/protoclub-emt01-2025-02.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://visuvisu.fr/en/protoclub-emt01-2025.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/protoclub-emt01-2025.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/protoclub-emt01-2025.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/protoclub-emt01-2025.html"/>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/protoclub-emt01-2025-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/protoclub-emt01-2025-02.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://visuvisu.fr/aimko-gs-2024.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/aimko-gs-2024.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/aimko-gs-2024.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/aimko-gs-2024.html"/>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/aimko-gs-2024-01.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://visuvisu.fr/en/aimko-gs-2024.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/aimko-gs-2024.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/aimko-gs-2024.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/aimko-gs-2024.html"/>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/aimko-gs-2024-01.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://visuvisu.fr/aimko-ps-2023.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/aimko-ps-2023.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/aimko-ps-2023.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/aimko-ps-2023.html"/>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/aimko-ps-2023-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/aimko-ps-2023-02.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://visuvisu.fr/en/aimko-ps-2023.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/aimko-ps-2023.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/aimko-ps-2023.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/aimko-ps-2023.html"/>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/aimko-ps-2023-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/aimko-ps-2023-02.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://visuvisu.fr/aimko-store-2023.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/aimko-store-2023.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/aimko-store-2023.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/aimko-store-2023.html"/>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/aimko-store-2023-01.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://visuvisu.fr/en/aimko-store-2023.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/aimko-store-2023.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/aimko-store-2023.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/aimko-store-2023.html"/>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/aimko-store-2023-01.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://visuvisu.fr/bmt-2023.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/bmt-2023.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/bmt-2023.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/bmt-2023.html"/>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/bmt-2023-01.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://visuvisu.fr/en/bmt-2023.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/bmt-2023.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/bmt-2023.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/bmt-2023.html"/>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/bmt-2023-01.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://visuvisu.fr/ctgp-55mpc-2023.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/ctgp-55mpc-2023.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/ctgp-55mpc-2023.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/ctgp-55mpc-2023.html"/>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/ctgp-55mpc-2023-01.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://visuvisu.fr/en/ctgp-55mpc-2023.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/ctgp-55mpc-2023.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/ctgp-55mpc-2023.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/ctgp-55mpc-2023.html"/>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/ctgp-55mpc-2023-01.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://visuvisu.fr/sharjah-2022.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/sharjah-2022.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/sharjah-2022.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/sharjah-2022.html"/>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/sharjah-2022-01.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://visuvisu.fr/en/sharjah-2022.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/sharjah-2022.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/sharjah-2022.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/sharjah-2022.html"/>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/sharjah-2022-01.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://visuvisu.fr/enso-2022.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/enso-2022.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/enso-2022.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/enso-2022.html"/>
+    <video:video>
+      <video:thumbnail_loc>https://visuvisu.fr/images/partage/enso-2022.jpg</video:thumbnail_loc>
+      <video:title>CT&amp;GP, Enso, 2022</video:title>
+      <video:description>Animation : anneaux métalliques articulés qui pivotent les uns dans les autres sur fond noir, leur ombre circulaire projetée au sol</video:description>
+      <video:content_loc>https://visuvisu.fr/videos/enso-2022-01.mp4</video:content_loc>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://visuvisu.fr/en/enso-2022.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/enso-2022.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/enso-2022.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/enso-2022.html"/>
+    <video:video>
+      <video:thumbnail_loc>https://visuvisu.fr/images/partage/enso-2022.jpg</video:thumbnail_loc>
+      <video:title>CT&amp;GP, Enso, 2022</video:title>
+      <video:description>Animation: articulated metal rings pivoting within one another against a black background, casting a circular shadow on the floor</video:description>
+      <video:content_loc>https://visuvisu.fr/videos/enso-2022-01.mp4</video:content_loc>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://visuvisu.fr/radar-2022.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/radar-2022.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/radar-2022.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/radar-2022.html"/>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/radar-2022-01.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://visuvisu.fr/en/radar-2022.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/radar-2022.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/radar-2022.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/radar-2022.html"/>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/radar-2022-01.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://visuvisu.fr/chelles-2022.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/chelles-2022.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/chelles-2022.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/chelles-2022.html"/>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/chelles-2022-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/chelles-2022-02.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://visuvisu.fr/en/chelles-2022.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/chelles-2022.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/chelles-2022.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/chelles-2022.html"/>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/chelles-2022-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/chelles-2022-02.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://visuvisu.fr/verandah-2022.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/verandah-2022.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/verandah-2022.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/verandah-2022.html"/>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/verandah-2022-01.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://visuvisu.fr/en/verandah-2022.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/verandah-2022.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/verandah-2022.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/verandah-2022.html"/>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/verandah-2022-01.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://visuvisu.fr/alpha-communica-2022.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/alpha-communica-2022.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/alpha-communica-2022.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/alpha-communica-2022.html"/>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/alpha-communica-2022-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/alpha-communica-2022-02.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://visuvisu.fr/en/alpha-communica-2022.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/alpha-communica-2022.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/alpha-communica-2022.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/alpha-communica-2022.html"/>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/alpha-communica-2022-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/alpha-communica-2022-02.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://visuvisu.fr/alpha-hall-2022.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/alpha-hall-2022.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/alpha-hall-2022.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/alpha-hall-2022.html"/>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/alpha-hall-2022-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/alpha-hall-2022-02.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://visuvisu.fr/en/alpha-hall-2022.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/alpha-hall-2022.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/alpha-hall-2022.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/alpha-hall-2022.html"/>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/alpha-hall-2022-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/alpha-hall-2022-02.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://visuvisu.fr/mauro-rigaud-2022.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/mauro-rigaud-2022.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/mauro-rigaud-2022.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/mauro-rigaud-2022.html"/>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/mauro-rigaud-2022-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/mauro-rigaud-2022-02.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://visuvisu.fr/en/mauro-rigaud-2022.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/mauro-rigaud-2022.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/mauro-rigaud-2022.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/mauro-rigaud-2022.html"/>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/mauro-rigaud-2022-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/mauro-rigaud-2022-02.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://visuvisu.fr/mauro-turcon-2021.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/mauro-turcon-2021.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/mauro-turcon-2021.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/mauro-turcon-2021.html"/>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/mauro-turcon-2021-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/mauro-turcon-2021-02.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://visuvisu.fr/en/mauro-turcon-2021.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/mauro-turcon-2021.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/mauro-turcon-2021.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/mauro-turcon-2021.html"/>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/mauro-turcon-2021-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/mauro-turcon-2021-02.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://visuvisu.fr/mauro-turcon-2021-2.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/mauro-turcon-2021-2.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/mauro-turcon-2021-2.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/mauro-turcon-2021-2.html"/>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/mauro-turcon-2021-03.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://visuvisu.fr/en/mauro-turcon-2021-2.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/mauro-turcon-2021-2.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/mauro-turcon-2021-2.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/mauro-turcon-2021-2.html"/>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/mauro-turcon-2021-03.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://visuvisu.fr/pello-9rr-salle-2021.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/pello-9rr-salle-2021.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/pello-9rr-salle-2021.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/pello-9rr-salle-2021.html"/>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/pello-9rr-salle-2021-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/pello-9rr-salle-2021-02.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://visuvisu.fr/en/pello-9rr-salle-2021.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/pello-9rr-salle-2021.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/pello-9rr-salle-2021.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/pello-9rr-salle-2021.html"/>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/pello-9rr-salle-2021-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/pello-9rr-salle-2021-02.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://visuvisu.fr/pello-9rr-chambre-2021.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/pello-9rr-chambre-2021.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/pello-9rr-chambre-2021.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/pello-9rr-chambre-2021.html"/>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/pello-9rr-chambre-2021-01.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://visuvisu.fr/en/pello-9rr-chambre-2021.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/pello-9rr-chambre-2021.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/pello-9rr-chambre-2021.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/pello-9rr-chambre-2021.html"/>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/pello-9rr-chambre-2021-01.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://visuvisu.fr/pello-9rr-dependance-2021.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/pello-9rr-dependance-2021.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/pello-9rr-dependance-2021.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/pello-9rr-dependance-2021.html"/>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/pello-9rr-dependance-2021-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/pello-9rr-dependance-2021-02.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://visuvisu.fr/en/pello-9rr-dependance-2021.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/pello-9rr-dependance-2021.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/pello-9rr-dependance-2021.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/pello-9rr-dependance-2021.html"/>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/pello-9rr-dependance-2021-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/pello-9rr-dependance-2021-02.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://visuvisu.fr/mauro-sabater-2020.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/mauro-sabater-2020.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/mauro-sabater-2020.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/mauro-sabater-2020.html"/>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/mauro-sabater-2020-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/mauro-sabater-2020-02.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://visuvisu.fr/en/mauro-sabater-2020.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/mauro-sabater-2020.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/mauro-sabater-2020.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/mauro-sabater-2020.html"/>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/mauro-sabater-2020-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/mauro-sabater-2020-02.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://visuvisu.fr/mauro-sabater-2020-2.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/mauro-sabater-2020-2.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/mauro-sabater-2020-2.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/mauro-sabater-2020-2.html"/>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/mauro-sabater-2020-03.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://visuvisu.fr/en/mauro-sabater-2020-2.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/mauro-sabater-2020-2.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/mauro-sabater-2020-2.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/mauro-sabater-2020-2.html"/>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/mauro-sabater-2020-03.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://visuvisu.fr/abri-2020.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/abri-2020.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/abri-2020.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/abri-2020.html"/>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/abri-2020-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/abri-2020-02.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://visuvisu.fr/en/abri-2020.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/abri-2020.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/abri-2020.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/abri-2020.html"/>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/abri-2020-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/abri-2020-02.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://visuvisu.fr/abri-2020-2.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/abri-2020-2.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/abri-2020-2.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/abri-2020-2.html"/>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/abri-2020-03.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://visuvisu.fr/en/abri-2020-2.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/abri-2020-2.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/abri-2020-2.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/abri-2020-2.html"/>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/abri-2020-03.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://visuvisu.fr/nowatt-2020.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/nowatt-2020.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/nowatt-2020.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/nowatt-2020.html"/>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/nowatt-2020-01.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://visuvisu.fr/en/nowatt-2020.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/nowatt-2020.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/nowatt-2020.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/nowatt-2020.html"/>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/nowatt-2020-01.webp</image:loc>
+    </image:image>
   </url>
 </urlset>
