@@ -22,6 +22,6 @@ alt:
     createurs: [Victor Mauro, Corentin Ligot]
   - fichier: images/projets/chancel-nyc-escalier-02.webp
     texte_fr: "Photographie noir et blanc de l'escalier avant travaux : marches moquettées, même garde-corps en fer forgé, sol en damier de marbre, couloir orné d'un tableau"
-    createurs: [Romain Chancel]
     texte_en: "Black and white photograph of the staircase before the works: carpeted steps, the same wrought-iron balustrade, checkerboard marble floor, a corridor hung with a painting"
+    createurs: [Romain Chancel]
 ---
