@@ -1,6 +1,6 @@
 ---
 # Ligne « Pello, 9RR, salle à manger, 2021 » de la liste → page pello-9rr-dining.html (et en/pello-9rr-dining.html).
-ordre: 19
+ordre: 20
 annee: 2021
 titre_fr: Pello, 9RR, salle à manger, 2021
 titre_en: Pello, 9RR, dining room, 2021

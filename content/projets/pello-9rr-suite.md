@@ -1,6 +1,6 @@
 ---
 # Ligne « Pello, 9RR, chambre nuptiale, 2021 » de la liste → page pello-9rr-suite.html (et en/pello-9rr-suite.html).
-ordre: 20
+ordre: 21
 annee: 2021
 titre_fr: Pello, 9RR, chambre nuptiale, 2021
 titre_en: Pello, 9RR, bridal suite, 2021

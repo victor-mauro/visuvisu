@@ -1,6 +1,6 @@
 ---
 # Ligne « Pello, 9RR, dépendance, 2021 » de la liste → page pello-9rr-annexe.html (et en/pello-9rr-annexe.html).
-ordre: 21
+ordre: 22
 annee: 2021
 titre_fr: Pello, 9RR, dépendance, 2021
 titre_en: Pello, 9RR, outbuilding, 2021

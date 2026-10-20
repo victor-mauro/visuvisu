@@ -1,6 +1,6 @@
 ---
 # Ligne « David Leininger, Abri, 2020 » de la liste → page leininger-abri.html (et en/leininger-abri.html).
-ordre: 24
+ordre: 25
 annee: 2020
 titre_fr: David Leininger, Abri, 2020
 titre_en: David Leininger, Abri, 2020

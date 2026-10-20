@@ -1,6 +1,6 @@
 ---
 # Ligne « Aimko.P, concept store, 2023 » de la liste → page aimko-concept-store.html (et en/aimko-concept-store.html).
-ordre: 6
+ordre: 7
 annee: 2023
 titre_fr: Aimko.P, concept store, 2023
 titre_en: Aimko.P, concept store, 2023

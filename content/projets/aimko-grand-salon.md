@@ -1,6 +1,6 @@
 ---
 # Ligne « Aimko.P, grand salon, 2024 » de la liste → page aimko-grand-salon.html (et en/aimko-grand-salon.html).
-ordre: 4
+ordre: 5
 annee: 2024
 titre_fr: Aimko.P, grand salon, 2024
 titre_en: Aimko.P, main lounge, 2024

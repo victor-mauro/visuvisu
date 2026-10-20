@@ -1,6 +1,6 @@
 ---
 # Ligne « Aimko.P, petit salon, 2023 » de la liste → page aimko-petit-salon.html (et en/aimko-petit-salon.html).
-ordre: 5
+ordre: 6
 annee: 2023
 titre_fr: Aimko.P, petit salon, 2023
 titre_en: Aimko.P, small lounge, 2023
