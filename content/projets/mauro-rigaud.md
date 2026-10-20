@@ -1,6 +1,6 @@
 ---
 # Ligne « Mauro, Rigaud, salle de bain, 2022 » de la liste → page mauro-rigaud.html (et en/mauro-rigaud.html).
-ordre: 17
+ordre: 18
 annee: 2022
 titre_fr: Mauro, Rigaud, salle de bain, 2022
 titre_en: Mauro, Rigaud, bathroom, 2022

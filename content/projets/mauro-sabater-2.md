@@ -1,6 +1,6 @@
 ---
 # Ligne « Mauro, Sabater, pergola, 2020 » de la liste → page mauro-sabater-2.html (et en/mauro-sabater-2.html).
-ordre: 24
+ordre: 25
 annee: 2020
 titre_fr: Mauro, Sabater, pergola, 2020
 titre_en: Mauro, Sabater, pergola, 2020

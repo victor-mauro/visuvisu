@@ -2,7 +2,7 @@
 # Ligne « Emmanuelle Lainé, Méjanes, 2025 » de la liste → page laine-mejanes.html (et en/laine-mejanes.html).
 # ordre : position dans la liste (1 = en haut). annee : année du projet (données structurées).
 # titre : texte de la ligne dans la liste. groupe : lignes voisines resserrées, sans filet entre elles.
-ordre: 2
+ordre: 3
 annee: 2025
 titre_fr: Emmanuelle Lainé, Méjanes, 2025
 titre_en: Emmanuelle Lainé, Méjanes, 2025

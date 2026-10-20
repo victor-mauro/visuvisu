@@ -1,6 +1,6 @@
 ---
 # Ligne « CT&GP, 55MPC, 2023 » de la liste → page ctgp-55mpc.html (et en/ctgp-55mpc.html).
-ordre: 9
+ordre: 10
 annee: 2023
 titre_fr: CT&GP, 55MPC, 2023
 titre_en: CT&GP, 55MPC, 2023

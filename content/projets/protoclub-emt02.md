@@ -1,6 +1,6 @@
 ---
 # Ligne « Protoclub, EMT_02, 2025 » de la liste → page protoclub-emt02.html (et en/protoclub-emt02.html).
-ordre: 3
+ordre: 4
 annee: 2025
 titre_fr: Protoclub, EMT_02, 2025
 titre_en: Protoclub, EMT_02, 2025

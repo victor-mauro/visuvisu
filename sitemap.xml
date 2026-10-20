@@ -31,6 +31,30 @@
     </image:image>
   </url>
   <url>
+    <loc>https://visuvisu.fr/chancel-nyc-escalier.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/chancel-nyc-escalier.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/chancel-nyc-escalier.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/chancel-nyc-escalier.html"/>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/chancel-nyc-escalier-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/chancel-nyc-escalier-02.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://visuvisu.fr/en/chancel-nyc-escalier.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/chancel-nyc-escalier.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/chancel-nyc-escalier.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/chancel-nyc-escalier.html"/>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/chancel-nyc-escalier-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/chancel-nyc-escalier-02.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
     <loc>https://visuvisu.fr/laine-mejanes.html</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/laine-mejanes.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/laine-mejanes.html"/>

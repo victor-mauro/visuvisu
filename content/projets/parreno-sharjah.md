@@ -1,6 +1,6 @@
 ---
 # Ligne « Atelier Philippe Parreno, Sharjah, 2022 » de la liste → page parreno-sharjah.html (et en/parreno-sharjah.html).
-ordre: 10
+ordre: 11
 annee: 2022
 titre_fr: Atelier Philippe Parreno, Sharjah, 2022
 titre_en: Atelier Philippe Parreno, Sharjah, 2022

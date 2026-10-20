@@ -1,6 +1,6 @@
 ---
 # Ligne « Atelier Aïno, BMT, avec Lambert David, 2023 » de la liste → page aino-bmt.html (et en/aino-bmt.html).
-ordre: 8
+ordre: 9
 annee: 2023
 titre_fr: Atelier Aïno, BMT, avec Lambert David, 2023
 titre_en: Atelier Aïno, BMT, with Lambert David, 2023

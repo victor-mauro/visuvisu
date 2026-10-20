@@ -1,6 +1,6 @@
 ---
 # Ligne « CT&GP, Vérandah, 2022 » de la liste → page ctgp-verandah.html (et en/ctgp-verandah.html).
-ordre: 14
+ordre: 15
 annee: 2022
 titre_fr: CT&GP, Vérandah, 2022
 titre_en: CT&GP, Vérandah, 2022
