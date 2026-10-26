@@ -107,7 +107,10 @@ function classeGroupe(projets, i) {
 
 function personne(ctx, nom) {
   const p = { '@type': 'Person', name: nom };
-  if (nom === ctx.site.contact_nom) p['@id'] = ids(ctx.site).auteur;
+  if (nom === ctx.site.contact_nom) {
+    p['@id'] = ids(ctx.site).auteur;
+    p.url = ctx.site.contact_lien;
+  }
   return p;
 }
 
@@ -139,6 +142,7 @@ function oeuvre(ctx, projet, description) {
         creditText: noms(qui, langue),
         copyrightNotice: `© ${projet.annee} ${noms(qui, langue)}`,
       };
+      if (entree.date) v.uploadDate = entree.date;
       if (duree) v.duration = duree;
       videos.push(v);
     } else if (!estModele(f)) {

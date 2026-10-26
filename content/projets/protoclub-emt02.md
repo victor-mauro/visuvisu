@@ -23,4 +23,6 @@ alt:
     texte_fr: "Animation : un homme assis sur le banc EMT_02 se lève et s'éloigne, laissant le banc en profilés d'aluminium seul dans la lumière"
     texte_en: "Animation: a man sitting on the EMT_02 bench gets up and walks away, leaving the aluminium extrusion bench alone in the light"
     createurs: [Victor Mauro, Corentin Ligot]
+    # Date de mise en ligne (uploadDate) : date de création inscrite dans la vidéo d'origine (export Cloudinary aioli).
+    date: "2025-12-05T16:56:39+00:00"
 ---

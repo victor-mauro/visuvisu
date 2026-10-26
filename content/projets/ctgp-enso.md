@@ -18,4 +18,6 @@ alt:
   - fichier: videos/ctgp-enso-01.mp4
     texte_fr: "Animation : anneaux métalliques articulés qui pivotent les uns dans les autres sur fond noir, leur ombre circulaire projetée au sol"
     texte_en: "Animation: articulated metal rings pivoting within one another against a black background, casting a circular shadow on the floor"
+    # Date de mise en ligne (uploadDate) : première mise en ligne sur le site, commit ec5a7d2 (aucune date dans la vidéo).
+    date: "2025-12-10T11:24:50+01:00"
 ---
