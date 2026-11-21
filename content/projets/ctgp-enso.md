@@ -1,6 +1,6 @@
 ---
 # Ligne « CT&GP, Enso, 2022 » de la liste → page ctgp-enso.html (et en/ctgp-enso.html).
-ordre: 12
+ordre: 13
 annee: 2022
 titre_fr: CT&GP, Enso, 2022
 titre_en: CT&GP, Enso, 2022

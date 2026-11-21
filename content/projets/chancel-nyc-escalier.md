@@ -1,6 +1,6 @@
 ---
 # Ligne « Romain Chancel Interiors, NYC, escalier, 2026 » de la liste → page chancel-nyc-escalier.html (et en/chancel-nyc-escalier.html).
-ordre: 2
+ordre: 3
 annee: 2026
 titre_fr: Romain Chancel Interiors, NYC, escalier, 2026
 titre_en: Romain Chancel Interiors, NYC, staircase, 2026

@@ -1,6 +1,6 @@
 ---
 # Ligne « Romain Chancel Interiors, NYC, cuisine, 2026 » de la liste → page chancel-nyc-cuisine.html (et en/chancel-nyc-cuisine.html).
-ordre: 1
+ordre: 2
 annee: 2026
 titre_fr: Romain Chancel Interiors, NYC, cuisine, 2026
 titre_en: Romain Chancel Interiors, NYC, kitchen, 2026

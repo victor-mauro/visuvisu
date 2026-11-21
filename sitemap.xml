@@ -13,6 +13,30 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/"/>
   </url>
   <url>
+    <loc>https://visuvisu.fr/parreno-5moons.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/parreno-5moons.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/parreno-5moons.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/parreno-5moons.html"/>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/parreno-5moons-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/parreno-5moons-02.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://visuvisu.fr/en/parreno-5moons.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/parreno-5moons.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/parreno-5moons.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/parreno-5moons.html"/>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/parreno-5moons-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/parreno-5moons-02.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
     <loc>https://visuvisu.fr/chancel-nyc-cuisine.html</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/chancel-nyc-cuisine.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/chancel-nyc-cuisine.html"/>
