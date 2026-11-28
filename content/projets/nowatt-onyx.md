@@ -1,6 +1,6 @@
 ---
 # Ligne « Nowatt Lighting, Onyx, version bois, 2020 » de la liste → page nowatt-onyx.html (et en/nowatt-onyx.html).
-ordre: 29
+ordre: 30
 annee: 2020
 titre_fr: Nowatt Lighting, Onyx, version bois, 2020
 titre_en: Nowatt Lighting, Onyx, wood version, 2020

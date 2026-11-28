@@ -13,6 +13,36 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/"/>
   </url>
   <url>
+    <loc>https://visuvisu.fr/parreno-5moons-2.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/parreno-5moons-2.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/parreno-5moons-2.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/parreno-5moons-2.html"/>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/parreno-5moons-03.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://visuvisu.fr/images/projets/parreno-5moons-03.webp</video:thumbnail_loc>
+      <video:title>Atelier Philippe Parreno, 5 Moons, salle 301, 2026</video:title>
+      <video:description>Animation : la caméra avance lentement vers le piano à queue, les poissons-ballons dérivent sous le plafond et les taches de soleil s'allongent sur la moquette rouge</video:description>
+      <video:content_loc>https://visuvisu.fr/videos/parreno-5moons-04.mp4</video:content_loc>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://visuvisu.fr/en/parreno-5moons-2.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/parreno-5moons-2.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/parreno-5moons-2.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://visuvisu.fr/parreno-5moons-2.html"/>
+    <image:image>
+      <image:loc>https://visuvisu.fr/images/projets/parreno-5moons-03.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://visuvisu.fr/images/projets/parreno-5moons-03.webp</video:thumbnail_loc>
+      <video:title>Atelier Philippe Parreno, 5 Moons, room 301, 2026</video:title>
+      <video:description>Animation: the camera slowly moves towards the grand piano, the fish balloons drift below the ceiling and the patches of sunlight stretch across the red carpet</video:description>
+      <video:content_loc>https://visuvisu.fr/videos/parreno-5moons-04.mp4</video:content_loc>
+    </video:video>
+  </url>
+  <url>
     <loc>https://visuvisu.fr/parreno-5moons.html</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://visuvisu.fr/parreno-5moons.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://visuvisu.fr/en/parreno-5moons.html"/>

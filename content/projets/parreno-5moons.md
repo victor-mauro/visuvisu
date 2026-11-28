@@ -1,16 +1,17 @@
 ---
-# Ligne « Atelier Philippe Parreno, 5 Moons, 2026 » de la liste → page parreno-5moons.html (et en/parreno-5moons.html).
-ordre: 1
+# Ligne « Atelier Philippe Parreno, 5 Moons, salle 307, 2026 » de la liste → page parreno-5moons.html (et en/parreno-5moons.html).
+ordre: 2
 annee: 2026
-titre_fr: Atelier Philippe Parreno, 5 Moons, 2026
-titre_en: Atelier Philippe Parreno, 5 Moons, 2026
+titre_fr: Atelier Philippe Parreno, 5 Moons, salle 307, 2026
+titre_en: Atelier Philippe Parreno, 5 Moons, room 307, 2026
+groupe: 5moons
 
 interaction: toggle
 image: images/projets/parreno-5moons-01.webp
 image_hover: images/projets/parreno-5moons-02.webp
 
-onglet_fr: "Atelier Philippe Parreno, 5 Moons, 2026 — salle de l'héliostat"
-onglet_en: "Atelier Philippe Parreno, 5 Moons, 2026 — heliostat room"
+onglet_fr: "Atelier Philippe Parreno, 5 Moons, salle 307, 2026 — héliostat et projection"
+onglet_en: "Atelier Philippe Parreno, 5 Moons, room 307, 2026 — heliostat and projection"
 description_fr: "Visualisation 3D d'une salle de l'exposition Philippe Parreno: 5 Moons au MCA Australia, Sydney : héliostat et projection. Courtesy MCA Australia."
 description_en: "Rendering of a room in the exhibition Philippe Parreno: 5 Moons at MCA Australia, Sydney: heliostat and projection. Courtesy MCA Australia."
 
